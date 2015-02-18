@@ -29,6 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+       self.navigationController?.navigationBarHidden = true
         self.backgroundColorOfImageView()
 
         var frame1:CGRect = CGRect(x: 0, y: 230, width:self.view.frame.size.width , height: 44)
@@ -49,6 +50,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         btnLogin.frame = CGRect(x: -4, y: frame2.origin.y + 70, width : self.view.frame.size.width - 100, height:40)
         btnLogin.layer.cornerRadius = 5.0
+        btnLogin.addTarget(self, action: "loginButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
         btnSignUp.frame = CGRect(x: (self.view.frame.size.width-200)/2, y: self.view.frame.size.height - 100, width : 200, height:40)
         btnSignUp.layer.cornerRadius = 3.0
@@ -63,7 +65,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
     }
 
+ 
+  //MARK:Login Button Pressed
+  
+//  @IBAction func loginButtonPressed(sender : AnyObject){
+//    let projectViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
+//  }
+  
+   func loginButtonPressed(){
+    let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
+      self.navigationController?.pushViewController(secondViewController, animated: true)
+    
+  }
 
+  
     //Function to set backgroundColor
     func backgroundColorOfImageView() {
 
@@ -89,7 +104,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         effectView.frame = CGRect(x: 0, y: 0, width: btnLogin.frame.size.width, height: btnLogin.frame.size.height)
         effectView.layer.cornerRadius = 5.0
 
-        btnLogin.background (effectView)
+       // btnLogin.background (effectView)
 
     }
 
