@@ -17,6 +17,8 @@
 		0A6EDE361A9302F900F7562E /* MonitoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE351A9302F900F7562E /* MonitoringTests.swift */; };
 		0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE431A93047100F7562E /* LoginViewController.swift */; };
 		0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */; };
+		0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */; };
+		0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564B11A949641008A5E23 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		0A6EDE351A9302F900F7562E /* MonitoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringTests.swift; sourceTree = "<group>"; };
 		0A6EDE431A93047100F7562E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldBlurView.swift; path = Monitoring/Classes/CustomTextFieldBlurView.swift; sourceTree = SOURCE_ROOT; };
+		0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0AA564B11A949641008A5E23 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 			children = (
 				0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */,
 				0A6EDE211A9302F800F7562E /* ViewController.swift */,
+				0AA564AE1A947B08008A5E23 /* SignUpViewController */,
 				0A6EDE401A93041B00F7562E /* LoginViewController */,
 			);
 			path = Classes;
@@ -136,8 +141,17 @@
 			children = (
 				0A6EDE431A93047100F7562E /* LoginViewController.swift */,
 				0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */,
+				0AA564B11A949641008A5E23 /* CustomButton.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		0AA564AE1A947B08008A5E23 /* SignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */,
+			);
+			path = SignUpViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */,
+				0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */,
 				0A18B24E1A93833600B3839B /* File.swift in Sources */,
 				0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */,
+				0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */,
 				0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */,
 				0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */,
 				0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */,
