@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A18B24E1A93833600B3839B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A18B24D1A93833600B3839B /* File.swift */; };
 		0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */; };
 		0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE1E1A9302F800F7562E /* Monitoring.xcdatamodeld */; };
 		0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE211A9302F800F7562E /* ViewController.swift */; };
@@ -17,6 +16,9 @@
 		0A6EDE361A9302F900F7562E /* MonitoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE351A9302F900F7562E /* MonitoringTests.swift */; };
 		0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE431A93047100F7562E /* LoginViewController.swift */; };
 		0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */; };
+		0A84409A1A946669004E8AE6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */; };
+		0A84409F1A947B5F004E8AE6 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */; };
+		0A8440A21A9488AD004E8AE6 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A8440A11A9488AD004E8AE6 /* 3.jpg */; };
 		0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */; };
 		0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564B11A949641008A5E23 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A18B24D1A93833600B3839B /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		0A6EDE171A9302F800F7562E /* Monitoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6EDE1B1A9302F800F7562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +47,9 @@
 		0A6EDE351A9302F900F7562E /* MonitoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringTests.swift; sourceTree = "<group>"; };
 		0A6EDE431A93047100F7562E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldBlurView.swift; path = Monitoring/Classes/CustomTextFieldBlurView.swift; sourceTree = SOURCE_ROOT; };
+		0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		0A8440A11A9488AD004E8AE6 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0AA564B11A949641008A5E23 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +75,6 @@
 		0A6EDE0E1A9302F800F7562E = {
 			isa = PBXGroup;
 			children = (
-				0A18B24D1A93833600B3839B /* File.swift */,
 				0A6EDE191A9302F800F7562E /* Monitoring */,
 				0A6EDE321A9302F900F7562E /* MonitoringTests */,
 				0A6EDE181A9302F800F7562E /* Products */,
@@ -92,6 +95,7 @@
 			children = (
 				0A6EDE231A9302F800F7562E /* Main.storyboard */,
 				0A6EDE3F1A93041B00F7562E /* Classes */,
+				0A8440A01A94887B004E8AE6 /* images */,
 				0A6EDE261A9302F800F7562E /* Images.xcassets */,
 				0A6EDE281A9302F800F7562E /* LaunchScreen.xib */,
 				0A6EDE1E1A9302F800F7562E /* Monitoring.xcdatamodeld */,
@@ -131,6 +135,8 @@
 				0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */,
 				0A6EDE211A9302F800F7562E /* ViewController.swift */,
 				0AA564AE1A947B08008A5E23 /* SignUpViewController */,
+				0A8440961A94656E004E8AE6 /* CustomTableViewCell */,
+				0A84409B1A946A3C004E8AE6 /* TableViewController */,
 				0A6EDE401A93041B00F7562E /* LoginViewController */,
 			);
 			path = Classes;
@@ -144,6 +150,31 @@
 				0AA564B11A949641008A5E23 /* CustomButton.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		0A8440961A94656E004E8AE6 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */,
+			);
+			name = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A84409B1A946A3C004E8AE6 /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */,
+			);
+			name = TableViewController;
+			sourceTree = "<group>";
+		};
+		0A8440A01A94887B004E8AE6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0A8440A11A9488AD004E8AE6 /* 3.jpg */,
+			);
+			name = images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0AA564AE1A947B08008A5E23 /* SignUpViewController */ = {
@@ -237,6 +268,7 @@
 				0A6EDE251A9302F800F7562E /* Main.storyboard in Resources */,
 				0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */,
 				0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */,
+				0A8440A21A9488AD004E8AE6 /* 3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,9 +288,10 @@
 			files = (
 				0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */,
 				0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */,
-				0A18B24E1A93833600B3839B /* File.swift in Sources */,
+				0A84409F1A947B5F004E8AE6 /* ProjectTableViewController.swift in Sources */,
 				0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */,
 				0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */,
+				0A84409A1A946669004E8AE6 /* CustomTableViewCell.swift in Sources */,
 				0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */,
 				0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */,
 				0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */,

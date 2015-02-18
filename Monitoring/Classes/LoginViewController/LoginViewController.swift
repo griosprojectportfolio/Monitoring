@@ -30,6 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+       self.navigationController?.navigationBarHidden = true
         self.backgroundColorOfImageView()
 
         self.navigationController?.navigationBarHidden = true
@@ -54,6 +55,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //frame: CGRect, imageName:String ,tag:Int, title:String
         btnLogin = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 70, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Log Into Monitoring", color:.whiteColor())
         btnLogin.imageVwBackground.alpha = 0.5
+        //btnLogin.addTarget(self, action: "loginButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+
         self.view.addSubview(btnLogin)
 
         btnLoginStackOver = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 112, width : self.view.frame.size.width - 50, height:40) ,imageName:"stack" ,tag:2,  title:"StackOverFlow", color:.orangeColor())
@@ -79,6 +82,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return navigationController?.navigationBarHidden == false
     }
 
+
+  //MARK:Login Button Pressed
+  
+//  @IBAction func loginButtonPressed(sender : AnyObject){
+//    let projectViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
+//  }
+  
+   func loginButtonPressed(){
+    let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
+      self.navigationController?.pushViewController(secondViewController, animated: true)
+    
+  }
+
+  
     //Function to set backgroundColor
     func backgroundColorOfImageView() {
 
@@ -88,8 +105,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // gl.colors = [ (UIColor(red: 35.0/255.0, green: 85.0/255.0, blue: 120.0/255.0, alpha: 1.0).CGColor),  (UIColor(red: 53.0/255.0, green: 121.0/255.0, blue: 166.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 200/255.0, green: 212/255.0, blue: 223/255.0, alpha: 1.0).CGColor)]
 
          gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
-
-        gl.locations = [ 0.0, 1.0]
         self.imgVwBackground.layer.insertSublayer(gl, atIndex: 0)
         gl.frame = self.imgVwBackground.frame;
     }
@@ -99,22 +114,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
         var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
         effectView.frame = CGRect(x: 0, y: 0, width: btnLogin.frame.size.width, height: btnLogin.frame.size.height)
-        effectView.layer.cornerRadius = 9.0
-        btnLogin.addSubview(effectView)
-        btnLogin.sendSubviewToBack(effectView)
-    }
-
-    func addblurViewOnStackOverFlowButton () {
-
-        var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
-        var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
-        effectView.frame = CGRect(x: 0, y: 0, width: btnLoginStackOver.frame.size.width, height: btnLoginStackOver.frame.size.height)
         effectView.layer.cornerRadius = 5.0
-        // effectView.backgroundColor = UIColor.orangeColor()
 
-        btnLoginStackOver.addSubview(effectView)
-        btnLoginStackOver.sendSubviewToBack(effectView)
+       // btnLogin.background (effectView)
+
     }
-    
 
 }
