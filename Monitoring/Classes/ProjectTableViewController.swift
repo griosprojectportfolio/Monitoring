@@ -25,32 +25,16 @@ class ProjectTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    return 6
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell", forIndexPath: indexPath) as CustomTableViewCell
     
-    
-    cell.dueDate.font = UIFont(name: "Palatino", size: 12)
     cell.dueDate.text = "10/02/2015"
-    
-    
-    cell.projectName.font = UIFont(name: "Palatino", size:20)
     cell.projectName.text = "Kindergarten"
-    
-    cell.imageView.image = UIImage(named: "3.jpg")
-    
-    cell.mainView.layer.cornerRadius = 1;
-    cell.mainView.layer.borderWidth = 0.5;
-    var mycolor:UIColor = UIColor(red: 0, green: 0, blue: 0, alpha:0.3)
-    cell.mainView.layer.borderColor = mycolor.CGColor
-    
-    cell.dotView.layer.cornerRadius = 4;
-    cell.dotView.layer.borderWidth = 2;
-    var dotcolor:UIColor = UIColor(red: 0, green: 0, blue: 0, alpha:0.2)
-    cell.dotView.layer.borderColor = dotcolor.CGColor
-    return cell
+    cell.imageView.image = UIImage(named: "projectlogo.png")
+          return cell
   }
 
   

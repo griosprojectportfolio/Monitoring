@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol CustomButtonDelegate {
     // optional func btnTapped(tag)
+  //optional func btnTapped(str:String)
 }
 
 class CustomButton: UIView {
@@ -50,9 +51,25 @@ class CustomButton: UIView {
             btnLogo.tag = tag
             btnLogo.titleLabel?.font =  UIFont(name: "Palatino", size: 17.0)
             btnLogo.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+
             self.addSubview(btnLogo)
 
-        }
+        } else {
+         
+          imageVwBackground = UIImageView(frame:CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
+          imageVwBackground.backgroundColor = color
+          self.addSubview(imageVwBackground)
+          imageVwBackground.layer.cornerRadius = 4.0
+          self.sendSubviewToBack(imageVwBackground)
+          
+          var btnLogo = UIButton (frame:CGRect(x: 45, y: 0, width: 200, height: 44))
+          btnLogo.setTitle(titleBtn, forState: .Normal)
+          btnLogo.tag = tag
+          btnLogo.titleLabel?.font =  UIFont(name: "Palatino", size: 17.0)
+          btnLogo.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+          self.addSubview(btnLogo)
+
+      }
     }
 }
 
