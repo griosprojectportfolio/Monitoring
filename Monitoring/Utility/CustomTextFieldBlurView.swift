@@ -18,12 +18,9 @@ class CustomTextFieldBlurView: UITextField {
     }
 
     init(frame: CGRect, imgName:String) {
-
         super.init(frame: frame)
-
         self.addBlurViewWithTextField(imgName)
     }
-
 
     func addBlurViewWithTextField(imgName: String) {
 
@@ -43,30 +40,10 @@ class CustomTextFieldBlurView: UITextField {
             self.font = UIFont(name: "Palatino", size: 17.0)
             self.textColor = UIColor.whiteColor()
             self.clearButtonMode = UITextFieldViewMode.WhileEditing;
-
-            var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
-            var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
-            effectView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
-            self.addSubview(effectView)
          } else {
-
             var vwImage = UIView(frame:CGRect(x: 0, y: 0, width: 10, height: 5))
             self.leftView = vwImage
             self.leftViewMode = UITextFieldViewMode.Always;
-
-            var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
-            var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
-            effectView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
-            self.addSubview(effectView)
         }
-
     }
 }
-
-
-//            var imageVwBackground = UIImageView(frame:CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
-//            imageVwBackground.backgroundColor = UIColor.whiteColor()
-//            imageVwBackground.alpha = 0.2;
-
-//               self.addSubview(imageVwBackground)
-//

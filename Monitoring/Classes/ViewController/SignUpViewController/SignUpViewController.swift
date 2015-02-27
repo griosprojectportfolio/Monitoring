@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate  {
+class SignUpViewController: UIViewController, UITextFieldDelegate, CustomButtonDelegate {
 
     @IBOutlet weak var imgVwBackground : UIImageView!
 
@@ -99,6 +99,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate  {
       
       signUpbutton = CustomButton(frame:CGRect(x: -1, y: self.view.frame.size.height-120, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Sign Up", color:.whiteColor())
       signUpbutton.imageVwBackground.alpha = 0.5
+      signUpbutton.delegate = self
       self.view.addSubview(signUpbutton)
 
       
@@ -113,38 +114,48 @@ class SignUpViewController: UIViewController, UITextFieldDelegate  {
 //      signInButton.layer.borderWidth = 1
 //      signInButton.layer.masksToBounds = true
       
-     signInButton.addTarget(self, action: "signInButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+     signInButton.addTarget(self, action: "showFirstViewController", forControlEvents: UIControlEvents.TouchUpInside)
       self.view.addSubview(signInButton)
       
     }
+
   
-  //Mark: SignIn Buttton Pressed
+    //Mark: SignIn Buttton Pressed
   
-  func signUpButtonPressed(){
-    let projectListVC = self.storyboard?.instantiateViewControllerWithIdentifier("ProjectList")as ProjectTableViewController
-   self.navigationController?.pushViewController(projectListVC, animated: true)
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    
+    if segue.identifier == "idFirstSegueUnwind" {
+      let firstViewController = segue.destinationViewController as LoginViewController
+      //firstViewController.lblMessage.text = "You just came back from the 2nd VC"
+    }
   }
   
- //Mark: SignIn Buttton Pressed
+
   
-  func signInButtonPressed(){
-   self.navigationController?.popViewControllerAnimated(true)
+  @IBAction func showFirstViewController() {
+    self.performSegueWithIdentifier("idFirstSegueUnwind", sender: self)
   }
 
-    func backgroundColorOfImageView() {
 
-        let gl:CAGradientLayer = CAGradientLayer ()
-        gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
+  
+  func backgroundColorOfImageView() {
+    
+    let gl:CAGradientLayer = CAGradientLayer ()
+    gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
+    
+    gl.locations = [ 0.0, 1.0]
+    self.imgVwBackground.layer.insertSublayer(gl, atIndex: 0)
+    gl.frame = self.imgVwBackground.frame;
+  }
 
-        gl.locations = [ 0.0, 1.0]
-        self.imgVwBackground.layer.insertSublayer(gl, atIndex: 0)
-        gl.frame = self.imgVwBackground.frame;
-    }
 
-    @IBAction func backBtnTapped(sender: UIButton) {
-
-        self.navigationController?.popViewControllerAnimated(true)
-
-    }
+  
+ //Mark:Custom Button Pressed
+  
+  func btnTapped(tag: Int) {
+    self.performSegueWithIdentifier("sinuptonavigationRootID", sender: self )
+  }
 
 }

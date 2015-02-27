@@ -7,19 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */; };
+		0A65FC801AA0A726009C79B7 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC6E1AA0A726009C79B7 /* Project.swift */; };
+		0A65FC811AA0A726009C79B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC711AA0A726009C79B7 /* AppDelegate.swift */; };
+		0A65FC821AA0A726009C79B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC731AA0A726009C79B7 /* LoginViewController.swift */; };
+		0A65FC831AA0A726009C79B7 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC751AA0A726009C79B7 /* AddProjectViewController.swift */; };
+		0A65FC841AA0A726009C79B7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC761AA0A726009C79B7 /* CustomTableViewCell.swift */; };
+		0A65FC851AA0A726009C79B7 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC771AA0A726009C79B7 /* ProjectTableViewController.swift */; };
+		0A65FC861AA0A726009C79B7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC791AA0A726009C79B7 /* SignUpViewController.swift */; };
+		0A65FC871AA0A726009C79B7 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC7B1AA0A726009C79B7 /* AddTaskViewController.swift */; };
+		0A65FC881AA0A726009C79B7 /* CustomTaskViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC7C1AA0A726009C79B7 /* CustomTaskViewCell.swift */; };
+		0A65FC891AA0A726009C79B7 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC7D1AA0A726009C79B7 /* TaskTableViewController.swift */; };
+		0A65FC8A1AA0A726009C79B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC7F1AA0A726009C79B7 /* ViewController.swift */; };
+		0A65FC901AA0A741009C79B7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC8C1AA0A741009C79B7 /* CustomButton.swift */; };
+		0A65FC911AA0A741009C79B7 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC8D1AA0A741009C79B7 /* CustomSegue.swift */; };
+		0A65FC921AA0A741009C79B7 /* CustomSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC8E1AA0A741009C79B7 /* CustomSegueUnwind.swift */; };
+		0A65FC931AA0A741009C79B7 /* CustomTextFieldBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC8F1AA0A741009C79B7 /* CustomTextFieldBlurView.swift */; };
+		0A65FC951AA0A7F6009C79B7 /* CommanClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC941AA0A7F6009C79B7 /* CommanClass.swift */; };
 		0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE1E1A9302F800F7562E /* Monitoring.xcdatamodeld */; };
-		0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE211A9302F800F7562E /* ViewController.swift */; };
-		0A6EDE251A9302F800F7562E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE231A9302F800F7562E /* Main.storyboard */; };
 		0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE261A9302F800F7562E /* Images.xcassets */; };
 		0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE281A9302F800F7562E /* LaunchScreen.xib */; };
 		0A6EDE361A9302F900F7562E /* MonitoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE351A9302F900F7562E /* MonitoringTests.swift */; };
-		0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE431A93047100F7562E /* LoginViewController.swift */; };
-		0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */; };
-		0A84409A1A946669004E8AE6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */; };
-		0A84409F1A947B5F004E8AE6 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */; };
-		0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */; };
-		0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564B11A949641008A5E23 /* CustomButton.swift */; };
+		0A7CE3B81A9DF00B00D4513D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7CE3B61A9DF00B00D4513D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,23 +41,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A65FC6E1AA0A726009C79B7 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		0A65FC711AA0A726009C79B7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A65FC731AA0A726009C79B7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0A65FC751AA0A726009C79B7 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		0A65FC761AA0A726009C79B7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		0A65FC771AA0A726009C79B7 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		0A65FC791AA0A726009C79B7 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0A65FC7B1AA0A726009C79B7 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		0A65FC7C1AA0A726009C79B7 /* CustomTaskViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTaskViewCell.swift; sourceTree = "<group>"; };
+		0A65FC7D1AA0A726009C79B7 /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		0A65FC7F1AA0A726009C79B7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A65FC8C1AA0A741009C79B7 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0A65FC8D1AA0A741009C79B7 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		0A65FC8E1AA0A741009C79B7 /* CustomSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegueUnwind.swift; sourceTree = "<group>"; };
+		0A65FC8F1AA0A741009C79B7 /* CustomTextFieldBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextFieldBlurView.swift; sourceTree = "<group>"; };
+		0A65FC941AA0A7F6009C79B7 /* CommanClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanClass.swift; sourceTree = "<group>"; };
 		0A6EDE171A9302F800F7562E /* Monitoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6EDE1B1A9302F800F7562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		0A6EDE1F1A9302F800F7562E /* Monitoring.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Monitoring.xcdatamodel; sourceTree = "<group>"; };
-		0A6EDE211A9302F800F7562E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
-		0A6EDE241A9302F800F7562E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A6EDE261A9302F800F7562E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0A6EDE291A9302F800F7562E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0A6EDE2F1A9302F900F7562E /* MonitoringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitoringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6EDE341A9302F900F7562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6EDE351A9302F900F7562E /* MonitoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringTests.swift; sourceTree = "<group>"; };
-		0A6EDE431A93047100F7562E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldBlurView.swift; path = Monitoring/Classes/CustomTextFieldBlurView.swift; sourceTree = SOURCE_ROOT; };
-		0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
-		0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		0AA564B11A949641008A5E23 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0A7CE3B71A9DF00B00D4513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Monitoring/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +86,108 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A65FC6B1AA0A726009C79B7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC6C1AA0A726009C79B7 /* ModelClass */,
+				0A65FC6F1AA0A726009C79B7 /* ViewController */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0A65FC6C1AA0A726009C79B7 /* ModelClass */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC6D1AA0A726009C79B7 /* Project */,
+			);
+			path = ModelClass;
+			sourceTree = "<group>";
+		};
+		0A65FC6D1AA0A726009C79B7 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC6E1AA0A726009C79B7 /* Project.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		0A65FC6F1AA0A726009C79B7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC701AA0A726009C79B7 /* AppDelegate */,
+				0A65FC721AA0A726009C79B7 /* LoginViewController */,
+				0A65FC741AA0A726009C79B7 /* ProjectViewController */,
+				0A65FC781AA0A726009C79B7 /* SignUpViewController */,
+				0A65FC7A1AA0A726009C79B7 /* TaskViewController */,
+				0A65FC7E1AA0A726009C79B7 /* ViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0A65FC701AA0A726009C79B7 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC711AA0A726009C79B7 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		0A65FC721AA0A726009C79B7 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC731AA0A726009C79B7 /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		0A65FC741AA0A726009C79B7 /* ProjectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC751AA0A726009C79B7 /* AddProjectViewController.swift */,
+				0A65FC761AA0A726009C79B7 /* CustomTableViewCell.swift */,
+				0A65FC771AA0A726009C79B7 /* ProjectTableViewController.swift */,
+			);
+			path = ProjectViewController;
+			sourceTree = "<group>";
+		};
+		0A65FC781AA0A726009C79B7 /* SignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC791AA0A726009C79B7 /* SignUpViewController.swift */,
+			);
+			path = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		0A65FC7A1AA0A726009C79B7 /* TaskViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC7B1AA0A726009C79B7 /* AddTaskViewController.swift */,
+				0A65FC7C1AA0A726009C79B7 /* CustomTaskViewCell.swift */,
+				0A65FC7D1AA0A726009C79B7 /* TaskTableViewController.swift */,
+			);
+			path = TaskViewController;
+			sourceTree = "<group>";
+		};
+		0A65FC7E1AA0A726009C79B7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC7F1AA0A726009C79B7 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0A65FC8B1AA0A741009C79B7 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0A65FC8C1AA0A741009C79B7 /* CustomButton.swift */,
+				0A65FC8D1AA0A741009C79B7 /* CustomSegue.swift */,
+				0A65FC8E1AA0A741009C79B7 /* CustomSegueUnwind.swift */,
+				0A65FC8F1AA0A741009C79B7 /* CustomTextFieldBlurView.swift */,
+				0A65FC941AA0A7F6009C79B7 /* CommanClass.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		0A6EDE0E1A9302F800F7562E = {
 			isa = PBXGroup;
 			children = (
@@ -91,8 +209,9 @@
 		0A6EDE191A9302F800F7562E /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
-				0A6EDE231A9302F800F7562E /* Main.storyboard */,
-				0A6EDE3F1A93041B00F7562E /* Classes */,
+				0A7CE3B61A9DF00B00D4513D /* Main.storyboard */,
+				0A65FC6B1AA0A726009C79B7 /* Classes */,
+				0A65FC8B1AA0A741009C79B7 /* Utility */,
 				0A6EDE261A9302F800F7562E /* Images.xcassets */,
 				0A6EDE281A9302F800F7562E /* LaunchScreen.xib */,
 				0A6EDE1E1A9302F800F7562E /* Monitoring.xcdatamodeld */,
@@ -124,53 +243,6 @@
 				0A6EDE341A9302F900F7562E /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0A6EDE3F1A93041B00F7562E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */,
-				0A6EDE211A9302F800F7562E /* ViewController.swift */,
-				0AA564AE1A947B08008A5E23 /* SignUpViewController */,
-				0A8440961A94656E004E8AE6 /* CustomTableViewCell */,
-				0A84409B1A946A3C004E8AE6 /* TableViewController */,
-				0A6EDE401A93041B00F7562E /* LoginViewController */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		0A6EDE401A93041B00F7562E /* LoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0A6EDE431A93047100F7562E /* LoginViewController.swift */,
-				0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */,
-				0AA564B11A949641008A5E23 /* CustomButton.swift */,
-			);
-			path = LoginViewController;
-			sourceTree = "<group>";
-		};
-		0A8440961A94656E004E8AE6 /* CustomTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */,
-			);
-			name = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
-		0A84409B1A946A3C004E8AE6 /* TableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */,
-			);
-			name = TableViewController;
-			sourceTree = "<group>";
-		};
-		0AA564AE1A947B08008A5E23 /* SignUpViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */,
-			);
-			path = SignUpViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A6EDE251A9302F800F7562E /* Main.storyboard in Resources */,
+				0A7CE3B81A9DF00B00D4513D /* Main.storyboard in Resources */,
 				0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */,
 				0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */,
 			);
@@ -273,15 +345,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */,
-				0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */,
-				0A84409F1A947B5F004E8AE6 /* ProjectTableViewController.swift in Sources */,
-				0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */,
-				0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */,
-				0A84409A1A946669004E8AE6 /* CustomTableViewCell.swift in Sources */,
-				0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */,
+				0A65FC831AA0A726009C79B7 /* AddProjectViewController.swift in Sources */,
+				0A65FC811AA0A726009C79B7 /* AppDelegate.swift in Sources */,
+				0A65FC851AA0A726009C79B7 /* ProjectTableViewController.swift in Sources */,
 				0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */,
-				0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */,
+				0A65FC951AA0A7F6009C79B7 /* CommanClass.swift in Sources */,
+				0A65FC901AA0A741009C79B7 /* CustomButton.swift in Sources */,
+				0A65FC841AA0A726009C79B7 /* CustomTableViewCell.swift in Sources */,
+				0A65FC891AA0A726009C79B7 /* TaskTableViewController.swift in Sources */,
+				0A65FC881AA0A726009C79B7 /* CustomTaskViewCell.swift in Sources */,
+				0A65FC8A1AA0A726009C79B7 /* ViewController.swift in Sources */,
+				0A65FC861AA0A726009C79B7 /* SignUpViewController.swift in Sources */,
+				0A65FC921AA0A741009C79B7 /* CustomSegueUnwind.swift in Sources */,
+				0A65FC821AA0A726009C79B7 /* LoginViewController.swift in Sources */,
+				0A65FC801AA0A726009C79B7 /* Project.swift in Sources */,
+				0A65FC911AA0A741009C79B7 /* CustomSegue.swift in Sources */,
+				0A65FC931AA0A741009C79B7 /* CustomTextFieldBlurView.swift in Sources */,
+				0A65FC871AA0A726009C79B7 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,20 +384,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0A6EDE231A9302F800F7562E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A6EDE241A9302F800F7562E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0A6EDE281A9302F800F7562E /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0A6EDE291A9302F800F7562E /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		0A7CE3B61A9DF00B00D4513D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A7CE3B71A9DF00B00D4513D /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDelegate {
 
    let sourceViewController:LoginViewController!
    let destinationViewController:SignUpViewController!
@@ -38,12 +38,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         self.navigationController?.navigationBarHidden = true
 
+        var yAxis:CGFloat = 230
+        for var iBlurVwCount = 0 ;iBlurVwCount < 2 ; iBlurVwCount++ {
+            var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+            var visualEffectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
+            let color: UIColor! = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+            //visualEffectView.backgroundColor = color
+            visualEffectView.userInteractionEnabled = true
+            visualEffectView.frame = CGRect(x: 0, y:yAxis , width: self.view.frame.size.width, height: 44)
+            yAxis = yAxis + 45
+            visualEffectView.userInteractionEnabled = true
+            self.view.addSubview(visualEffectView)
+        }
 
         var frame1:CGRect = CGRect(x: 0, y: 230, width:self.view.frame.size.width , height: 44)
         textFldEmail = CustomTextFieldBlurView(frame:frame1, imgName:"Email")
         textFldEmail.attributedPlaceholder = NSAttributedString(string:"Email",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
         // textFldEmail.returnKeyType = UIReturnType.Done
         textFldEmail.delegate = self;
+        textFldPassword.returnKeyType = UIReturnKeyType.Done
+        textFldEmail.clearButtonMode = UITextFieldViewMode.Always
         textFldEmail.keyboardType = .EmailAddress
         self.view.addSubview(textFldEmail)
 
@@ -51,29 +65,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textFldPassword = CustomTextFieldBlurView(frame:frame2, imgName:"password")
         textFldPassword.delegate = self;
         textFldPassword.attributedPlaceholder = NSAttributedString(string:"Password",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
-
-        //textFldPassword.secureTextEntry = YES
+        textFldPassword.secureTextEntry = true
+        textFldPassword.returnKeyType = UIReturnKeyType.Done
+        textFldPassword.clearButtonMode = UITextFieldViewMode.Always
         self.view.addSubview(textFldPassword)
 
         //frame: CGRect, imageName:String ,tag:Int, title:String
         btnLogin = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 70, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Log Into Monitoring", color:.whiteColor())
         btnLogin.imageVwBackground.alpha = 0.5
-        //btnLogin.addTarget(self, action: "loginButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-
+        btnLogin.delegate = self
         self.view.addSubview(btnLogin)
 
         btnLoginStackOver = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 112, width : self.view.frame.size.width - 50, height:40) ,imageName:"stack" ,tag:2,  title:"StackOverFlow", color:.orangeColor())
         self.view.addSubview(btnLoginStackOver)
 
-
         btnLoginLinkedIn = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 154, width : self.view.frame.size.width - 50, height:40) ,imageName:"linkedIn" ,tag:3,  title:"Linked In", color:UIColor(red: 52.0/255.0, green: 112.0/255.0, blue: 163.0/255.0, alpha: 1.0))
         self.view.addSubview(btnLoginLinkedIn)
 
-          btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        //btnSignUp.frame = CGRect(x: (self.view.frame.size.width-100), y: self.view.frame.size.height - 70, width : 100, height:30)
-        //btnForgotPassword.frame = CGRect(x: (self.view.frame.size.width-200), y:self.view.frame.size.height - 40, width : 200, height:30)
+        
 
-        // lblLine.frame = CGRect(x: (self.view.frame.size.width-200)/2, y: self.view.frame.size.height - 20, width : 200, height:1)
+        btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
     }
 
@@ -84,65 +95,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return navigationController?.navigationBarHidden == false
     }
+  
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return true
+    }
 
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        return true
+    }
+  
 
   //MARK:SignUp Button Pressed
   
-  func signUpButtonPressed(){
-    
-   let src = self.sourceViewController as UIViewController
-    let dst = self.destinationViewController as UIViewController
-    
-    var window:UIWindow = src.view.window!
-    var originalFrame:CGRect = dst.view.frame
-    
-    var animsEnabled:Bool = UIView.areAnimationsEnabled()
-    UIView.setAnimationsEnabled(false)
-  }
-  
-//  @IBAction func loginButtonPressed(sender : AnyObject){
-//    let projectViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
-//  }
-  
-   func loginButtonPressed(){
-    
-//    UIViewController *source = (UIViewController *) self.sourceViewController;
-//    UIViewController *destination = (UIViewController *) self.destinationViewController;
-//    
-//    // Swap the snapshot out for the source view controller
-//    UIWindow *window = source.view.window;
-//    UIImageView *screenShot = screenShotOfView(source.view);
-//    CGRect originalFrame = destination.view.frame;
-//    
-//    BOOL animsEnabled = [UIView areAnimationsEnabled];
-//    [UIView setAnimationsEnabled:NO];
-//    {
-//      window.rootViewController = destination;
-//      [window addSubview:screenShot];
-//      [source.view removeFromSuperview];
-//      CGRect frame = destination.view.frame;
-//      frame.origin.x += source.view.bounds.size.width;
-//      destination.view.frame = frame;
-//    }
-//    [UIView setAnimationsEnabled:animsEnabled];
-//    
-//    [UIView animateWithDuration:kAnimationDuration
-//      animations:^{
-//      destination.view.frame = originalFrame;
-//      CGRect frame = screenShot.frame;
-//      frame.origin.x -= screenShot.bounds.size.width;
-//      screenShot.frame = frame;
-//      
-//      }
-//      completion:^(BOOL finished) {
-//      [screenShot removeFromSuperview];
-//      }];
-    
-    
-    let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
-      self.navigationController?.pushViewController(secondViewController, animated: true)
-    
-  }
+    func signUpButtonPressed(){
+        self.performSegueWithIdentifier("idFirstSegue", sender: self)
+    }
+
+    func loginButtonPressed(){
+        let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+      }
 
   
     //Function to set backgroundColor
@@ -171,5 +143,58 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
        // btnLogin.background (effectView)
 
     }
+  
+  func btnTapped(tag:Int) {
+        
+    if(tag == 1){
+     
+      self.performSegueWithIdentifier("navigationRoot", sender: self)
+     
+    }
+    
+  }
+  
+  
+  override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+    
+    if let id = identifier{
+      if id == "idFirstSegueUnwind" {
+        let unwindSegue = CustomSegueUnwind(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+          
+        })
+        return unwindSegue
+      }
+      else if id == "idSecondSegueUnwind" {
+        let unwindSegue = CustomSegueUnwind(identifier: id,
+          source: fromViewController,
+          destination: toViewController,
+          performHandler: { () -> Void in
+            
+        })
+        
+        return unwindSegue
+      }
+    }
+    
+    return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+  }
+
+  
+  @IBAction func returnFromSegueActions(sender: UIStoryboardSegue){
+    if sender.identifier == "idFirstSegueUnwind" {
+      let originalColor = self.view.backgroundColor
+      self.view.backgroundColor = UIColor.redColor()
+      
+      UIView.animateWithDuration(1.0, animations: { () -> Void in
+        self.view.backgroundColor = originalColor
+      })
+    }
+    else{
+      //self.lblMessage.text = "Welcome back!"
+    }
+  }
+
+
+
 
 }
