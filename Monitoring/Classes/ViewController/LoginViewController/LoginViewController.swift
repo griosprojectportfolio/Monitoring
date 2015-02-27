@@ -82,10 +82,10 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         btnLoginLinkedIn = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 154, width : self.view.frame.size.width - 50, height:40) ,imageName:"linkedIn" ,tag:3,  title:"Linked In", color:UIColor(red: 52.0/255.0, green: 112.0/255.0, blue: 163.0/255.0, alpha: 1.0))
         self.view.addSubview(btnLoginLinkedIn)
 
-        
-
-        btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-
+          btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+      
+        //btnSignUp.frame = CGRect(x: (self.view.frame.size.width-100), y: self.view.frame.size.height - 70, width : 100, height:30)
+        //btnForgotPassword.frame = CGRect(x: (self.view.frame.size.width-200), y:self.view.frame.size.height - 40, width : 200, height:30)
     }
 
    override func viewDidAppear(animated: Bool) {
@@ -103,7 +103,6 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         return true
     }
-  
 
   //MARK:SignUp Button Pressed
   

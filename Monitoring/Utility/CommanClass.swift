@@ -21,8 +21,4 @@ class CommanClass: NSObject {
 //        return
 //    }
 
-    class func isIOS7 () ->Bool {
-
-    }
-
 }
