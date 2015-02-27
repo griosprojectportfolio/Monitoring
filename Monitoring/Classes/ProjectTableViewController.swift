@@ -9,11 +9,92 @@
 import UIKit
 
 class ProjectTableViewController: UITableViewController {
+  var cellobj:CustomTableViewCell!
+
+  @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.backgroundColorOfImageView()
+   // self.backgroundColorOfImageView()
+    
+    self.view.backgroundColor = UIColor.whiteColor()
+    
+    let leftSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
+    leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
+    self.tableView.addGestureRecognizer(leftSwipe)
+    
+    let rightSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipeRight:")
+    rightSwipe.direction=UISwipeGestureRecognizerDirection.Right
+    self.tableView.addGestureRecognizer(rightSwipe)
+   
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    self.tableView.hidden = false
+  }
+  
+  
+  func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer)
+  {
+  var location = gestureRecognizer.locationInView(self.tableView)
+  
+  var indexPath = self.tableView.indexPathForRowAtPoint(location)
+  
+  if((indexPath) != nil)
+  {
+  var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+  //Update the cell or model
+    
+    let row = indexPath?.row
+    let yAxis:CGFloat = CGFloat(row!*85)
+    
+    UIView .animateWithDuration(0.5, animations: { () -> Void in
+     
+      var frame = self.tableView.frame
+      cell?.frame = CGRectMake(-frame.size.width ,yAxis, frame.size.width, 85)
+    }, completion: { (Bool) -> Void in
+      
+      var overView:UIView = UIView(frame: self.tableView.frame)
+      self.tableView.addSubview(overView)
+      self.tableView.bringSubviewToFront(overView)
+      
+      var vc = self.storyboard?.instantiateViewControllerWithIdentifier("taskStorayBoardID") as TaskTableViewController
+      self.navigationController?.pushViewController(vc, animated: true)
+      })
+    }
+  }
+  
+  
+  
+  func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer)
+  {
+    var location = gestureRecognizer.locationInView(self.tableView)
+    
+    var indexPath = self.tableView.indexPathForRowAtPoint(location)
+    
+    if((indexPath) != nil)
+    {
+      var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+      //Update the cell or model
+      
+      let row = indexPath?.row
+      let yAxis:CGFloat = CGFloat(row!*85)
+      
+      UIView .animateWithDuration(0.5, animations: { () -> Void in
+        
+        var frame = self.tableView.frame
+        cell?.frame = CGRectMake((frame.size.width-260),yAxis, frame.size.width, 85)
+    
+        }, completion: { (Bool) -> Void in
+          
+         
+      })
+      
+      
+    }
+  }
+
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -31,12 +112,24 @@ class ProjectTableViewController: UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell", forIndexPath: indexPath) as CustomTableViewCell
     
+    //cell.selectionStyle = .None
+    
     cell.dueDate.text = "10/02/2015"
     cell.projectName.text = "Kindergarten"
     cell.imageView.image = UIImage(named: "projectlogo.png")
           return cell
   }
 
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //var vc = self.storyboard?.instantiateViewControllerWithIdentifier("taskStorayBoardID") as TaskViewController
+    //self.navigationController?.pushViewController(vc, animated: true)
+  }
+  
+  
+  @IBAction func raightNAvigationBarButtonAction(sender:UIBarButtonItem){
+   let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID")as AddProjectViewController
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
   
   //Function to set backgroundColor
   func backgroundColorOfImageView() {
@@ -54,8 +147,5 @@ class ProjectTableViewController: UITableViewController {
     self.tableView.layer.insertSublayer(gl, atIndex: 0)
     gl.frame = self.tableView.frame;
   }
-
-
-
 }
 

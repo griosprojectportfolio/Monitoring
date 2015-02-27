@@ -47,6 +47,7 @@ class CustomTextFieldBlurView: UITextField {
             var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
             var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
             effectView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+            effectView.userInteractionEnabled = true
             self.addSubview(effectView)
          } else {
 

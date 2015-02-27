@@ -7,19 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A357A021A9703B600D23EBB /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A357A011A9703B600D23EBB /* CustomSegue.swift */; };
+		0A357A3A1A97748D00D23EBB /* CustomSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A357A391A97748D00D23EBB /* CustomSegueUnwind.swift */; };
 		0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */; };
 		0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE1E1A9302F800F7562E /* Monitoring.xcdatamodeld */; };
 		0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE211A9302F800F7562E /* ViewController.swift */; };
-		0A6EDE251A9302F800F7562E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE231A9302F800F7562E /* Main.storyboard */; };
 		0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE261A9302F800F7562E /* Images.xcassets */; };
 		0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE281A9302F800F7562E /* LaunchScreen.xib */; };
 		0A6EDE361A9302F900F7562E /* MonitoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE351A9302F900F7562E /* MonitoringTests.swift */; };
 		0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE431A93047100F7562E /* LoginViewController.swift */; };
 		0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */; };
+		0A74B8E51A9F02D2009E2D1E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74B8E41A9F02D2009E2D1E /* Task.swift */; };
+		0A7CE3B51A9DBE3700D4513D /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7CE3B41A9DBE3700D4513D /* AddTaskViewController.swift */; };
+		0A7CE3B81A9DF00B00D4513D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7CE3B61A9DF00B00D4513D /* Main.storyboard */; };
+		0A8187001A9C5E5D008A684B /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8186FF1A9C5E5D008A684B /* TaskTableViewController.swift */; };
+		0A8187041A9C67E4008A684B /* CustomTaskViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8187031A9C67E4008A684B /* CustomTaskViewCell.swift */; };
 		0A84409A1A946669004E8AE6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */; };
 		0A84409F1A947B5F004E8AE6 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */; };
 		0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */; };
 		0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA564B11A949641008A5E23 /* CustomButton.swift */; };
+		0ABAE9A81A9B03C900165E1A /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAE9A71A9B03C900165E1A /* AddProjectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,12 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A357A011A9703B600D23EBB /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		0A357A391A97748D00D23EBB /* CustomSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegueUnwind.swift; sourceTree = "<group>"; };
 		0A6EDE171A9302F800F7562E /* Monitoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6EDE1B1A9302F800F7562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		0A6EDE1F1A9302F800F7562E /* Monitoring.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Monitoring.xcdatamodel; sourceTree = "<group>"; };
 		0A6EDE211A9302F800F7562E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
-		0A6EDE241A9302F800F7562E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A6EDE261A9302F800F7562E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0A6EDE291A9302F800F7562E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0A6EDE2F1A9302F900F7562E /* MonitoringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitoringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,10 +54,16 @@
 		0A6EDE351A9302F900F7562E /* MonitoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringTests.swift; sourceTree = "<group>"; };
 		0A6EDE431A93047100F7562E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldBlurView.swift; path = Monitoring/Classes/CustomTextFieldBlurView.swift; sourceTree = SOURCE_ROOT; };
+		0A74B8E41A9F02D2009E2D1E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		0A7CE3B41A9DBE3700D4513D /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		0A7CE3B71A9DF00B00D4513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Monitoring/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A8186FF1A9C5E5D008A684B /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		0A8187031A9C67E4008A684B /* CustomTaskViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTaskViewCell.swift; sourceTree = "<group>"; };
 		0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0AA564B11A949641008A5E23 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0ABAE9A71A9B03C900165E1A /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +87,7 @@
 		0A6EDE0E1A9302F800F7562E = {
 			isa = PBXGroup;
 			children = (
+				0A7CE3B61A9DF00B00D4513D /* Main.storyboard */,
 				0A6EDE191A9302F800F7562E /* Monitoring */,
 				0A6EDE321A9302F900F7562E /* MonitoringTests */,
 				0A6EDE181A9302F800F7562E /* Products */,
@@ -91,7 +106,6 @@
 		0A6EDE191A9302F800F7562E /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
-				0A6EDE231A9302F800F7562E /* Main.storyboard */,
 				0A6EDE3F1A93041B00F7562E /* Classes */,
 				0A6EDE261A9302F800F7562E /* Images.xcassets */,
 				0A6EDE281A9302F800F7562E /* LaunchScreen.xib */,
@@ -131,6 +145,8 @@
 			children = (
 				0A6EDE1C1A9302F800F7562E /* AppDelegate.swift */,
 				0A6EDE211A9302F800F7562E /* ViewController.swift */,
+				0A74B8E31A9F0222009E2D1E /* Task */,
+				0ABAE9A61A9B037500165E1A /* ViewControllers */,
 				0AA564AE1A947B08008A5E23 /* SignUpViewController */,
 				0A8440961A94656E004E8AE6 /* CustomTableViewCell */,
 				0A84409B1A946A3C004E8AE6 /* TableViewController */,
@@ -145,14 +161,25 @@
 				0A6EDE431A93047100F7562E /* LoginViewController.swift */,
 				0A6EDE7A1A93393200F7562E /* CustomTextFieldBlurView.swift */,
 				0AA564B11A949641008A5E23 /* CustomButton.swift */,
+				0A357A011A9703B600D23EBB /* CustomSegue.swift */,
+				0A357A391A97748D00D23EBB /* CustomSegueUnwind.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		0A74B8E31A9F0222009E2D1E /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				0A74B8E41A9F02D2009E2D1E /* Task.swift */,
+			);
+			name = Task;
 			sourceTree = "<group>";
 		};
 		0A8440961A94656E004E8AE6 /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				0A8440991A946669004E8AE6 /* CustomTableViewCell.swift */,
+				0A8187031A9C67E4008A684B /* CustomTaskViewCell.swift */,
 			);
 			name = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -161,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				0A84409E1A947B5F004E8AE6 /* ProjectTableViewController.swift */,
+				0A8186FF1A9C5E5D008A684B /* TaskTableViewController.swift */,
 			);
 			name = TableViewController;
 			sourceTree = "<group>";
@@ -171,6 +199,15 @@
 				0AA564AF1A947B08008A5E23 /* SignUpViewController.swift */,
 			);
 			path = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		0ABAE9A61A9B037500165E1A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0ABAE9A71A9B03C900165E1A /* AddProjectViewController.swift */,
+				0A7CE3B41A9DBE3700D4513D /* AddTaskViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A6EDE251A9302F800F7562E /* Main.storyboard in Resources */,
+				0A7CE3B81A9DF00B00D4513D /* Main.storyboard in Resources */,
 				0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */,
 				0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */,
 			);
@@ -273,14 +310,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABAE9A81A9B03C900165E1A /* AddProjectViewController.swift in Sources */,
+				0A7CE3B51A9DBE3700D4513D /* AddTaskViewController.swift in Sources */,
 				0A6EDE441A93047100F7562E /* LoginViewController.swift in Sources */,
 				0AA564B01A947B08008A5E23 /* SignUpViewController.swift in Sources */,
 				0A84409F1A947B5F004E8AE6 /* ProjectTableViewController.swift in Sources */,
 				0A6EDE221A9302F800F7562E /* ViewController.swift in Sources */,
+				0A357A3A1A97748D00D23EBB /* CustomSegueUnwind.swift in Sources */,
 				0AA564B21A949641008A5E23 /* CustomButton.swift in Sources */,
+				0A74B8E51A9F02D2009E2D1E /* Task.swift in Sources */,
+				0A8187041A9C67E4008A684B /* CustomTaskViewCell.swift in Sources */,
 				0A84409A1A946669004E8AE6 /* CustomTableViewCell.swift in Sources */,
 				0A6EDE1D1A9302F800F7562E /* AppDelegate.swift in Sources */,
 				0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */,
+				0A357A021A9703B600D23EBB /* CustomSegue.swift in Sources */,
+				0A8187001A9C5E5D008A684B /* TaskTableViewController.swift in Sources */,
 				0A6EDE7B1A93393200F7562E /* CustomTextFieldBlurView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,20 +348,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0A6EDE231A9302F800F7562E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A6EDE241A9302F800F7562E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0A6EDE281A9302F800F7562E /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0A6EDE291A9302F800F7562E /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		0A7CE3B61A9DF00B00D4513D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A7CE3B71A9DF00B00D4513D /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

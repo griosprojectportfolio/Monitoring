@@ -9,11 +9,12 @@
 import UIKit
 
 @objc protocol CustomButtonDelegate {
-    // optional func btnTapped(tag)
-  //optional func btnTapped(str:String)
+    optional func btnTapped(tag:Int)
 }
 
 class CustomButton: UIView {
+
+  var delegate:CustomButtonDelegate?
 
      var imageVwBackground:UIImageView!
 
@@ -51,6 +52,7 @@ class CustomButton: UIView {
             btnLogo.tag = tag
             btnLogo.titleLabel?.font =  UIFont(name: "Palatino", size: 17.0)
             btnLogo.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            btnLogo .addTarget(self, action: "customBtnTapped:", forControlEvents:.TouchUpInside)
 
             self.addSubview(btnLogo)
 
@@ -67,9 +69,16 @@ class CustomButton: UIView {
           btnLogo.tag = tag
           btnLogo.titleLabel?.font =  UIFont(name: "Palatino", size: 17.0)
           btnLogo.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+          btnLogo .addTarget(self, action: "customBtnTapped:", forControlEvents:.TouchUpInside)
           self.addSubview(btnLogo)
 
       }
-    }
+  }
+  
+
+  func customBtnTapped(sender:UIButton!) {
+    var btn:UIButton = sender
+    delegate?.btnTapped!(btn.tag)
+}
 }
 
