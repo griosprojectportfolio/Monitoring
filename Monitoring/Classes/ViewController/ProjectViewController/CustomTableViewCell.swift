@@ -41,8 +41,6 @@ class CustomTableViewCell: UITableViewCell {
         imgVwArrow.backgroundColor = UIColor.greenColor()
         self.vwBackgroundVw.addSubview(imgVwArrow)
 
-
-
         btnDelete = UIButton(frame: CGRect(x:-60, y:0 ,width:60 , height:heightOfVw))
         btnDelete.backgroundColor = UIColor.redColor()
         btnDelete .setTitle("Delete", forState:UIControlState.Normal)
