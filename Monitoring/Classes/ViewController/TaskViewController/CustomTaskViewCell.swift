@@ -40,11 +40,11 @@ class CustomTaskViewCell: UITableViewCell {
   
   func contentsDefaultSettings(){
     
-//    vwDescription.layer.cornerRadius = 1
-//    vwDescription.layer.borderWidth = 0.5
-//    vwDescription.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
-//    vwDescription.layer.masksToBounds = true
-//    
+    vwDescription.layer.cornerRadius = 1
+    vwDescription.layer.borderWidth = 0.5
+    vwDescription.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
+    vwDescription.layer.masksToBounds = true
+//
 //    
 //    imgVwToDoRemaining.layer.cornerRadius = 2
 //    imgVwToDoRemaining.layer.borderWidth = 0.5
