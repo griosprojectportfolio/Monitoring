@@ -90,11 +90,11 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="y6F-l1-7l8">
-                                            <rect key="frame" x="-2" y="-1" width="2008" height="835"/>
+                                            <rect key="frame" x="-4" y="-2" width="2296" height="956"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8vh-y4-gBR">
-                                                    <rect key="frame" x="-60" y="0.0" width="60" height="46"/>
+                                                    <rect key="frame" x="-60" y="0.0" width="60" height="52"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,7 +111,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" id="5Dl-OU-Dg5">
-                                                    <rect key="frame" x="1804" y="0.0" width="183" height="115"/>
+                                                    <rect key="frame" x="2088" y="0.0" width="183" height="115"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DMg-ft-DeU">
@@ -301,6 +301,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNP-ui-Ao2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="338" y="784"/>
+        </scene>
+        <!--Side Panel View Controller-->
+        <scene sceneID="2T5-FI-ZJf">
+            <objects>
+                <viewController id="QUO-vX-Wcv" customClass="SidePanelViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="90v-Ir-Q2v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWx-d1-3Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="840" y="795"/>
         </scene>
     </scenes>
     <resources>

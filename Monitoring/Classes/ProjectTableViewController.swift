@@ -12,12 +12,16 @@ class ProjectTableViewController: UITableViewController {
   var cellobj:CustomTableViewCell!
 
   @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
+  var btnLeftNaviSetting:UIBarButtonItem!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-   // self.backgroundColorOfImageView()
+    self.backgroundColorOfImageView()
     
-    self.view.backgroundColor = UIColor.whiteColor()
+    btnLeftNaviSetting = UIBarButtonItem(title: "Setting", style: UIBarButtonItemStyle.Plain, target: self, action:"")
+    self.navigationItem.setLeftBarButtonItem(btnLeftNaviSetting, animated: true)
+    
+    //self.view.backgroundColor = UIColor.whiteColor()
     
     let leftSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
     leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
