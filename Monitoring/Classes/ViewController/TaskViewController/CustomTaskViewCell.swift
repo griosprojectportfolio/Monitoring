@@ -10,16 +10,25 @@ import UIKit
 
 class CustomTaskViewCell: UITableViewCell {
   
- @IBOutlet weak var mainview :UIView!
-  //@IBOutlet weak var subViewOnMainView:UIView!
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
+    @IBOutlet weak var vwBackgound:UIView!
+    @IBOutlet weak var vwDescription :UIView!
+
+    @IBOutlet weak var imgVwToDoRemaining :UIImageView!
+    @IBOutlet weak var imgVwToDoDone :UIImageView!
+    @IBOutlet weak var imgVwToDoCurrent :UIImageView!
+
+    @IBOutlet weak var lblToDoRemaining :UILabel!
+    @IBOutlet weak var lblToDoDone :UILabel!
+    @IBOutlet weak var lblToDoCurrent :UILabel!
+
+    @IBOutlet weak var lblProgressBarTaskComplete :UIProgressView!
+    @IBOutlet weak var lblTaskComplete :UILabel!
+    @IBOutlet weak var lblAssignTo :UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
     
-    //mainview.backgroundColor = UIColor.lightGrayColor()
-   
-    
-  }
+    }
   
   func getFeeds(feeds:NSArray){
   
@@ -33,9 +42,9 @@ class CustomTaskViewCell: UITableViewCell {
     var description:UILabel = UILabel ()
     
     
-    var textframe1:CGRect = descip.boundingRectWithSize(textsize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:  [NSFontAttributeName:description.font], context: nil)
+    //var textframe1:CGRect = descip.boundingRectWithSize(textsize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:  [NSFontAttributeName:description.font], context: nil)
     
-   subViewOnMainView.frame = CGRectMake(mainview.frame.origin.x+10, mainview.frame.origin.x+10, mainview.frame.size.width-20,(mainview.frame.size.height-20)+textframe1.height-200)
+  /* subViewOnMainView.frame = CGRectMake(mainview.frame.origin.x+10, mainview.frame.origin.x+10, mainview.frame.size.width-20,(mainview.frame.size.height-20)+textframe1.height-200)
     
     subViewOnMainView.layer.cornerRadius = 1;
     subViewOnMainView.layer.borderWidth = 0.5;
@@ -103,7 +112,7 @@ class CustomTaskViewCell: UITableViewCell {
     taskassignName.text = "Jason"
     taskassignName.font = UIFont(name: "Helvetica-Light", size:13)
     taskassignName.textAlignment = NSTextAlignment.Left;
-    subViewOnMainView.addSubview(taskassignName)
+    subViewOnMainView.addSubview(taskassignName) */
     
   
   }
