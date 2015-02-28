@@ -45,10 +45,7 @@ class TaskTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("taskCell")as CustomTaskViewCell
-    if(i == 1){
-      i++
-        cell.getFeeds(projectFeeds)
-    }
+    
     return cell
   }
 
