@@ -40,12 +40,12 @@ class TaskTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return 6
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("taskCell")as CustomTaskViewCell
-    
+    cell.contentsDefaultSettings()
     return cell
   }
 
@@ -55,7 +55,7 @@ class TaskTableViewController: UITableViewController {
 //    
 ////    CGRect frame = textsize.boundingRectWithSize(<#size: CGSize#>, options: <#NSStringDrawingOptions#>, attributes: <#[NSObject : AnyObject]!#>, context: <#NSStringDrawingContext!#>)
 //    
-//    return UITableViewAutomaticDimension
+//    return 30
 //  }
   
   
