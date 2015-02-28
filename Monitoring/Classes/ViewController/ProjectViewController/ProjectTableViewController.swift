@@ -14,6 +14,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var vwOverTable:UIView!
     @IBOutlet var tableView:UITableView!
     var isRightSwipe : Bool = false
+    var arryOfDeleteSelectedCell:NSMutableArray = []
     var arryProject:[Project]!
 
   @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
@@ -24,7 +25,8 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     
     self.view.backgroundColor = UIColor.whiteColor()
     self.title = "Project List"
-    
+    self.tableView.separatorColor = UIColor.clearColor()
+
     let leftSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
     leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
     self.tableView.addGestureRecognizer(leftSwipe)
@@ -48,43 +50,46 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
   }
 
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) { //animation to go to next view
-  var location = gestureRecognizer.locationInView(self.tableView)
-  var indexPath = self.tableView.indexPathForRowAtPoint(location)
+        var location = gestureRecognizer.locationInView(self.tableView)
+        var indexPath = self.tableView.indexPathForRowAtPoint(location)
 
-  if((indexPath) != nil) {
-  var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
-  //Update the cell or model
+        if((indexPath) != nil) {
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+            //Update the cell or model
     
-    let row = indexPath?.row
-    let yAxis:CGFloat = CGFloat(row!*85)
+            let row = indexPath?.row
+            let yAxis:CGFloat = CGFloat(row!*90)
     
-    UIView .animateWithDuration(0.5, animations: { () -> Void in
-     
-      var frame = self.tableView.frame
+            UIView .animateWithDuration(0.5, animations: { () -> Void in
+                var frame = self.tableView.frame
 
-        if (self.isRightSwipe == true) {
-            cell?.frame = CGRectMake(0 ,yAxis, frame.size.width, 85)
-        } else {
-            cell?.frame = CGRectMake(-frame.size.width ,yAxis, frame.size.width, 85)
+                for var iLoop:Int = 0 ; iLoop<self.arryOfDeleteSelectedCell.count; iLoop++ {
+                if (self.arryOfDeleteSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
+                    cell?.frame = CGRectMake(0 ,yAxis, frame.size.width, 90)
+                    self.arryOfDeleteSelectedCell.removeObjectAtIndex(iLoop)
+                    self.isRightSwipe = true
+                    return
+                    }
+                }
+                cell?.frame = CGRectMake(-frame.size.width ,yAxis, frame.size.width, 90)
+
+        }, completion: { (Bool) -> Void in
+
+           if(self.isRightSwipe == true) {
+                self.isRightSwipe = false
+                return
+            }
+            self.vwOverTable.hidden = false
+            self.view.bringSubviewToFront(self.vwOverTable)
+
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("taskStorayBoardID") as TaskTableViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+          })
         }
-    }, completion: { (Bool) -> Void in
-
-       if(self.isRightSwipe == true) {
-            self.isRightSwipe = false
-            return
-        }
-        self.vwOverTable.hidden = false
-        self.view.bringSubviewToFront(self.vwOverTable)
-
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("taskStorayBoardID") as TaskTableViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-      })
-    }
   }
   
   func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer) {
 
-    self.isRightSwipe = true
     var location = gestureRecognizer.locationInView(self.tableView)
     var indexPath = self.tableView.indexPathForRowAtPoint(location)
     
@@ -93,16 +98,17 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
       //Update the cell or model
       
       let row = indexPath?.row
-      let yAxis:CGFloat = CGFloat(row!*85)
+      let yAxis:CGFloat = CGFloat(row!*90)
       
       UIView .animateWithDuration(0.5, animations: { () -> Void in
         
         var frame = self.tableView.frame
-        cell?.frame = CGRectMake((frame.size.width-260),yAxis, frame.size.width, 80)
+        cell?.frame = CGRectMake((frame.size.width-260),yAxis, frame.size.width, 90)
     
         }, completion: { (Bool) -> Void in
 
 
+            self.arryOfDeleteSelectedCell.addObject(row!)
             // cell.deleteButoon.transform = CGAffineTransformMakeRotation(M_PI/2);
 //            [myView animateWithDuration: 0.25
 //                animations:
@@ -143,7 +149,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     }
 
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 84
+    return 90
   }
   
   @IBAction func raightNAvigationBarButtonAction(sender:UIBarButtonItem){

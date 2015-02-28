@@ -245,15 +245,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0ABAE9A61A9B037500165E1A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				0ABAE9A71A9B03C900165E1A /* AddProjectViewController.swift */,
-				0A7CE3B41A9DBE3700D4513D /* AddTaskViewController.swift */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
