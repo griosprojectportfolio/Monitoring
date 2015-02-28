@@ -56,7 +56,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         textFldEmail.attributedPlaceholder = NSAttributedString(string:"Email",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
         // textFldEmail.returnKeyType = UIReturnType.Done
         textFldEmail.delegate = self;
-        textFldPassword.returnKeyType = UIReturnKeyType.Done
+        textFldEmail.returnKeyType = UIReturnKeyType.Done
         textFldEmail.clearButtonMode = UITextFieldViewMode.Always
         textFldEmail.keyboardType = .EmailAddress
         self.view.addSubview(textFldEmail)
