@@ -49,14 +49,7 @@ class TaskTableViewController: UITableViewController {
     return cell
   }
 
-//  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//    
-//    var textsize:NSString = projectFeeds.objectAtIndex(1) as NSString
-//    
-////    CGRect frame = textsize.boundingRectWithSize(<#size: CGSize#>, options: <#NSStringDrawingOptions#>, attributes: <#[NSObject : AnyObject]!#>, context: <#NSStringDrawingContext!#>)
-//    
-//    return 30
-//  }
-  
-  
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 110
+    }
 }
