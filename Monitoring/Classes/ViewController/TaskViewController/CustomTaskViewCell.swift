@@ -63,14 +63,22 @@ class CustomTaskViewCell: UITableViewCell {
     imgVwToDoCurrent.layer.borderWidth = 0.5
     imgVwToDoCurrent.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
     imgVwToDoCurrent.layer.masksToBounds = true
+    
+    lblTaskName.font = UIFont(name: "HelveticaNeue", size: 18)
+    lblTaskName.textColor = UIColor.darkGrayColor()
+    
+    lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
+    lblAssignTo.textColor = UIColor.darkGrayColor()
+    lblAssignTo.textAlignment = NSTextAlignment.Left
+    
+    
+    
+    lblAssignToHeading.font = UIFont(name: "HelveticaNeue", size: 13)
+    lblAssignToHeading.textColor = UIColor.lightGrayColor()
+    
+    lblTaskComplete.font = UIFont(name: "HelveticaNeue", size: 13)
+    lblTaskComplete.textColor = UIColor.lightGrayColor()
 //
-//    lblTaskName.font = UIFont(name: "HelveticaNeue", size: 15)
-//    lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
-//    
-//    lblToDoHeading.font = UIFont(name: "HelveticaNeue-Light", size: 13)
-//    lblAssignToHeading.font = UIFont(name: "HelveticaNeue-Light", size: 13)
-//    lblTaskComplete.font = UIFont(name: "HelveticaNeue-Light", size: 13)
-//    
 //    lblToDoRemaining.font = UIFont(name: "HelveticaNeue", size: 13)
 //    lblToDoDone.font = UIFont(name: "HelveticaNeue", size: 13)
 //    lblToDoCurrent.font = UIFont(name: "HelveticaNeue", size: 13)
