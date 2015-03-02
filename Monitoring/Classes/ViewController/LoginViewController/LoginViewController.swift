@@ -16,6 +16,9 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var lblLine: UILabel!
 
+    var visualEffectVwEmail:UIVisualEffectView!
+    var visualEffectVwPasswrd:UIVisualEffectView!
+
     var btnLogin : CustomButton!
     var btnLoginStackOver : CustomButton!
     var btnLoginLinkedIn : CustomButton!
@@ -38,21 +41,17 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
 
         self.navigationController?.navigationBarHidden = true
 
-        var yAxis:CGFloat = 230
-        for var iBlurVwCount = 0 ;iBlurVwCount < 2 ; iBlurVwCount++ {
-            var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
-            var visualEffectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
-            let color: UIColor! = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
-            //visualEffectView.backgroundColor = color
-            visualEffectView.userInteractionEnabled = true
-            visualEffectView.frame = CGRect(x: 0, y:yAxis , width: self.view.frame.size.width, height: 44)
-            yAxis = yAxis + 45
-            visualEffectView.userInteractionEnabled = true
-            self.view.addSubview(visualEffectView)
-        }
+        var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+        visualEffectVwEmail =  UIVisualEffectView (effect: blur)
+        let color: UIColor! = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+        //visualEffectView.backgroundColor = color
+        visualEffectVwEmail.userInteractionEnabled = true
+        visualEffectVwEmail.frame = CGRect(x: self.view.frame.size.width, y:230 , width: self.view.frame.size.width, height: 44)
+        visualEffectVwEmail.userInteractionEnabled = true
+        self.view.addSubview(visualEffectVwEmail)
 
-        var frame1:CGRect = CGRect(x: 0, y: 230, width:self.view.frame.size.width , height: 44)
-        textFldEmail = CustomTextFieldBlurView(frame:frame1, imgName:"Email")
+        var frameEmail:CGRect = CGRect(x: self.view.frame.size.width, y: self.visualEffectVwEmail.frame.origin.y, width:self.view.frame.size.width , height: 44)
+        textFldEmail = CustomTextFieldBlurView(frame:frameEmail, imgName:"Email")
         textFldEmail.attributedPlaceholder = NSAttributedString(string:"Email",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
         // textFldEmail.returnKeyType = UIReturnType.Done
         textFldEmail.delegate = self;
@@ -61,7 +60,14 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         textFldEmail.keyboardType = .EmailAddress
         self.view.addSubview(textFldEmail)
 
-        var frame2:CGRect = CGRect(x: 0, y: frame1.origin.y + 45, width:self.view.frame.size.width , height: 44)
+        var blur1:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+        visualEffectVwPasswrd = UIVisualEffectView (effect: blur1)
+        visualEffectVwPasswrd.userInteractionEnabled = true
+        visualEffectVwPasswrd.frame = CGRect(x: self.view.frame.size.width, y:frameEmail.origin.y + 45 ,width: self.view.frame.size.width, height: 44)
+        visualEffectVwPasswrd.userInteractionEnabled = true
+        self.view.addSubview(visualEffectVwPasswrd)
+
+        var frame2:CGRect = CGRect(x: self.view.frame.size.width, y:visualEffectVwPasswrd.frame.origin.y , width:self.view.frame.size.width , height: 44)
         textFldPassword = CustomTextFieldBlurView(frame:frame2, imgName:"password")
         textFldPassword.delegate = self;
         textFldPassword.attributedPlaceholder = NSAttributedString(string:"Password",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
@@ -71,15 +77,15 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         self.view.addSubview(textFldPassword)
 
         //frame: CGRect, imageName:String ,tag:Int, title:String
-        btnLogin = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 70, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Log Into Monitoring", color:.whiteColor())
+        btnLogin = CustomButton(frame:CGRect(x: -self.view.frame.size.width, y: frame2.origin.y + 70, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Log Into Monitoring", color:.whiteColor())
         btnLogin.imageVwBackground.alpha = 0.5
         btnLogin.delegate = self
         self.view.addSubview(btnLogin)
 
-        btnLoginStackOver = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 112, width : self.view.frame.size.width - 50, height:40) ,imageName:"stack" ,tag:2,  title:"StackOverFlow", color:.orangeColor())
+        btnLoginStackOver = CustomButton(frame:CGRect(x: -self.view.frame.size.width, y: frame2.origin.y + 112, width : self.view.frame.size.width - 50, height:40) ,imageName:"stack" ,tag:2,  title:"StackOverFlow", color:.orangeColor())
         self.view.addSubview(btnLoginStackOver)
 
-        btnLoginLinkedIn = CustomButton(frame:CGRect(x: -1, y: frame2.origin.y + 154, width : self.view.frame.size.width - 50, height:40) ,imageName:"linkedIn" ,tag:3,  title:"Linked In", color:UIColor(red: 52.0/255.0, green: 112.0/255.0, blue: 163.0/255.0, alpha: 1.0))
+        btnLoginLinkedIn = CustomButton(frame:CGRect(x: -self.view.frame.size.width, y: frame2.origin.y + 154, width : self.view.frame.size.width - 50, height:40) ,imageName:"linkedIn" ,tag:3,  title:"Linked In", color:UIColor(red: 52.0/255.0, green: 112.0/255.0, blue: 163.0/255.0, alpha: 1.0))
         self.view.addSubview(btnLoginLinkedIn)
 
           btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
@@ -90,6 +96,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
 
    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.animationOfTextField()
     }
 
     override func prefersStatusBarHidden() -> Bool {
@@ -180,20 +187,46 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
 
   
   @IBAction func returnFromSegueActions(sender: UIStoryboardSegue){
+
     if sender.identifier == "idFirstSegueUnwind" {
       let originalColor = self.view.backgroundColor
       self.view.backgroundColor = UIColor.redColor()
       
       UIView.animateWithDuration(1.0, animations: { () -> Void in
         self.view.backgroundColor = originalColor
-      })
-    }
-    else{
-      //self.lblMessage.text = "Welcome back!"
+          })
+    } else {
+          //self.lblMessage.text = "Welcome back!"
     }
   }
 
+    func animationOfTextField () {
 
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.textFldEmail.frame = CGRect(x: 0, y: self.textFldEmail.frame.origin.y, width:self.view.frame.size.width , height: 44)
+            self.visualEffectVwEmail.frame = CGRect(x: 0, y: self.visualEffectVwEmail.frame.origin.y, width:self.view.frame.size.width , height: 44)
+        }) { (Bool) -> Void in
 
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.textFldPassword.frame = CGRect(x: 0, y: self.textFldPassword.frame.origin.y, width:self.view.frame.size.width , height: 44)
+            self.visualEffectVwPasswrd.frame = CGRect(x: 0, y: self.visualEffectVwPasswrd.frame.origin.y, width:self.view.frame.size.width , height: 44)
+            }) { (Bool) -> Void in
 
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.btnLogin.frame = CGRect(x: -2, y: self.btnLogin.frame.origin.y, width:self.btnLogin.frame.size.width , height: self.btnLogin.frame.size.height)
+                    }){ (Bool) -> Void in
+
+                        UIView.animateWithDuration(0.2, animations: { () -> Void in
+                            self.btnLoginStackOver.frame = CGRect(x: -2, y: self.btnLoginStackOver.frame.origin.y, width:self.btnLoginStackOver.frame.size.width , height: self.btnLoginStackOver.frame.size.height)
+                            }) { (Bool) -> Void in
+
+                                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                                    self.btnLoginLinkedIn.frame = CGRect(x: -2, y: self.btnLoginLinkedIn.frame.origin.y, width:self.btnLoginLinkedIn.frame.size.width , height: self.btnLoginLinkedIn.frame.size.height)
+                                })
+                        }
+                    }
+                }
+            }
+
+        }
 }
