@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TaskTableViewController: UITableViewController {
+class TaskTableViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
   
-  @IBOutlet weak var addTaskButton:UIBarButtonItem!
-  var i:Int = 1
+    @IBOutlet weak var addTaskButton:UIBarButtonItem!
+    @IBOutlet weak var tbleVwTask:UITableView!
+
   var projectFeeds:NSArray = ["Socialintegration","gjhgjhgjhgjhgjhgjhgjhgjhgjhgjhghjghjghjghjgjhghjgjhgjhgjhgjhgjhgjhgjhgjhgjhgjhgjhgjhghjgjhgjhghjghgjhgjhfkldjshglsdkjghfldkjghlkfjdhglskhflkjhlskjhflkgjhslgkdjhslkfjhgklsjfhksjdhgldkfjghlskjhfgldksjhdlkfgjhlsdkjhgklsjghdfkljgh","XYz"]
   
   override func viewDidLoad() {
@@ -39,17 +40,17 @@ class TaskTableViewController: UITableViewController {
     super.didReceiveMemoryWarning()
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 6
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("taskCell")as CustomTaskViewCell
-    cell.contentsDefaultSettings(self.tableView.frame)
+    cell.contentsDefaultSettings(self.tbleVwTask.frame)
     return cell
   }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 110
     }
 }

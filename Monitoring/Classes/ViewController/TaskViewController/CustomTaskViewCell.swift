@@ -17,6 +17,7 @@ class CustomTaskViewCell: UITableViewCell {
     @IBOutlet weak var imgVwToDoDone :UIImageView!
     @IBOutlet weak var imgVwToDoCurrent :UIImageView!
 
+    @IBOutlet weak var vwToDo:UIView!
     @IBOutlet weak var lblToDoRemaining :UILabel!
     @IBOutlet weak var lblToDoDone :UILabel!
     @IBOutlet weak var lblToDoCurrent :UILabel!
@@ -33,6 +34,7 @@ class CustomTaskViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColorOfImageView()
+        self.contentsDefaultSettings(self.contentView.frame)
       
   }
   func getFeeds(feeds:NSArray){
@@ -42,6 +44,9 @@ class CustomTaskViewCell: UITableViewCell {
     func contentsDefaultSettings(frame:CGRect){
 
     println("***\(frame)")
+
+    vwBackgound.frame = CGRectMake(0, 0,frame.size.width ,100)
+
 
     vwDescription.layer.cornerRadius = 1
     vwDescription.layer.borderWidth = 0.5
@@ -66,51 +71,49 @@ class CustomTaskViewCell: UITableViewCell {
     imgVwToDoCurrent.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
     imgVwToDoCurrent.layer.masksToBounds = true
 
-    self.vwBackgound.frame = frame
-    imgVwBackground.frame = CGRectMake(frame.size.width - 80, 2, 75, 96)
-
-    //make mutable string
-    var strName:NSString =  "Jason Var"
-    var mutableStrAssignName = NSMutableAttributedString()
-    mutableStrAssignName = NSMutableAttributedString(string: strName)
-
-    mutableStrAssignName.addAttribute(NSFontAttributeName, value: UIFont(name: "Helvetica-Bold", size: 15.0)!, range: NSRange(location:0,length:1))
-    mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
-
-    var rangeLastName:NSRange = strName.rangeOfString(" ")
-
-    mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
-    mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor(), range: NSRange(location:rangeLastName.location,length:1))
-
-    self.lblAssignTo.attributedText = mutableStrAssignName
-
-//    lblTaskName.font = UIFont(name: "HelveticaNeue", size: 15)
-//    lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
-//    
-//    lblToDoHeading.font = UIFont(name: "HelveticaNeue-Light", size: 13)
-//    lblAssignToHeading.font = UIFont(name: "HelveticaNeue-Light", size: 13)
-//    lblTaskComplete.font = UIFont(name: "HelveticaNeue-Light", size: 13)
-//    
+    self.vwBackgound.frame = CGRectMake(0, 0, frame.size.width,self.contentView.frame.size.height)
+   // imgVwBackground.frame = CGRectMake(frame.size.width - 120, 2, 75, 96)
 
     lblTaskName.font = UIFont(name: "HelveticaNeue", size: 18)
     lblTaskName.textColor = UIColor.darkGrayColor()
-    
-    lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
-    lblAssignTo.textColor = UIColor.darkGrayColor()
-    lblAssignTo.textAlignment = NSTextAlignment.Left
-    
-    
-    
+
     lblAssignToHeading.font = UIFont(name: "HelveticaNeue", size: 13)
+    lblAssignToHeading.frame = CGRectMake (lblAssignToHeading.frame.origin.x, lblAssignToHeading.frame.origin.y, 65, lblAssignToHeading.frame.size.height)
     lblAssignToHeading.textColor = UIColor.lightGrayColor()
-    
-    lblTaskComplete.font = UIFont(name: "HelveticaNeue", size: 13)
-    lblTaskComplete.textColor = UIColor.lightGrayColor()
-//
-//    lblToDoRemaining.font = UIFont(name: "HelveticaNeue", size: 13)
-//    lblToDoDone.font = UIFont(name: "HelveticaNeue", size: 13)
-//    lblToDoCurrent.font = UIFont(name: "HelveticaNeue", size: 13)
-    
+
+        lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
+        lblAssignTo.textColor = UIColor.darkGrayColor()
+        lblAssignTo.frame = CGRectMake (lblAssignToHeading.frame.origin.x + lblAssignToHeading.frame.size.width , lblAssignToHeading.frame.origin.y, lblAssignTo.frame.size.width, lblAssignToHeading.frame.size.height)
+
+        //make mutable string
+        var strName:NSString =  "Jasin Var"
+        var mutableStrAssignName = NSMutableAttributedString()
+        mutableStrAssignName = NSMutableAttributedString(string: strName)
+
+        mutableStrAssignName.addAttribute(NSFontAttributeName, value: UIFont(name: "Helvetica-Bold", size: 15.0)!, range: NSRange(location:0,length:1))
+        mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
+
+        var rangeLastName:NSRange = strName.rangeOfString(" ")
+
+        mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
+        mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.purpleColor(), range: NSRange(location:rangeLastName.location,length:2))
+        
+        self.lblAssignTo.attributedText = mutableStrAssignName
+
+        lblTaskComplete.font = UIFont(name: "HelveticaNeue", size: 13)
+        lblTaskComplete.textColor = UIColor.lightGrayColor()
+
+        lblToDoRemaining.font = UIFont(name: "HelveticaNeue", size: 13)
+
+
+        vwToDo.frame = CGRectMake((self.vwBackgound.frame.size.width - 90), vwToDo.frame.origin.y,vwToDo.frame.size.width,self.vwToDo.frame.size.height)
+
+        progressBarTaskComplete.frame = CGRectMake(progressBarTaskComplete.frame.origin.x, progressBarTaskComplete.frame.origin.y,(self.vwBackgound.frame.size.width - 150),self.progressBarTaskComplete.frame.size.height)
+
+        lblTaskComplete.frame = CGRectMake(self.vwBackgound.frame.size.width - 130, lblTaskComplete.frame.origin.y, self.lblTaskComplete.frame.size.width, self.lblTaskComplete.frame.size.height)
+
+
+
   }
 
     func backgroundColorOfImageView() {
