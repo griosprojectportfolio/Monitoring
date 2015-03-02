@@ -91,6 +91,22 @@ class CustomTaskViewCell: UITableViewCell {
 //    lblAssignToHeading.font = UIFont(name: "HelveticaNeue-Light", size: 13)
 //    lblTaskComplete.font = UIFont(name: "HelveticaNeue-Light", size: 13)
 //    
+
+    lblTaskName.font = UIFont(name: "HelveticaNeue", size: 18)
+    lblTaskName.textColor = UIColor.darkGrayColor()
+    
+    lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
+    lblAssignTo.textColor = UIColor.darkGrayColor()
+    lblAssignTo.textAlignment = NSTextAlignment.Left
+    
+    
+    
+    lblAssignToHeading.font = UIFont(name: "HelveticaNeue", size: 13)
+    lblAssignToHeading.textColor = UIColor.lightGrayColor()
+    
+    lblTaskComplete.font = UIFont(name: "HelveticaNeue", size: 13)
+    lblTaskComplete.textColor = UIColor.lightGrayColor()
+//
 //    lblToDoRemaining.font = UIFont(name: "HelveticaNeue", size: 13)
 //    lblToDoDone.font = UIFont(name: "HelveticaNeue", size: 13)
 //    lblToDoCurrent.font = UIFont(name: "HelveticaNeue", size: 13)
