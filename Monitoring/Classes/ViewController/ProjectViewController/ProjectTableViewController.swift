@@ -41,6 +41,8 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
     arryProject = project
     println(arryProject)
+    
+    self.addNavigationBarButtons()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -49,6 +51,22 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     self.tableView.hidden = false
   }
 
+  
+// Mark:Adding The NAvigation Bar Button
+  
+  func addNavigationBarButtons(){
+    var btnSetting:UIButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
+    btnSetting.setImage(UIImage(named: "sideBar.png"), forState:UIControlState.Normal)
+    
+    var btnNaviLeftBarButton:UIBarButtonItem = UIBarButtonItem(customView: btnSetting)
+    self.navigationItem.setLeftBarButtonItem(btnNaviLeftBarButton, animated: true)
+    
+    var btnNaviRightBarButton:UIBarButtonItem = UIBarButtonItem()
+    
+  }
+  
+  
+  
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) { //animation to go to next view
         var location = gestureRecognizer.locationInView(self.tableView)
         var indexPath = self.tableView.indexPathForRowAtPoint(location)
