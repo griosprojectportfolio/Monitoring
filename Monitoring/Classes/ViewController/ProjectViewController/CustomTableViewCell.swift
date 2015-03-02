@@ -20,9 +20,10 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func setValueOfProjectList (project:Project,row:Int) {
+    func setValueOfProjectList (project:Project,row:Int, frame:CGRect) {
 
-        vwBackgroundVw = UIView(frame:CGRect(x:5 ,y:1 ,width:self.contentView.frame.size.width - 10 , height:84))
+        println(frame)
+        vwBackgroundVw = UIView(frame:CGRect(x:5 ,y:1 ,width:frame.size.width - 10 , height:84))
         self.contentView.addSubview(vwBackgroundVw)
         //vwBackgroundVw.backgroundColor = UIColor.redColor()
         vwBackgroundVw.layer.cornerRadius = 1;
@@ -36,7 +37,7 @@ class CustomTableViewCell: UITableViewCell {
         imgVwLogo.backgroundColor = UIColor.greenColor()
         self.vwBackgroundVw.addSubview(imgVwLogo)
 
-        var imgVwArrow: UIImageView = UIImageView(frame: CGRect(x:self.contentView.frame.size.width - 32, y:30 ,width:20 , height:25))
+        var imgVwArrow: UIImageView = UIImageView(frame: CGRect(x:self.vwBackgroundVw.frame.size.width - 25, y:30 ,width:20 , height:25))
         imgVwArrow.image = UIImage(named: "discloserarrow")
         self.vwBackgroundVw.addSubview(imgVwArrow)
 

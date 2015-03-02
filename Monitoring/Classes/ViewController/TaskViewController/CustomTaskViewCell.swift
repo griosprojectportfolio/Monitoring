@@ -82,11 +82,11 @@ class CustomTaskViewCell: UITableViewCell {
     lblAssignToHeading.textColor = UIColor.lightGrayColor()
 
         lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
-        lblAssignTo.textColor = UIColor.darkGrayColor()
+        lblAssignTo.textColor = UIColor.greenColor()
         lblAssignTo.frame = CGRectMake (lblAssignToHeading.frame.origin.x + lblAssignToHeading.frame.size.width , lblAssignToHeading.frame.origin.y, lblAssignTo.frame.size.width, lblAssignToHeading.frame.size.height)
 
         //make mutable string
-        var strName:NSString =  "Jasin Var"
+        var strName:NSString =  "Jasin Vardroba"
         var mutableStrAssignName = NSMutableAttributedString()
         mutableStrAssignName = NSMutableAttributedString(string: strName)
 
