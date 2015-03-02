@@ -158,7 +158,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
-    cell.setValueOfProjectList(project,row: indexPath.row)
+    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame)
     cell.imageView.image = UIImage(named: "projectlogo.png")
     return cell
   }
