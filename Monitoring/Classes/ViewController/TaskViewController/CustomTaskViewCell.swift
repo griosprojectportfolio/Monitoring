@@ -39,8 +39,10 @@ class CustomTaskViewCell: UITableViewCell {
   
   }
   
-  func contentsDefaultSettings(){
-    
+    func contentsDefaultSettings(frame:CGRect){
+
+    println("***\(frame)")
+
     vwDescription.layer.cornerRadius = 1
     vwDescription.layer.borderWidth = 0.5
     vwDescription.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
@@ -63,7 +65,25 @@ class CustomTaskViewCell: UITableViewCell {
     imgVwToDoCurrent.layer.borderWidth = 0.5
     imgVwToDoCurrent.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
     imgVwToDoCurrent.layer.masksToBounds = true
-//
+
+    self.vwBackgound.frame = frame
+    imgVwBackground.frame = CGRectMake(frame.size.width - 80, 2, 75, 96)
+
+    //make mutable string
+    var strName:NSString =  "Jason Var"
+    var mutableStrAssignName = NSMutableAttributedString()
+    mutableStrAssignName = NSMutableAttributedString(string: strName)
+
+    mutableStrAssignName.addAttribute(NSFontAttributeName, value: UIFont(name: "Helvetica-Bold", size: 15.0)!, range: NSRange(location:0,length:1))
+    mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
+
+    var rangeLastName:NSRange = strName.rangeOfString(" ")
+
+    mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
+    mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.greenColor(), range: NSRange(location:rangeLastName.location,length:1))
+
+    self.lblAssignTo.attributedText = mutableStrAssignName
+
 //    lblTaskName.font = UIFont(name: "HelveticaNeue", size: 15)
 //    lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
 //    
