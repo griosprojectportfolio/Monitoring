@@ -370,7 +370,7 @@
     </scenes>
     <resources>
         <image name="Icon1" width="256" height="256"/>
-        <image name="checkList" width="24" height="22"/>
+        <image name="checkList" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

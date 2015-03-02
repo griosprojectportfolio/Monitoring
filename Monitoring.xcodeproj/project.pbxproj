@@ -27,7 +27,8 @@
 		0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE261A9302F800F7562E /* Images.xcassets */; };
 		0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE281A9302F800F7562E /* LaunchScreen.xib */; };
 		0A6EDE361A9302F900F7562E /* MonitoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE351A9302F900F7562E /* MonitoringTests.swift */; };
-		0A7CE3B81A9DF00B00D4513D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7CE3B61A9DF00B00D4513D /* Main.storyboard */; };
+		0A7D43241AA4752F0093F3BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7D43221AA4752F0093F3BE /* Main.storyboard */; };
+		0AFC26961AA45E59000259B9 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC26951AA45E59000259B9 /* SideBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,8 @@
 		0A6EDE2F1A9302F900F7562E /* MonitoringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitoringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6EDE341A9302F900F7562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6EDE351A9302F900F7562E /* MonitoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringTests.swift; sourceTree = "<group>"; };
-		0A7CE3B71A9DF00B00D4513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Monitoring/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A7D43231AA4752F0093F3BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Monitoring/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0AFC26951AA45E59000259B9 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		0A65FC6F1AA0A726009C79B7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0AFC26941AA44AF8000259B9 /* SideBarViewController */,
 				0A65FC701AA0A726009C79B7 /* AppDelegate */,
 				0A65FC721AA0A726009C79B7 /* LoginViewController */,
 				0A65FC741AA0A726009C79B7 /* ProjectViewController */,
@@ -191,6 +194,7 @@
 		0A6EDE0E1A9302F800F7562E = {
 			isa = PBXGroup;
 			children = (
+				0A7D43221AA4752F0093F3BE /* Main.storyboard */,
 				0A6EDE191A9302F800F7562E /* Monitoring */,
 				0A6EDE321A9302F900F7562E /* MonitoringTests */,
 				0A6EDE181A9302F800F7562E /* Products */,
@@ -209,7 +213,6 @@
 		0A6EDE191A9302F800F7562E /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
-				0A7CE3B61A9DF00B00D4513D /* Main.storyboard */,
 				0A65FC6B1AA0A726009C79B7 /* Classes */,
 				0A65FC8B1AA0A741009C79B7 /* Utility */,
 				0A6EDE261A9302F800F7562E /* Images.xcassets */,
@@ -243,6 +246,14 @@
 				0A6EDE341A9302F900F7562E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0AFC26941AA44AF8000259B9 /* SideBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0AFC26951AA45E59000259B9 /* SideBarViewController.swift */,
+			);
+			path = SideBarViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,7 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A7CE3B81A9DF00B00D4513D /* Main.storyboard in Resources */,
+				0A7D43241AA4752F0093F3BE /* Main.storyboard in Resources */,
 				0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */,
 				0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */,
 			);
@@ -346,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A65FC831AA0A726009C79B7 /* AddProjectViewController.swift in Sources */,
+				0AFC26961AA45E59000259B9 /* SideBarViewController.swift in Sources */,
 				0A65FC811AA0A726009C79B7 /* AppDelegate.swift in Sources */,
 				0A65FC851AA0A726009C79B7 /* ProjectTableViewController.swift in Sources */,
 				0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */,
@@ -392,13 +404,12 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		0A7CE3B61A9DF00B00D4513D /* Main.storyboard */ = {
+		0A7D43221AA4752F0093F3BE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0A7CE3B71A9DF00B00D4513D /* Base */,
+				0A7D43231AA4752F0093F3BE /* Base */,
 			);
 			name = Main.storyboard;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
