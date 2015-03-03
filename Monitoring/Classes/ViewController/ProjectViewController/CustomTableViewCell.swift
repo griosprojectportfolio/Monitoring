@@ -14,15 +14,20 @@ class CustomTableViewCell: UITableViewCell {
     var imgVwLogo: UIImageView!
     var vwDescription: UIView!
     var btnDelete:UIButton!
+    var btnCellUp:UIButton!
+    var btnCellDown:UIButton!
+    var currentrow:NSInteger!
 
     var heightOfVw:CGFloat = 80
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setValueOfProjectList (project:Project,row:Int, frame:CGRect) {
+  func setValueOfProjectList (project:Project,row:Int, frame:CGRect, vwControllerTarget:ProjectTableViewController) {
 
         println(frame)
+      
+        self.tag = row
         vwBackgroundVw = UIView(frame:CGRect(x:5 ,y:1 ,width:frame.size.width - 10 , height:84))
         self.contentView.addSubview(vwBackgroundVw)
         //vwBackgroundVw.backgroundColor = UIColor.redColor()
@@ -45,6 +50,22 @@ class CustomTableViewCell: UITableViewCell {
         btnDelete.backgroundColor = UIColor.redColor()
         btnDelete .setTitle("Delete", forState:UIControlState.Normal)
         self.vwBackgroundVw.addSubview(btnDelete)
+      
+      btnCellUp = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:0 ,width:60 , height:42))
+      btnCellUp.backgroundColor = UIColor.redColor()
+      btnCellUp.tag = row
+      //btnCellUp .setTitle("Up", forState:UIControlState.Normal)
+      btnCellUp.setImage(UIImage(named: "up.png"), forState: UIControlState.Normal)
+    btnCellUp.userInteractionEnabled = true
+      btnCellUp.addTarget(self, action: "handleCellUpButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+      self.vwBackgroundVw.addSubview(btnCellUp)
+      
+      btnCellDown = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:btnCellUp.frame.size.height+1,width:60 , height:42))
+      btnCellDown.backgroundColor = UIColor.redColor()
+      //btnCellDown .setTitle("Down", forState:UIControlState.Normal)
+      btnCellDown.setImage(UIImage(named: "down.png"), forState: UIControlState.Normal)
+      self.vwBackgroundVw.addSubview(btnCellDown)
+
 
         if (vwDescription != nil) {
             vwDescription.removeFromSuperview()
@@ -90,6 +111,25 @@ class CustomTableViewCell: UITableViewCell {
   @IBAction func handleDeleteButtonAction (sender:UIButton){
     
   }
+
+  func handleCellUpButtonAction(sender:UIButton){
+    
+  }
+
+  func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    if (editingStyle == UITableViewCellEditingStyle.None) {
+      
+      if let tv=tableView
+      {
+        currentrow = indexPath.row
+       // items.removeAtIndex(indexPath!.row)
+        var indexDesin:NSIndexPath = NSIndexPath(index: 2)
+      
+      }
+    }
+  }
+  
+  
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)

@@ -74,16 +74,11 @@ class CustomTaskViewCell: UITableViewCell {
     self.vwBackgound.frame = CGRectMake(0, 0, frame.size.width,self.contentView.frame.size.height)
    // imgVwBackground.frame = CGRectMake(frame.size.width - 120, 2, 75, 96)
 
-    lblTaskName.font = UIFont(name: "HelveticaNeue", size: 18)
-    lblTaskName.textColor = UIColor.darkGrayColor()
-
     lblAssignToHeading.font = UIFont(name: "HelveticaNeue", size: 13)
     lblAssignToHeading.frame = CGRectMake (lblAssignToHeading.frame.origin.x, lblAssignToHeading.frame.origin.y, 65, lblAssignToHeading.frame.size.height)
     lblAssignToHeading.textColor = UIColor.lightGrayColor()
 
-        lblAssignTo.font = UIFont(name: "HelveticaNeue", size: 15)
-        lblAssignTo.textColor = UIColor.greenColor()
-        lblAssignTo.frame = CGRectMake (lblAssignToHeading.frame.origin.x + lblAssignToHeading.frame.size.width , lblAssignToHeading.frame.origin.y, lblAssignTo.frame.size.width, lblAssignToHeading.frame.size.height)
+    lblAssignTo.frame = CGRectMake (lblAssignToHeading.frame.origin.x + lblAssignToHeading.frame.size.width , lblAssignToHeading.frame.origin.y, lblAssignTo.frame.size.width, lblAssignToHeading.frame.size.height)
 
         //make mutable string
         var strName:NSString =  "Jasin Vardroba"
@@ -106,11 +101,11 @@ class CustomTaskViewCell: UITableViewCell {
         lblToDoRemaining.font = UIFont(name: "HelveticaNeue", size: 13)
 
 
-        vwToDo.frame = CGRectMake((self.vwBackgound.frame.size.width - 90), vwToDo.frame.origin.y,vwToDo.frame.size.width,self.vwToDo.frame.size.height)
+        vwToDo.frame = CGRectMake(5, vwToDo.frame.origin.y,vwToDo.frame.size.width,70)
 
-        progressBarTaskComplete.frame = CGRectMake(progressBarTaskComplete.frame.origin.x, progressBarTaskComplete.frame.origin.y,(self.vwBackgound.frame.size.width - 150),self.progressBarTaskComplete.frame.size.height)
+        //  progressBarTaskComplete.frame = CGRectMake(progressBarTaskComplete.frame.origin.x, progressBarTaskComplete.frame.origin.y,(self.vwBackgound.frame.size.width - 150),self.progressBarTaskComplete.frame.size.height)
 
-        lblTaskComplete.frame = CGRectMake(self.vwBackgound.frame.size.width - 130, lblTaskComplete.frame.origin.y, self.lblTaskComplete.frame.size.width, self.lblTaskComplete.frame.size.height)
+        // lblTaskComplete.frame = CGRectMake(self.vwBackgound.frame.size.width - 130, lblTaskComplete.frame.origin.y, self.lblTaskComplete.frame.size.width, self.lblTaskComplete.frame.size.height)
 
 
 

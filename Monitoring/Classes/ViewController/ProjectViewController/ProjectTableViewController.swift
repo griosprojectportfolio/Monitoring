@@ -6,9 +6,18 @@
 //  Copyright (c) 2015 GrepRuby. All rights reserved.
 //
 
+import Foundation
+
 import UIKit
 
-class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+@objc
+protocol ProjectTableViewControllerDelegates {
+  optional func toggleLeftPanel()
+  optional func collapseSidePanels()
+}
+
+
+class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,SideBarlViewControllerDelegate {
 
     var cellobj:CustomTableViewCell!
     @IBOutlet var vwOverTable:UIView!
@@ -16,6 +25,8 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     var isRightSwipe : Bool = false
     var arryOfDeleteSelectedCell:NSMutableArray = []
     var arryProject:[Project]!
+  
+  var delegate: ProjectTableViewControllerDelegates?
 
   @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
   
@@ -57,15 +68,22 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
   func addNavigationBarButtons(){
     var btnSetting:UIButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
     btnSetting.setImage(UIImage(named: "sideBar.png"), forState:UIControlState.Normal)
+    btnSetting.addTarget(self, action: "handleRightNaviButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
     
     var btnNaviLeftBarButton:UIBarButtonItem = UIBarButtonItem(customView: btnSetting)
     self.navigationItem.setLeftBarButtonItem(btnNaviLeftBarButton, animated: true)
     
     var btnNaviRightBarButton:UIBarButtonItem = UIBarButtonItem()
-    
+  
   }
   
   
+  @IBAction func handleRightNaviButtonAction(sender:UIButton){
+    
+    delegate?.toggleLeftPanel!()
+    
+  }
+        
   
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) { //animation to go to next view
         var location = gestureRecognizer.locationInView(self.tableView)
@@ -112,7 +130,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     var indexPath = self.tableView.indexPathForRowAtPoint(location)
     
     if((indexPath) != nil) {
-      var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+      var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
       //Update the cell or model
       
       let row = indexPath?.row
@@ -121,7 +139,8 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
       UIView .animateWithDuration(0.5, animations: { () -> Void in
         
         var frame = self.tableView.frame
-        cell?.frame = CGRectMake((frame.size.width-260),yAxis, frame.size.width, 90)
+      println(cell.vwBackgroundVw)
+        cell.vwBackgroundVw.frame = CGRectMake(frame.size.width - 260,yAxis, frame.size.width, 90)
     
         }, completion: { (Bool) -> Void in
 
@@ -158,7 +177,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
-    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame)
+    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame, vwControllerTarget: self)
     cell.imageView.image = UIImage(named: "projectlogo.png")
     return cell
   }
@@ -183,6 +202,15 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         gl.locations = [ 0.0, 1.0]
     self.tableView.layer.insertSublayer(gl, atIndex: 0)
     gl.frame = self.tableView.frame;
+  }
+  
+  func handleCellUpButtonAction(sender:UIButton){
+    
+    var btn:UIButton = sender as UIButton
+    
+    var indexCurrent:NSIndexPath = NSIndexPath(index: btn.tag)
+    var indexDesin:NSIndexPath = NSIndexPath(index: btn.tag + 1)
+    tableView.moveRowAtIndexPath(indexCurrent, toIndexPath:indexDesin)
   }
 }
 
