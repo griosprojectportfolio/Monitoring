@@ -51,6 +51,6 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
   }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 110
+        return 90
     }
 }

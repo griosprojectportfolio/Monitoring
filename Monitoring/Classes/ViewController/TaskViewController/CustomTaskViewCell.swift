@@ -42,73 +42,48 @@ class CustomTaskViewCell: UITableViewCell {
   }
   
     func contentsDefaultSettings(frame:CGRect){
+        vwBackgound.frame = CGRectMake(0, 0,frame.size.width ,100)
 
-    println("***\(frame)")
+        vwDescription.layer.cornerRadius = 1
+        vwDescription.layer.borderWidth = 0.5
+        vwDescription.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
+        vwDescription.layer.masksToBounds = true
 
-    vwBackgound.frame = CGRectMake(0, 0,frame.size.width ,100)
+        self.imgVwBackground.layer.cornerRadius = 5.0
+        self.imgVwBackground.layer.masksToBounds = true
 
+        imgVwToDoRemaining.layer.cornerRadius = 2
+        imgVwToDoRemaining.layer.borderWidth = 0.5
+        imgVwToDoRemaining.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
+        imgVwToDoRemaining.layer.masksToBounds = true
 
-    vwDescription.layer.cornerRadius = 1
-    vwDescription.layer.borderWidth = 0.5
-    vwDescription.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
-    vwDescription.layer.masksToBounds = true
+        imgVwToDoDone.layer.cornerRadius = 2
+        imgVwToDoDone.layer.borderWidth = 0.5
+        imgVwToDoDone.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
+        imgVwToDoDone.layer.masksToBounds = true
 
-    self.imgVwBackground.layer.cornerRadius = 5.0
-    self.imgVwBackground.layer.masksToBounds = true
+        imgVwToDoCurrent.layer.cornerRadius = 2
+        imgVwToDoCurrent.layer.borderWidth = 0.5
+        imgVwToDoCurrent.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
+        imgVwToDoCurrent.layer.masksToBounds = true
 
-    imgVwToDoRemaining.layer.cornerRadius = 2
-    imgVwToDoRemaining.layer.borderWidth = 0.5
-    imgVwToDoRemaining.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
-    imgVwToDoRemaining.layer.masksToBounds = true
+        self.vwBackgound.frame = CGRectMake(0, 0, frame.size.width,self.contentView.frame.size.height)
+        // imgVwBackground.frame = CGRectMake(frame.size.width - 120, 2, 75, 96)
 
-    imgVwToDoDone.layer.cornerRadius = 2
-    imgVwToDoDone.layer.borderWidth = 0.5
-    imgVwToDoDone.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
-    imgVwToDoDone.layer.masksToBounds = true
+        lblAssignToHeading.font = UIFont(name: "HelveticaNeue", size: 13)
+        lblAssignToHeading.frame = CGRectMake (lblAssignToHeading.frame.origin.x, lblAssignToHeading.frame.origin.y, 65, lblAssignToHeading.frame.size.height)
+        lblAssignToHeading.textColor = UIColor.lightGrayColor()
 
-    imgVwToDoCurrent.layer.cornerRadius = 2
-    imgVwToDoCurrent.layer.borderWidth = 0.5
-    imgVwToDoCurrent.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
-    imgVwToDoCurrent.layer.masksToBounds = true
-
-    self.vwBackgound.frame = CGRectMake(0, 0, frame.size.width,self.contentView.frame.size.height)
-   // imgVwBackground.frame = CGRectMake(frame.size.width - 120, 2, 75, 96)
-
-    lblAssignToHeading.font = UIFont(name: "HelveticaNeue", size: 13)
-    lblAssignToHeading.frame = CGRectMake (lblAssignToHeading.frame.origin.x, lblAssignToHeading.frame.origin.y, 65, lblAssignToHeading.frame.size.height)
-    lblAssignToHeading.textColor = UIColor.lightGrayColor()
-
-    lblAssignTo.frame = CGRectMake (lblAssignToHeading.frame.origin.x + lblAssignToHeading.frame.size.width , lblAssignToHeading.frame.origin.y, lblAssignTo.frame.size.width, lblAssignToHeading.frame.size.height)
-
-        //make mutable string
-        var strName:NSString =  "Jasin Vardroba"
-        var mutableStrAssignName = NSMutableAttributedString()
-        mutableStrAssignName = NSMutableAttributedString(string: strName)
-
-        mutableStrAssignName.addAttribute(NSFontAttributeName, value: UIFont(name: "Helvetica-Bold", size: 15.0)!, range: NSRange(location:0,length:1))
-        mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
-
-        var rangeLastName:NSRange = strName.rangeOfString(" ")
-
-        mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSRange(location:0,length:1))
-        mutableStrAssignName.addAttribute(NSForegroundColorAttributeName, value: UIColor.purpleColor(), range: NSRange(location:rangeLastName.location,length:2))
+        lblAssignTo.frame = CGRectMake (lblAssignToHeading.frame.origin.x + lblAssignToHeading.frame.size.width , lblAssignToHeading.frame.origin.y, lblAssignTo.frame.size.width, lblAssignToHeading.frame.size.height)
         
-        self.lblAssignTo.attributedText = mutableStrAssignName
 
         lblTaskComplete.font = UIFont(name: "HelveticaNeue", size: 13)
         lblTaskComplete.textColor = UIColor.lightGrayColor()
-
         lblToDoRemaining.font = UIFont(name: "HelveticaNeue", size: 13)
 
-
         vwToDo.frame = CGRectMake(5, vwToDo.frame.origin.y,vwToDo.frame.size.width,70)
-
         //  progressBarTaskComplete.frame = CGRectMake(progressBarTaskComplete.frame.origin.x, progressBarTaskComplete.frame.origin.y,(self.vwBackgound.frame.size.width - 150),self.progressBarTaskComplete.frame.size.height)
-
         // lblTaskComplete.frame = CGRectMake(self.vwBackgound.frame.size.width - 130, lblTaskComplete.frame.origin.y, self.lblTaskComplete.frame.size.width, self.lblTaskComplete.frame.size.height)
-
-
-
   }
 
     func backgroundColorOfImageView() {
