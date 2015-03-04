@@ -36,10 +36,9 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
     override func viewDidLoad() {
 
         super.viewDidLoad()
-       self.navigationController?.navigationBarHidden = true
-        self.backgroundColorOfImageView()
-
         self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+        self.backgroundColorOfImageView()
 
         var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
         visualEffectVwEmail =  UIVisualEffectView (effect: blur)
@@ -202,31 +201,30 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
 
     func animationOfTextField () {
 
-        UIView.animateWithDuration(0.2, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.textFldEmail.frame = CGRect(x: 0, y: self.textFldEmail.frame.origin.y, width:self.view.frame.size.width , height: 44)
             self.visualEffectVwEmail.frame = CGRect(x: 0, y: self.visualEffectVwEmail.frame.origin.y, width:self.view.frame.size.width , height: 44)
         }) { (Bool) -> Void in
 
-            UIView.animateWithDuration(0.2, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.textFldPassword.frame = CGRect(x: 0, y: self.textFldPassword.frame.origin.y, width:self.view.frame.size.width , height: 44)
             self.visualEffectVwPasswrd.frame = CGRect(x: 0, y: self.visualEffectVwPasswrd.frame.origin.y, width:self.view.frame.size.width , height: 44)
             }) { (Bool) -> Void in
 
-                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.btnLogin.frame = CGRect(x: -2, y: self.btnLogin.frame.origin.y, width:self.btnLogin.frame.size.width , height: self.btnLogin.frame.size.height)
                     }){ (Bool) -> Void in
 
-                        UIView.animateWithDuration(0.2, animations: { () -> Void in
+                        UIView.animateWithDuration(0.3, animations: { () -> Void in
                             self.btnLoginStackOver.frame = CGRect(x: -2, y: self.btnLoginStackOver.frame.origin.y, width:self.btnLoginStackOver.frame.size.width , height: self.btnLoginStackOver.frame.size.height)
                             }) { (Bool) -> Void in
 
-                                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                                UIView.animateWithDuration(0.3, animations: { () -> Void in
                                     self.btnLoginLinkedIn.frame = CGRect(x: -2, y: self.btnLoginLinkedIn.frame.origin.y, width:self.btnLoginLinkedIn.frame.size.width , height: self.btnLoginLinkedIn.frame.size.height)
-                                })
-                        }
+                            })
                     }
                 }
             }
-
         }
+    }
 }

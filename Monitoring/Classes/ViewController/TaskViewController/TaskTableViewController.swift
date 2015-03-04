@@ -20,7 +20,7 @@ class TaskTableViewController: UIViewController , UITableViewDataSource, UITable
     var obj = CustomTaskViewCell()
     self.navigationItem.hidesBackButton = true
     self.title = "Task List"
-    
+
     var backButton:UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "handleBackButtonAction")
     self.navigationItem.setLeftBarButtonItem(backButton, animated: true)
     

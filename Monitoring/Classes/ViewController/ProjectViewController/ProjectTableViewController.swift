@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomProjectCellDelegate {
 
     var cellobj:CustomTableViewCell!
     @IBOutlet var vwOverTable:UIView!
@@ -26,22 +26,18 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     self.view.backgroundColor = UIColor.whiteColor()
     self.title = "Project List"
     self.tableView.separatorColor = UIColor.clearColor()
-
-    let leftSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
-    leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
-    self.tableView.addGestureRecognizer(leftSwipe)
+    self.navigationController?.navigationBar.barTintColor = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
     self.navigationController?.navigationBar.translucent = false
-    let rightSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipeRight:")
-    rightSwipe.direction=UISwipeGestureRecognizerDirection.Right
-    self.tableView.addGestureRecognizer(rightSwipe)
 
     let project = [Project (projectName: "Kindergarton", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
         ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton5", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015")]
 
     arryProject = project
     println(arryProject)
-    
+    self.tableView.editing = false
     self.addNavigationBarButtons()
   }
 
@@ -72,7 +68,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         var indexPath = self.tableView.indexPathForRowAtPoint(location)
 
         if((indexPath) != nil) {
-            var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+            var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
             //Update the cell or model
     
             let row = indexPath?.row
@@ -83,13 +79,13 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
                 for var iLoop:Int = 0 ; iLoop<self.arryOfDeleteSelectedCell.count; iLoop++ {
                 if (self.arryOfDeleteSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
-                    cell?.frame = CGRectMake(0 ,yAxis, frame.size.width, 90)
+                    cell.vwBackgroundVw.frame = CGRectMake(0 ,yAxis, frame.size.width, 90)
                     self.arryOfDeleteSelectedCell.removeObjectAtIndex(iLoop)
                     self.isRightSwipe = true
                     return
                     }
                 }
-                cell?.frame = CGRectMake(-frame.size.width ,yAxis, frame.size.width, 90)
+                cell.frame = CGRectMake(-frame.size.width ,yAxis, frame.size.width, 90)
 
         }, completion: { (Bool) -> Void in
 
@@ -112,7 +108,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     var indexPath = self.tableView.indexPathForRowAtPoint(location)
     
     if((indexPath) != nil) {
-      var cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+        var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
       //Update the cell or model
       
       let row = indexPath?.row
@@ -121,11 +117,9 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
       UIView .animateWithDuration(0.5, animations: { () -> Void in
         
         var frame = self.tableView.frame
-        cell?.frame = CGRectMake((frame.size.width-260),yAxis, frame.size.width, 90)
+        cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-260),cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
     
         }, completion: { (Bool) -> Void in
-
-
             self.arryOfDeleteSelectedCell.addObject(row!)
             // cell.deleteButoon.transform = CGAffineTransformMakeRotation(M_PI/2);
 //            [myView animateWithDuration: 0.25
@@ -139,7 +133,25 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     }
   }
 
-  
+    func handleDeleteCell(btnTag:Int) {
+
+        print(btnTag)
+        var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
+        self.arryProject.removeAtIndex(btnTag)
+        println(self.arryProject.count)
+        self.tableView .deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        // self.tableView.reloadData()
+    }
+
+
+    func handleUpButtonEvent(btnTag:Int) {
+
+    }
+
+    func handleDownButtonEvent(btnTag:Int) {
+
+    }
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -159,6 +171,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
     cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame)
+    cell.delegate = self
     cell.imageView.image = UIImage(named: "projectlogo.png")
     return cell
   }

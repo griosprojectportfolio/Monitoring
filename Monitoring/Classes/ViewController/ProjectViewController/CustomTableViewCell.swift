@@ -8,7 +8,18 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+@objc protocol CustomProjectCellDelegate {
+
+    func handleDeleteCell(btnTag:Int)
+    func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer)
+    func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer)
+    func handleUpButtonEvent(btnTag:Int)
+    func handleDownButtonEvent(btnTag:Int)
+}
+
+class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
+
+    var delegate:CustomProjectCellDelegate?
 
     var vwBackgroundVw: UIView!
     var imgVwLogo: UIImageView!
@@ -20,7 +31,21 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected stat
+    }
+
     func setValueOfProjectList (project:Project,row:Int, frame:CGRect) {
+
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action:"handleSwipeLeft:")
+        leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
+        self.addGestureRecognizer(leftSwipe)
+
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action:"handleSwipeRight:")
+        rightSwipe.direction=UISwipeGestureRecognizerDirection.Right
+        self.addGestureRecognizer(rightSwipe)
 
         println(frame)
         vwBackgroundVw = UIView(frame:CGRect(x:5 ,y:1 ,width:frame.size.width - 10 , height:84))
@@ -44,7 +69,12 @@ class CustomTableViewCell: UITableViewCell {
         btnDelete = UIButton(frame: CGRect(x:-65, y:0 ,width:60 , height:84))
         btnDelete.backgroundColor = UIColor.redColor()
         btnDelete .setTitle("Delete", forState:UIControlState.Normal)
+        btnDelete.addTarget(self, action: "qwertty", forControlEvents: UIControlEvents.TouchUpInside)
         self.vwBackgroundVw.addSubview(btnDelete)
+
+        var panGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        panGesture.delegate = self
+        self.addGestureRecognizer(panGesture)
 
         if (vwDescription != nil) {
             vwDescription.removeFromSuperview()
@@ -87,14 +117,21 @@ class CustomTableViewCell: UITableViewCell {
         vwDescription.addSubview(dotView)
     }
 
-  @IBAction func handleDeleteButtonAction (sender:UIButton){
-    
-  }
-  
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected stat
-  }
+    func handleTapGesture (tapgesture:UITapGestureRecognizer) {
 
+         var point:CGPoint = tapgesture.locationInView(self)
+        if (CGRectIntersectsRect(CGRectMake(60, 0, 70, 70),CGRectMake(point.x, point.y, 10, 10))) {
+            delegate?.handleDeleteCell(self.tag)
+        }
+    }
+
+    func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) {
+
+       delegate?.handleSwipeLeft(gestureRecognizer)
+    }
+
+    func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer) {
+
+        delegate?.handleSwipeRight(gestureRecognizer)
+    }
 }

@@ -13,13 +13,13 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
   
   var projectNameTextField:CustomTextFieldBlurView!
   var dueDateTextField:CustomTextFieldBlurView!
-  
   var addProjectButton:CustomButton!
   
   @IBOutlet weak var blurImageView:UIImageView!
   @IBOutlet weak var addButton:UIButton!
 
   override func viewDidLoad() {
+
     super.viewDidLoad()
     self.backgroundColorOfImageView()
     self.title = "Add New Project"
@@ -29,7 +29,6 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
     self.navigationItem.setLeftBarButtonItem(naviBackbutton, animated: true)
     
     self.addBuleEffectImageView()
-    
   }
   
   func handelNaviBackButtonAction(){
@@ -52,12 +51,10 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
     dueDateTextField.attributedPlaceholder = NSAttributedString(string:"Due Date",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
     self.view.addSubview(dueDateTextField)
 
-    
     addProjectButton = CustomButton(frame:CGRect(x: -1, y: frame3.origin.y + 120, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Sumbit", color:.whiteColor())
     addProjectButton.imageVwBackground.alpha = 0.5
     addProjectButton.delegate = self
     self.view.addSubview(addProjectButton)
-
   }
   
   
