@@ -40,8 +40,15 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         // Configure the view for the selected stat
     }
 
-    func setValueOfProjectList (project:Project,row:Int, frame:CGRect) {
+    func setValueOfProjectList (project:Project,row:Int, frame:CGRect,selectedIndexList:NSMutableArray) {
 
+        for (var index:AnyObject) in (selectedIndexList) {
+
+            var index1:Int = index as Int
+            if (index1 == row) {
+                return
+            }
+        }
         let leftSwipe = UISwipeGestureRecognizer(target: self, action:"handleSwipeLeft:")
         leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
         self.addGestureRecognizer(leftSwipe)
@@ -49,10 +56,13 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action:"handleSwipeRight:")
         rightSwipe.direction=UISwipeGestureRecognizerDirection.Right
         self.addGestureRecognizer(rightSwipe)
-
-        println(frame)
-      
         self.tag = row
+        println("*******\n \(self.tag) ****\n")
+        if (vwBackgroundVw != nil) {
+
+            vwBackgroundVw .removeFromSuperview()
+            vwBackgroundVw == nil
+        }
         vwBackgroundVw = UIView(frame:CGRect(x:5 ,y:1 ,width:frame.size.width - 10 , height:84))
         self.contentView.addSubview(vwBackgroundVw)
         //vwBackgroundVw.backgroundColor = UIColor.redColor()
@@ -138,6 +148,8 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
 
     //handle gesture
     func handleTapGesture (tapgesture:UITapGestureRecognizer) {
+
+        // println(self.tag)
          var point:CGPoint = tapgesture.locationInView(self)
         if (CGRectIntersectsRect(CGRectMake(60, 0, 60, 70),CGRectMake(point.x, point.y, 10, 10))) {
             delegate?.handleDeleteCell(self.tag)

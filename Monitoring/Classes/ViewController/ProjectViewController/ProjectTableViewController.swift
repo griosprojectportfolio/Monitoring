@@ -54,7 +54,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     self.navigationController?.pushViewController(vwController, animated:true)
   }
         
-  
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) { //animation to go to next view
         var location = gestureRecognizer.locationInView(self.tableView)
         var indexPath = self.tableView.indexPathForRowAtPoint(location)
@@ -122,20 +121,11 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         print("tag\(btnTag)")
         var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
         self.arryProject.removeAtIndex(btnTag)
-        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
 
-        for (var value:AnyObject) in (self.arryOfDeleteSelectedCell) {
-            var index:Int = value as Int
-            var indexPath = NSIndexPath (forRow:index, inSection:0)
-            var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
-            cell.vwBackgroundVw.removeFromSuperview()
-            cell.btnCellDown.removeFromSuperview()
-            cell.btnCellUp.removeFromSuperview()
-            cell.btnDelete.removeFromSuperview()
-        }
-
-        println(self.arryProject)
+        // self.tableView.beginUpdates()
+        self.arryOfDeleteSelectedCell.removeAllObjects()
         self.tableView.reloadData()
+        //  self.tableView.endUpdates()
     }
 
     func handleDownButtonEvent(btnTag:Int)  {
@@ -145,6 +135,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         var indexPathDest = NSIndexPath (forRow:btnTag+1, inSection:0)
 
         self.tableView.moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+
         var projectObj:Project = self.arryProject[btnTag]
         println("\n\(self.arryProject.count)")
         self.arryProject.removeAtIndex(btnTag)
@@ -160,6 +151,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         var indexPathDest = NSIndexPath (forRow:btnTag-1, inSection:0)
 
         self.tableView .moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+
         var projectObj:Project = self.arryProject[btnTag]
         self.arryProject.removeAtIndex(btnTag)
         self.arryProject.insert(projectObj, atIndex: btnTag-1)
@@ -184,7 +176,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
     println("*********\(indexPath.row)" )
-    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame)
+    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame, selectedIndexList: self.arryOfDeleteSelectedCell)
     cell.delegate = self
     cell.imageView.image = UIImage(named: "projectlogo.png")
     return cell
