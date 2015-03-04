@@ -87,7 +87,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         btnLoginLinkedIn = CustomButton(frame:CGRect(x: -self.view.frame.size.width, y: frame2.origin.y + 154, width : self.view.frame.size.width - 50, height:40) ,imageName:"linkedIn" ,tag:3,  title:"Linked In", color:UIColor(red: 52.0/255.0, green: 112.0/255.0, blue: 163.0/255.0, alpha: 1.0))
         self.view.addSubview(btnLoginLinkedIn)
 
-          btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        btnSignUp.addTarget(self, action: "signUpButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
       
         //btnSignUp.frame = CGRect(x: (self.view.frame.size.width-100), y: self.view.frame.size.height - 70, width : 100, height:30)
         //btnForgotPassword.frame = CGRect(x: (self.view.frame.size.width-200), y:self.view.frame.size.height - 40, width : 200, height:30)
@@ -144,9 +144,6 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
         effectView.frame = CGRect(x: 0, y: 0, width: btnLogin.frame.size.width, height: btnLogin.frame.size.height)
         effectView.layer.cornerRadius = 5.0
-
-       // btnLogin.background (effectView)
-
     }
   
   func btnTapped(tag:Int) {
@@ -158,8 +155,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
     }
     
   }
-  
-  
+
   override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
     
     if let id = identifier{

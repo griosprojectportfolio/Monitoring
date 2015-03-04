@@ -129,16 +129,23 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     }
   }
 
+    //MARK - UICustomTableViewCell Delegates to delete, up and down cell
+
     func handleDeleteCell(btnTag:Int) {
         print("tag\(btnTag)")
         var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
         self.arryProject.removeAtIndex(btnTag)
         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-        var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
-        cell.vwBackgroundVw.removeFromSuperview()
-        cell.btnCellDown.removeFromSuperview()
-        cell.btnCellUp.removeFromSuperview()
-        cell.btnDelete.removeFromSuperview()
+
+        for (var value:AnyObject) in (self.arryOfDeleteSelectedCell) {
+            var index:Int = value as Int
+            var indexPath = NSIndexPath (forRow:index, inSection:0)
+            var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
+            cell.vwBackgroundVw.removeFromSuperview()
+            cell.btnCellDown.removeFromSuperview()
+            cell.btnCellUp.removeFromSuperview()
+            cell.btnDelete.removeFromSuperview()
+        }
 
         println(self.arryProject)
         self.tableView.reloadData()
@@ -196,15 +203,12 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     return cell
   }
 
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    }
-
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 90
   }
   
   @IBAction func raightNAvigationBarButtonAction(sender:UIBarButtonItem){
-   let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID")as AddProjectViewController
+    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID")as AddProjectViewController
     self.navigationController?.pushViewController(vc, animated: true)
   }
   
