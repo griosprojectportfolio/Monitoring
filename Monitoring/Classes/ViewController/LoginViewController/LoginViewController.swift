@@ -117,9 +117,13 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
     }
 
     func loginButtonPressed(){
-        let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-      }
+      //  let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
+       // self.navigationController?.pushViewController(secondViewController, animated: true)
+      
+      let vwController1 = self.storyboard?.instantiateViewControllerWithIdentifier("MenuList") as ViewController
+        self.navigationController?.pushViewController(vwController1, animated: true)
+
+  }
 
   
     //Function to set backgroundColor
@@ -150,7 +154,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         
     if(tag == 1){
      
-      self.performSegueWithIdentifier("navigationRoot", sender: self)
+      self.performSegueWithIdentifier("MenuList", sender: self)
      
     }
     

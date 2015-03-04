@@ -27,6 +27,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     
     self.view.backgroundColor = UIColor.whiteColor()
     self.title = "Project List"
+    self.navigationController?.navigationBar.hidden = false
     self.tableView.separatorColor = UIColor.clearColor()
     self.navigationController?.navigationBar.barTintColor = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -187,12 +188,12 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     return 1
   }
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     println(arryProject.count)
     return  arryProject.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
@@ -203,7 +204,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     return cell
   }
 
-  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 90
   }
   

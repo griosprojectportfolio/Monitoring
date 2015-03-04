@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -73,7 +73,7 @@
                         <outlet property="imgVwBackground" destination="5vM-rU-5pm" id="jtn-gg-2AV"/>
                         <outlet property="lblLine" destination="sda-UX-edH" id="M9L-4Y-Ymk"/>
                         <segue destination="Eh1-B8-y3S" kind="custom" identifier="idFirstSegue" customClass="CustomSegue" customModule="Monitoring" customModuleProvider="target" id="K7y-T7-whi"/>
-                        <segue destination="7AV-f7-FAh" kind="custom" identifier="navigationRoot" customClass="CustomSegue" customModule="Monitoring" customModuleProvider="target" id="ajo-yB-Syj"/>
+                        <segue destination="xK3-VE-hoY" kind="custom" identifier="MenuList" customClass="CustomSegue" customModule="Monitoring" customModuleProvider="target" id="p1w-OF-oeV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -81,10 +81,24 @@
             </objects>
             <point key="canvasLocation" x="-184" y="467"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="f9V-Xq-f0v">
+            <objects>
+                <viewController storyboardIdentifier="PaperFoldMenuController-3" id="9AT-So-rXa" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xx3-G8-mQ9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmE-X1-fia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="-625"/>
+        </scene>
         <!--Project Table View Controller-->
         <scene sceneID="GcG-pD-9cD">
             <objects>
-                <viewController storyboardIdentifier="CenterViewController" id="JXt-Pq-94K" customClass="ProjectTableViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaperFoldMenuController-1" id="JXt-Pq-94K" customClass="ProjectTableViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jDy-xy-fS7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,7 +130,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="2cv-OX-bGE"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="DJD-4j-DxY" id="ciy-Cj-mS4"/>
@@ -304,7 +317,7 @@
         <!--Add Project View Controller-->
         <scene sceneID="pNv-hb-peT">
             <objects>
-                <viewController storyboardIdentifier="AddProjectStoryBoardID" id="tdk-vX-MJw" customClass="AddProjectViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaperFoldMenuController-2" id="tdk-vX-MJw" customClass="AddProjectViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aUk-bl-hob">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,7 +327,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1uj-wQ-1r0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="-299"/>
+            <point key="canvasLocation" x="1317" y="-251"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XR0-ya-XTE">
+            <objects>
+                <viewController storyboardIdentifier="MenuList" id="xK3-VE-hoY" customClass="ViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yqd-EO-EVn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hX2-mr-0yN">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="iOi-bg-znP"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nf0-Rw-gjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="432" y="-515"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hMY-SS-Moj">
+            <objects>
+                <navigationController id="BaY-Ns-7bp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="plN-e9-qFg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SDm-hu-vMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-22" y="-515"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="McS-oW-5Pp">
@@ -359,44 +402,9 @@
             </objects>
             <point key="canvasLocation" x="338" y="784"/>
         </scene>
-        <!--Side Bar View Controller-->
-        <scene sceneID="2T5-FI-ZJf">
-            <objects>
-                <viewController storyboardIdentifier="LeftViewController" id="QUO-vX-Wcv" customClass="SideBarViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="90v-Ir-Q2v">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileImage" id="ilV-rZ-xRn">
-                                <rect key="frame" x="110" y="48" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6Gc-IL-F1C">
-                                <rect key="frame" x="0.0" y="199.99999972338171" width="320" height="362"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Cwy-Vf-KL0" customClass="SideBarTableViewCell" customModule="Monitoring" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cwy-Vf-KL0" id="yhS-VF-Bai">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SWx-d1-3Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="840" y="795"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Icon1" width="256" height="256"/>
-        <image name="ProfileImage" width="256" height="256"/>
         <image name="checkList" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -404,7 +412,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="ajo-yB-Syj"/>
-    </inferredMetricsTieBreakers>
 </document>

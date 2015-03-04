@@ -14,7 +14,10 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
   var projectNameTextField:CustomTextFieldBlurView!
   var dueDateTextField:CustomTextFieldBlurView!
   var addProjectButton:CustomButton!
-  
+  var visualEffectVwProjectName:UIVisualEffectView!
+  var visualEffectVwDueDate:UIVisualEffectView!
+
+
   @IBOutlet weak var blurImageView:UIImageView!
   @IBOutlet weak var addButton:UIButton!
 
@@ -42,8 +45,14 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
     projectNameTextField.userInteractionEnabled = true
     projectNameTextField.delegate = self;
     projectNameTextField.attributedPlaceholder = NSAttributedString(string:"Project Name",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
+
+    var blur1:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+    visualEffectVwProjectName = UIVisualEffectView (effect: blur1)
+    visualEffectVwProjectName.frame = projectNameTextField.frame
+
+    self.view.addSubview(visualEffectVwProjectName)
     self.view.addSubview(projectNameTextField)
-    
+
     var frame3:CGRect = CGRect(x:frame2.origin.x, y: frame2.origin.y+frame2.height+1, width:self.view.frame.size.width , height: 44)
     dueDateTextField = CustomTextFieldBlurView(frame:frame3, imgName:"duDate2")
     dueDateTextField.userInteractionEnabled = true

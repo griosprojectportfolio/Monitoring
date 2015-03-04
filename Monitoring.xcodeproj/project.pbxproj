@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A4DE5101AA58FE100BC2D12 /* SideBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DE50F1AA58FE100BC2D12 /* SideBarTableViewCell.swift */; };
 		0A65FC801AA0A726009C79B7 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC6E1AA0A726009C79B7 /* Project.swift */; };
 		0A65FC811AA0A726009C79B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC711AA0A726009C79B7 /* AppDelegate.swift */; };
 		0A65FC821AA0A726009C79B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65FC731AA0A726009C79B7 /* LoginViewController.swift */; };
@@ -28,9 +27,16 @@
 		0A6EDE271A9302F800F7562E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE261A9302F800F7562E /* Images.xcassets */; };
 		0A6EDE2A1A9302F800F7562E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6EDE281A9302F800F7562E /* LaunchScreen.xib */; };
 		0A6EDE361A9302F900F7562E /* MonitoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6EDE351A9302F900F7562E /* MonitoringTests.swift */; };
-		0AFC26961AA45E59000259B9 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC26951AA45E59000259B9 /* SideBarViewController.swift */; };
+		0A87EB2C1AA71E9800C5A9B1 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB201AA71E9800C5A9B1 /* FacingView.m */; };
+		0A87EB2D1AA71E9800C5A9B1 /* FoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB221AA71E9800C5A9B1 /* FoldView.m */; };
+		0A87EB2E1AA71E9800C5A9B1 /* MultiFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB241AA71E9800C5A9B1 /* MultiFoldView.m */; };
+		0A87EB2F1AA71E9800C5A9B1 /* PaperFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB271AA71E9800C5A9B1 /* PaperFoldView.m */; };
+		0A87EB301AA71E9800C5A9B1 /* ShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB291AA71E9800C5A9B1 /* ShadowView.m */; };
+		0A87EB311AA71E9800C5A9B1 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB2B1AA71E9800C5A9B1 /* UIView+Screenshot.m */; };
+		0A87EB361AA71F2500C5A9B1 /* PaperFoldMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB341AA71F2500C5A9B1 /* PaperFoldMenuController.m */; };
+		0A87EB3C1AA722E600C5A9B1 /* DemoMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB391AA722E600C5A9B1 /* DemoMenuController.m */; };
+		0A87EB3D1AA722E600C5A9B1 /* DemoRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87EB3B1AA722E600C5A9B1 /* DemoRootViewController.m */; };
 		0AFC26991AA47426000259B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AFC26971AA47426000259B9 /* Main.storyboard */; };
-		0AFC26AE1AA4AA75000259B9 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFC26AD1AA4AA75000259B9 /* ContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A4DE50F1AA58FE100BC2D12 /* SideBarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewCell.swift; sourceTree = "<group>"; };
 		0A65FC6E1AA0A726009C79B7 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		0A65FC711AA0A726009C79B7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A65FC731AA0A726009C79B7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -69,9 +74,28 @@
 		0A6EDE2F1A9302F900F7562E /* MonitoringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonitoringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6EDE341A9302F900F7562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6EDE351A9302F900F7562E /* MonitoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringTests.swift; sourceTree = "<group>"; };
-		0AFC26951AA45E59000259B9 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		0A87EB1F1AA71E9800C5A9B1 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
+		0A87EB201AA71E9800C5A9B1 /* FacingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacingView.m; sourceTree = "<group>"; };
+		0A87EB211AA71E9800C5A9B1 /* FoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldView.h; sourceTree = "<group>"; };
+		0A87EB221AA71E9800C5A9B1 /* FoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldView.m; sourceTree = "<group>"; };
+		0A87EB231AA71E9800C5A9B1 /* MultiFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiFoldView.h; sourceTree = "<group>"; };
+		0A87EB241AA71E9800C5A9B1 /* MultiFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiFoldView.m; sourceTree = "<group>"; };
+		0A87EB251AA71E9800C5A9B1 /* PaperFoldConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldConstants.h; sourceTree = "<group>"; };
+		0A87EB261AA71E9800C5A9B1 /* PaperFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldView.h; sourceTree = "<group>"; };
+		0A87EB271AA71E9800C5A9B1 /* PaperFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperFoldView.m; sourceTree = "<group>"; };
+		0A87EB281AA71E9800C5A9B1 /* ShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowView.h; sourceTree = "<group>"; };
+		0A87EB291AA71E9800C5A9B1 /* ShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowView.m; sourceTree = "<group>"; };
+		0A87EB2A1AA71E9800C5A9B1 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
+		0A87EB2B1AA71E9800C5A9B1 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
+		0A87EB331AA71F2500C5A9B1 /* PaperFoldMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldMenuController.h; sourceTree = "<group>"; };
+		0A87EB341AA71F2500C5A9B1 /* PaperFoldMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperFoldMenuController.m; sourceTree = "<group>"; };
+		0A87EB351AA71F2500C5A9B1 /* PaperFoldMenuControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldMenuControllerDelegate.h; sourceTree = "<group>"; };
+		0A87EB371AA71F7500C5A9B1 /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
+		0A87EB381AA722E600C5A9B1 /* DemoMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoMenuController.h; sourceTree = "<group>"; };
+		0A87EB391AA722E600C5A9B1 /* DemoMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMenuController.m; sourceTree = "<group>"; };
+		0A87EB3A1AA722E600C5A9B1 /* DemoRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoRootViewController.h; sourceTree = "<group>"; };
+		0A87EB3B1AA722E600C5A9B1 /* DemoRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoRootViewController.m; sourceTree = "<group>"; };
 		0AFC26981AA47426000259B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Monitoring/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0AFC26AD1AA4AA75000259B9 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +144,6 @@
 		0A65FC6F1AA0A726009C79B7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0AFC26941AA44AF8000259B9 /* SideBarViewController */,
 				0A65FC701AA0A726009C79B7 /* AppDelegate */,
 				0A65FC721AA0A726009C79B7 /* LoginViewController */,
 				0A65FC741AA0A726009C79B7 /* ProjectViewController */,
@@ -186,6 +209,9 @@
 		0A65FC8B1AA0A741009C79B7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				0A87EB371AA71F7500C5A9B1 /* Bridge-Header.h */,
+				0A87EB321AA71F2500C5A9B1 /* PaperFoldController */,
+				0A87EB1E1AA71E9700C5A9B1 /* PaperFold */,
 				0A65FC8C1AA0A741009C79B7 /* CustomButton.swift */,
 				0A65FC8D1AA0A741009C79B7 /* CustomSegue.swift */,
 				0A65FC8E1AA0A741009C79B7 /* CustomSegueUnwind.swift */,
@@ -252,14 +278,38 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0AFC26941AA44AF8000259B9 /* SideBarViewController */ = {
+		0A87EB1E1AA71E9700C5A9B1 /* PaperFold */ = {
 			isa = PBXGroup;
 			children = (
-				0AFC26AD1AA4AA75000259B9 /* ContainerViewController.swift */,
-				0AFC26951AA45E59000259B9 /* SideBarViewController.swift */,
-				0A4DE50F1AA58FE100BC2D12 /* SideBarTableViewCell.swift */,
+				0A87EB1F1AA71E9800C5A9B1 /* FacingView.h */,
+				0A87EB201AA71E9800C5A9B1 /* FacingView.m */,
+				0A87EB211AA71E9800C5A9B1 /* FoldView.h */,
+				0A87EB221AA71E9800C5A9B1 /* FoldView.m */,
+				0A87EB231AA71E9800C5A9B1 /* MultiFoldView.h */,
+				0A87EB241AA71E9800C5A9B1 /* MultiFoldView.m */,
+				0A87EB251AA71E9800C5A9B1 /* PaperFoldConstants.h */,
+				0A87EB261AA71E9800C5A9B1 /* PaperFoldView.h */,
+				0A87EB271AA71E9800C5A9B1 /* PaperFoldView.m */,
+				0A87EB281AA71E9800C5A9B1 /* ShadowView.h */,
+				0A87EB291AA71E9800C5A9B1 /* ShadowView.m */,
+				0A87EB2A1AA71E9800C5A9B1 /* UIView+Screenshot.h */,
+				0A87EB2B1AA71E9800C5A9B1 /* UIView+Screenshot.m */,
 			);
-			path = SideBarViewController;
+			path = PaperFold;
+			sourceTree = "<group>";
+		};
+		0A87EB321AA71F2500C5A9B1 /* PaperFoldController */ = {
+			isa = PBXGroup;
+			children = (
+				0A87EB381AA722E600C5A9B1 /* DemoMenuController.h */,
+				0A87EB391AA722E600C5A9B1 /* DemoMenuController.m */,
+				0A87EB3A1AA722E600C5A9B1 /* DemoRootViewController.h */,
+				0A87EB3B1AA722E600C5A9B1 /* DemoRootViewController.m */,
+				0A87EB331AA71F2500C5A9B1 /* PaperFoldMenuController.h */,
+				0A87EB341AA71F2500C5A9B1 /* PaperFoldMenuController.m */,
+				0A87EB351AA71F2500C5A9B1 /* PaperFoldMenuControllerDelegate.h */,
+			);
+			path = PaperFoldController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,24 +413,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A65FC831AA0A726009C79B7 /* AddProjectViewController.swift in Sources */,
-				0AFC26961AA45E59000259B9 /* SideBarViewController.swift in Sources */,
-				0A4DE5101AA58FE100BC2D12 /* SideBarTableViewCell.swift in Sources */,
 				0A65FC811AA0A726009C79B7 /* AppDelegate.swift in Sources */,
 				0A65FC851AA0A726009C79B7 /* ProjectTableViewController.swift in Sources */,
+				0A87EB311AA71E9800C5A9B1 /* UIView+Screenshot.m in Sources */,
 				0A6EDE201A9302F800F7562E /* Monitoring.xcdatamodeld in Sources */,
+				0A87EB2C1AA71E9800C5A9B1 /* FacingView.m in Sources */,
 				0A65FC951AA0A7F6009C79B7 /* CommanClass.swift in Sources */,
 				0A65FC901AA0A741009C79B7 /* CustomButton.swift in Sources */,
 				0A65FC841AA0A726009C79B7 /* CustomTableViewCell.swift in Sources */,
 				0A65FC891AA0A726009C79B7 /* TaskTableViewController.swift in Sources */,
 				0A65FC881AA0A726009C79B7 /* CustomTaskViewCell.swift in Sources */,
+				0A87EB3D1AA722E600C5A9B1 /* DemoRootViewController.m in Sources */,
 				0A65FC8A1AA0A726009C79B7 /* ViewController.swift in Sources */,
+				0A87EB2D1AA71E9800C5A9B1 /* FoldView.m in Sources */,
 				0A65FC861AA0A726009C79B7 /* SignUpViewController.swift in Sources */,
-				0AFC26AE1AA4AA75000259B9 /* ContainerViewController.swift in Sources */,
+				0A87EB2F1AA71E9800C5A9B1 /* PaperFoldView.m in Sources */,
 				0A65FC921AA0A741009C79B7 /* CustomSegueUnwind.swift in Sources */,
 				0A65FC821AA0A726009C79B7 /* LoginViewController.swift in Sources */,
+				0A87EB3C1AA722E600C5A9B1 /* DemoMenuController.m in Sources */,
 				0A65FC801AA0A726009C79B7 /* Project.swift in Sources */,
+				0A87EB361AA71F2500C5A9B1 /* PaperFoldMenuController.m in Sources */,
 				0A65FC911AA0A741009C79B7 /* CustomSegue.swift in Sources */,
+				0A87EB2E1AA71E9800C5A9B1 /* MultiFoldView.m in Sources */,
 				0A65FC931AA0A741009C79B7 /* CustomTextFieldBlurView.swift in Sources */,
+				0A87EB301AA71E9800C5A9B1 /* ShadowView.m in Sources */,
 				0A65FC871AA0A726009C79B7 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +517,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -496,6 +553,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -508,6 +566,7 @@
 				INFOPLIST_FILE = Monitoring/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
 			};
 			name = Debug;
 		};
@@ -519,6 +578,7 @@
 				INFOPLIST_FILE = Monitoring/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
 			};
 			name = Release;
 		};

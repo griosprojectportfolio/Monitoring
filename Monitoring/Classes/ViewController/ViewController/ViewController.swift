@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: PaperFoldMenuController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
   
+      self.sideBarbtntapped()
 
     }
 
