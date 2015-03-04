@@ -86,7 +86,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
             }
             self.vwOverTable.hidden = false
             self.view.bringSubviewToFront(self.vwOverTable)
-
             var vc = self.storyboard?.instantiateViewControllerWithIdentifier("taskStorayBoardID") as TaskTableViewController
             self.navigationController?.pushViewController(vc, animated: true)
           })
