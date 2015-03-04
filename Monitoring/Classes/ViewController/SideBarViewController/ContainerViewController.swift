@@ -14,7 +14,7 @@ enum SlideOutState {
   case LeftPanelExpanded
 }
 
-class ContainerViewController: UIViewController,ProjectTableViewControllerDelegates {
+class ContainerViewController: UIViewController {
   var centerNavigationController: UINavigationController!
   var centerViewController: ProjectTableViewController!
 
@@ -34,7 +34,6 @@ class ContainerViewController: UIViewController,ProjectTableViewControllerDelega
     super.viewDidLoad()
 
     centerViewController = UIStoryboard.centerViewController()
-    centerViewController.delegate = self
 
     centerNavigationController = UINavigationController(rootViewController: centerViewController)
     view.addSubview(centerNavigationController.view)
@@ -80,12 +79,12 @@ class ContainerViewController: UIViewController,ProjectTableViewControllerDelega
 
 
   func addChildSidePanelController(sidePanelController: SideBarViewController) {
-    sidePanelController.delegate = centerViewController
-
-    view.insertSubview(sidePanelController.view, atIndex: 0)
-
-    addChildViewController(sidePanelController)
-    sidePanelController.didMoveToParentViewController(self)
+//    sidePanelController.delegate = centerViewController
+//
+//    view.insertSubview(sidePanelController.view, atIndex: 0)
+//
+//    addChildViewController(sidePanelController)
+//    sidePanelController.didMoveToParentViewController(self)
   }
 
   func animateLeftPanel(#shouldExpand: Bool) {

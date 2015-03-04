@@ -77,21 +77,19 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         btnDelete.addTarget(self, action: "qwertty", forControlEvents: UIControlEvents.TouchUpInside)
         self.vwBackgroundVw.addSubview(btnDelete)
       
-      btnCellUp = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:0 ,width:60 , height:42))
-      btnCellUp.backgroundColor = UIColor.redColor()
-      btnCellUp.tag = row
-      //btnCellUp .setTitle("Up", forState:UIControlState.Normal)
-      btnCellUp.setImage(UIImage(named: "up.png"), forState: UIControlState.Normal)
-    btnCellUp.userInteractionEnabled = true
-      btnCellUp.addTarget(self, action: "handleCellUpButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-      self.vwBackgroundVw.addSubview(btnCellUp)
-      
-      btnCellDown = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:btnCellUp.frame.size.height+1,width:60 , height:42))
-      btnCellDown.backgroundColor = UIColor.redColor()
-      //btnCellDown .setTitle("Down", forState:UIControlState.Normal)
-      btnCellDown.setImage(UIImage(named: "down.png"), forState: UIControlState.Normal)
-      self.vwBackgroundVw.addSubview(btnCellDown)
-
+        btnCellUp = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:0 ,width:60 , height:42))
+        btnCellUp.backgroundColor = UIColor.redColor()
+        btnCellUp.tag = row
+        //btnCellUp .setTitle("Up", forState:UIControlState.Normal)
+        btnCellUp.setImage(UIImage(named: "up.png"), forState: UIControlState.Normal)
+        btnCellUp.userInteractionEnabled = true
+        self.vwBackgroundVw.addSubview(btnCellUp)
+          
+        btnCellDown = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:btnCellUp.frame.size.height+1,width:60 , height:42))
+        btnCellDown.backgroundColor = UIColor.redColor()
+        //btnCellDown .setTitle("Down", forState:UIControlState.Normal)
+        btnCellDown.setImage(UIImage(named: "down.png"), forState: UIControlState.Normal)
+        self.vwBackgroundVw.addSubview(btnCellDown)
 
         var panGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
         panGesture.delegate = self
@@ -138,21 +136,23 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         vwDescription.addSubview(dotView)
     }
     func handleTapGesture (tapgesture:UITapGestureRecognizer) {
-
          var point:CGPoint = tapgesture.locationInView(self)
-        if (CGRectIntersectsRect(CGRectMake(60, 0, 70, 70),CGRectMake(point.x, point.y, 10, 10))) {
+        if (CGRectIntersectsRect(CGRectMake(60, 0, 60, 70),CGRectMake(point.x, point.y, 10, 10))) {
             delegate?.handleDeleteCell(self.tag)
+        } else if (CGRectIntersectsRect(CGRectMake(0, 0, 60, 42),CGRectMake(point.x, point.y, 10, 10))) {
+            delegate?.handleUpButtonEvent(self.tag)
+            self.tag = self.tag-1//update cell index
+        } else if (CGRectIntersectsRect(CGRectMake(0, 42, 60, 42),CGRectMake(point.x, point.y, 10, 10))) {
+            delegate?.handleDownButtonEvent(self.tag)
+            self.tag = self.tag+1//update cell index
         }
     }
 
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) {
-
-
        delegate?.handleSwipeLeft(gestureRecognizer)
     }
 
     func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer) {
-
         delegate?.handleSwipeRight(gestureRecognizer)
     }
 }

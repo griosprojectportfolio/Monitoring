@@ -34,8 +34,8 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
     self.navigationController?.navigationBar.translucent = false
 
-    let project = [Project (projectName: "Kindergarton", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
-        ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton5", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015")]
+    let project = [Project (projectName: "Kindergarton1", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
+        ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton7", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton8", projectDueDate: "15/02/2015")]
 
     arryProject = project
     println(arryProject)
@@ -49,7 +49,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     self.tableView.hidden = false
   }
 
-  
 // Mark:Adding The NAvigation Bar Button
   
   func addNavigationBarButtons(){
@@ -63,7 +62,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     var btnNaviRightBarButton:UIBarButtonItem = UIBarButtonItem()
   
   }
-  
   
   @IBAction func handleRightNaviButtonAction(sender:UIButton){
         
@@ -86,13 +84,13 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
                 for var iLoop:Int = 0 ; iLoop<self.arryOfDeleteSelectedCell.count; iLoop++ {
                 if (self.arryOfDeleteSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
-                    cell.vwBackgroundVw.frame = CGRectMake(0 ,yAxis, frame.size.width, 90)
+                    cell.vwBackgroundVw.frame = CGRectMake(0 ,cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
                     self.arryOfDeleteSelectedCell.removeObjectAtIndex(iLoop)
                     self.isRightSwipe = true
                     return
                     }
                 }
-                cell.frame = CGRectMake(-frame.size.width ,yAxis, frame.size.width, 90)
+                cell.frame = CGRectMake(-frame.size.width ,cell.frame.origin.y, frame.size.width, 90)
 
         }, completion: { (Bool) -> Void in
 
@@ -127,35 +125,50 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-260),cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
         }, completion: { (Bool) -> Void in
             self.arryOfDeleteSelectedCell.addObject(row!)
-            // cell.deleteButoon.transform = CGAffineTransformMakeRotation(M_PI/2);
-//            [myView animateWithDuration: 0.25
-//                animations:
-//                ^{
-//                myView.transform = CGAffineTransformMakeRotation(M_PI/2);
-//                }
-//            ];
-
       })
     }
   }
 
     func handleDeleteCell(btnTag:Int) {
-
-        print(btnTag)
+        print("tag\(btnTag)")
         var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
         self.arryProject.removeAtIndex(btnTag)
-        println(self.arryProject.count)
-        self.tableView .deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-        // self.tableView.reloadData()
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
+        cell.vwBackgroundVw.removeFromSuperview()
+        cell.btnCellDown.removeFromSuperview()
+        cell.btnCellUp.removeFromSuperview()
+        cell.btnDelete.removeFromSuperview()
+
+        println(self.arryProject)
+        self.tableView.reloadData()
     }
 
+    func handleDownButtonEvent(btnTag:Int)  {
+
+        print(btnTag)
+        var indexPathCurrent = NSIndexPath (forRow:btnTag, inSection:0)
+        var indexPathDest = NSIndexPath (forRow:btnTag+1, inSection:0)
+
+        self.tableView.moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+        var projectObj:Project = self.arryProject[btnTag]
+        println("\n\(self.arryProject.count)")
+        self.arryProject.removeAtIndex(btnTag)
+        self.arryProject.insert(projectObj, atIndex: btnTag+1)
+//        for (var project:Project) in (self.arryProject) {
+//            println("After\n\(project.projectName)")
+//        }
+    }
 
     func handleUpButtonEvent(btnTag:Int) {
+        print(btnTag)
+        var indexPathCurrent = NSIndexPath (forRow:btnTag, inSection:0)
+        var indexPathDest = NSIndexPath (forRow:btnTag-1, inSection:0)
 
-    }
-
-    func handleDownButtonEvent(btnTag:Int) {
-
+        self.tableView .moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+        var projectObj:Project = self.arryProject[btnTag]
+        self.arryProject.removeAtIndex(btnTag)
+        self.arryProject.insert(projectObj, atIndex: btnTag-1)
     }
 
   override func didReceiveMemoryWarning() {
@@ -176,6 +189,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
+    println("*********\(indexPath.row)" )
     cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame)
     cell.delegate = self
     cell.imageView.image = UIImage(named: "projectlogo.png")
