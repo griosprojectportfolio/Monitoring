@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 GrepRuby. All rights reserved.
 //
 
+import Foundation
+
 import UIKit
 
 class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomProjectCellDelegate {
@@ -53,15 +55,20 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
   func addNavigationBarButtons(){
     var btnSetting:UIButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
     btnSetting.setImage(UIImage(named: "sideBar.png"), forState:UIControlState.Normal)
+    btnSetting.addTarget(self, action: "handleRightNaviButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
     
     var btnNaviLeftBarButton:UIBarButtonItem = UIBarButtonItem(customView: btnSetting)
     self.navigationItem.setLeftBarButtonItem(btnNaviLeftBarButton, animated: true)
     
     var btnNaviRightBarButton:UIBarButtonItem = UIBarButtonItem()
-    
+  
   }
   
   
+  @IBAction func handleRightNaviButtonAction(sender:UIButton){
+        
+  }
+        
   
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) { //animation to go to next view
         var location = gestureRecognizer.locationInView(self.tableView)
@@ -118,7 +125,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         
         var frame = self.tableView.frame
         cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-260),cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
-    
         }, completion: { (Bool) -> Void in
             self.arryOfDeleteSelectedCell.addObject(row!)
             // cell.deleteButoon.transform = CGAffineTransformMakeRotation(M_PI/2);
@@ -196,6 +202,15 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         gl.locations = [ 0.0, 1.0]
     self.tableView.layer.insertSublayer(gl, atIndex: 0)
     gl.frame = self.tableView.frame;
+  }
+  
+  func handleCellUpButtonAction(sender:UIButton){
+    
+    var btn:UIButton = sender as UIButton
+    
+    var indexCurrent:NSIndexPath = NSIndexPath(index: btn.tag)
+    var indexDesin:NSIndexPath = NSIndexPath(index: btn.tag + 1)
+    tableView.moveRowAtIndexPath(indexCurrent, toIndexPath:indexDesin)
   }
 }
 
