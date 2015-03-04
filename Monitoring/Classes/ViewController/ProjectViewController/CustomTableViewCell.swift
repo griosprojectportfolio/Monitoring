@@ -135,6 +135,8 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         dotView.layer.borderColor = dotcolor.CGColor
         vwDescription.addSubview(dotView)
     }
+
+    //handle gesture
     func handleTapGesture (tapgesture:UITapGestureRecognizer) {
          var point:CGPoint = tapgesture.locationInView(self)
         if (CGRectIntersectsRect(CGRectMake(60, 0, 60, 70),CGRectMake(point.x, point.y, 10, 10))) {
@@ -148,6 +150,7 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         }
     }
 
+    //handle swipe delegate
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) {
        delegate?.handleSwipeLeft(gestureRecognizer)
     }

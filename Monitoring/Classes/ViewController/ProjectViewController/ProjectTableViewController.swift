@@ -40,7 +40,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     arryProject = project
     println(arryProject)
     self.tableView.editing = false
-    self.addNavigationBarButtons()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -49,22 +48,10 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     self.tableView.hidden = false
   }
 
-// Mark:Adding The NAvigation Bar Button
-  
-  func addNavigationBarButtons(){
-    var btnSetting:UIButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
-    btnSetting.setImage(UIImage(named: "sideBar.png"), forState:UIControlState.Normal)
-    btnSetting.addTarget(self, action: "handleRightNaviButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    var btnNaviLeftBarButton:UIBarButtonItem = UIBarButtonItem(customView: btnSetting)
-    self.navigationItem.setLeftBarButtonItem(btnNaviLeftBarButton, animated: true)
-    
-    var btnNaviRightBarButton:UIBarButtonItem = UIBarButtonItem()
-  
-  }
-  
-  @IBAction func handleRightNaviButtonAction(sender:UIButton){
-        
+ @IBAction func addProjectBtnTapped (sender:UIButton){
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    var vwController:AddProjectViewController = storyboard.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID") as AddProjectViewController
+    self.navigationController?.pushViewController(vwController, animated:true)
   }
         
   
@@ -205,11 +192,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 90
-  }
-  
-  @IBAction func raightNAvigationBarButtonAction(sender:UIBarButtonItem){
-    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID")as AddProjectViewController
-    self.navigationController?.pushViewController(vc, animated: true)
   }
   
   //Function to set backgroundColor
