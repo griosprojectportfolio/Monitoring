@@ -30,10 +30,9 @@
  * @version
  *
  */
-
 #import "PaperFoldMenuController.h"
-
-//#import "DemoRootViewController.h"
+#import  <Monitoring-Swift.h>
+    //#import "DemoRootViewController.h"
 
 @interface PaperFoldMenuController () {
   
@@ -51,14 +50,20 @@
 -(void) awakeFromNib
 {
   [super awakeFromNib];
+
+        //category with loop of view controller
   
-  
-  UIViewController *vwControll =   [self.storyboard instantiateViewControllerWithIdentifier:@"PaperFoldMenuController-1"];
-  UINavigationController *navCotroller = [[UINavigationController alloc]initWithRootViewController:vwControll];
-  
+    ProjectTableViewController *vwControll = [self.storyboard instantiateViewControllerWithIdentifier:@"PaperFoldMenuController-1"];
+    vwControll.objPaperFoldVC = self;
+    UINavigationController *navCotroller = [[UINavigationController alloc]initWithRootViewController:vwControll];
+
+    TaskTableViewController *vwControllTask = [self.storyboard instantiateViewControllerWithIdentifier:@"taskStorayBoardID"];
+    vwControllTask.objPaperFoldVC = self;
+    UINavigationController *navCotrollerTask = [[UINavigationController alloc]initWithRootViewController:vwControllTask];
+    navCotrollerTask.title = @"TaskList";
+
     NSMutableArray *viewControllers = [NSMutableArray arrayWithObjects:
-                      navCotroller,
-                      [self.storyboard instantiateViewControllerWithIdentifier:@"PaperFoldMenuController-2"],
+                      navCotroller,navCotrollerTask,
                       [self.storyboard instantiateViewControllerWithIdentifier:@"PaperFoldMenuController-3"],
                        nil];
 
@@ -163,7 +168,7 @@
 - (void)commonInit
 {
     _selectedIndex = NSNotFound;
-   self.menuWidth = 80;
+   self.menuWidth = 200;
 }
 
 - (id)initWithMenuWidth:(float)menuWidth
@@ -208,8 +213,12 @@
     [contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
     [self.paperFoldView setCenterContentView:contentView];
     self.contentView = contentView;
-    
-    UITableView *menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.menuWidth, [self.view bounds].size.height)];
+
+    UIImageView *imgVwProfilePic = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+    imgVwProfilePic.frame = CGRectMake(40, 50, 120, 120);
+    [self.view addSubview:imgVwProfilePic];
+
+    UITableView *menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, self.menuWidth, [self.view bounds].size.height)];
     [self.paperFoldView setLeftFoldContentView:menuTableView foldCount:1 pullFactor:0.9];
     [menuTableView setDelegate:self];
     [menuTableView setDataSource:self];
@@ -230,11 +239,12 @@
         theBlock();
     }
     self.viewDidLoadBlocks = nil;
+    [self addGradientLayer];
 }
 
-- (void)sideBarbtntapped {
+- (void)sideBarbtntapped:(BOOL)isToggle {
   
-  [paperFoldView sideBarbtntapped1];
+    [paperFoldView sideBarbtntapped1:isToggle];
 }
 
 - (void)setViewControllers:(NSMutableArray *)viewControllers
@@ -278,8 +288,10 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
-        
+
         UIViewController *viewController = self.viewControllers[indexPath.row];
+        NSLog(@"%@", viewController.title);
+
         [cell.textLabel setText:viewController.title];
         
         if (indexPath.row==self.selectedIndex)
@@ -342,6 +354,14 @@
 - (void)paperFoldView:(id)thePaperFoldView didFoldAutomatically:(BOOL)theAutomated toState:(PaperFoldState)thePaperFoldState {
     BOOL thePaperFoldViewDidFold = (thePaperFoldState == PaperFoldStateDefault);
     self.menuTableView.scrollsToTop = !thePaperFoldViewDidFold;
+}
+
+- (void) addGradientLayer {
+
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc]init];
+    gradientLayer.colors = @[(id)[UIColor colorWithRed:65.0/255.0 green:104.0/255.0 blue:183.0/255.0 alpha:1.0].CGColor,(id)[UIColor colorWithRed:68.0/255.0 green:136.0/255.0 blue:224.0/255.0 alpha:1.0].CGColor,(id)[UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1.0].CGColor];
+    [self.view.layer insertSublayer:gradientLayer atIndex:0];
+    gradientLayer.frame = self.view.frame;
 }
 
 @end

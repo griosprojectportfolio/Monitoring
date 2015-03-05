@@ -33,13 +33,17 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
     self.addBuleEffectImageView()
   }
   
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    self.animationOfTextField()
+  }
+  
   func handelNaviBackButtonAction(){
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
   
   func addBuleEffectImageView(){
-           
-    var frame2:CGRect = CGRect(x:self.view.frame.origin.x, y: (self.view.frame.size.height-150)/2, width:self.view.frame.size.width , height: 44)
+    var frame2:CGRect = CGRect(x:self.view.frame.size.width, y:150, width:self.view.frame.size.width , height: 44)
     projectNameTextField = CustomTextFieldBlurView(frame:frame2, imgName:"projectName")
     projectNameTextField.userInteractionEnabled = true
     projectNameTextField.delegate = self;
@@ -52,14 +56,21 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
     self.view.addSubview(visualEffectVwProjectName)
     self.view.addSubview(projectNameTextField)
 
-    var frame3:CGRect = CGRect(x:frame2.origin.x, y: frame2.origin.y+frame2.height+1, width:self.view.frame.size.width , height: 44)
+    var frame3:CGRect = CGRect(x:frame2.size.width, y: frame2.origin.y+frame2.height+1, width:self.view.frame.size.width , height: 44)
+    
     dueDateTextField = CustomTextFieldBlurView(frame:frame3, imgName:"duDate2")
     dueDateTextField.userInteractionEnabled = true
     dueDateTextField.delegate = self;
     dueDateTextField.attributedPlaceholder = NSAttributedString(string:"Due Date",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
+    var blur2:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+    visualEffectVwDueDate = UIVisualEffectView (effect: blur2)
+    visualEffectVwDueDate.frame = dueDateTextField.frame
+    
+    self.view.addSubview(visualEffectVwDueDate)
+    
     self.view.addSubview(dueDateTextField)
 
-    addProjectButton = CustomButton(frame:CGRect(x: -1, y: frame3.origin.y + 120, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Sumbit", color:.whiteColor())
+    addProjectButton = CustomButton(frame:CGRect(x: -400, y: frame3.origin.y + 120, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Sumbit", color:.whiteColor())
     addProjectButton.imageVwBackground.alpha = 0.5
     addProjectButton.delegate = self
     self.view.addSubview(addProjectButton)

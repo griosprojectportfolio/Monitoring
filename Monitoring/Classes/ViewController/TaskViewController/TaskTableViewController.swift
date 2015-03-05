@@ -10,8 +10,10 @@ import UIKit
 
 class TaskTableViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
   
-    @IBOutlet weak var addTaskButton:UIBarButtonItem!
+    var addTaskButton:UIBarButtonItem!
     @IBOutlet weak var tbleVwTask:UITableView!
+    var objPaperFoldVC:PaperFoldMenuController!
+    var appDelegateObj:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
   var projectFeeds:NSArray = ["Socialintegration","gjhgjhgjhgjhgjhgjhgjhgjhgjhgjhghjghjghjghjgjhghjgjhgjhgjhgjhgjhgjhgjhgjhgjhgjhgjhgjhghjgjhgjhghjghgjhgjhfkldjshglsdkjghfldkjghlkfjdhglskhflkjhlskjhflkgjhslgkdjhslkfjhgklsjfhksjdhgldkfjghlskjhfgldksjhdlkfgjhlsdkjhgklsjghdfkljgh","XYz"]
   
@@ -21,15 +23,41 @@ class TaskTableViewController: UIViewController , UITableViewDataSource, UITable
     self.navigationItem.hidesBackButton = true
     self.title = "Task List"
 
-    var backButton:UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "handleBackButtonAction")
+    self.navigationController?.navigationBar.barTintColor = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+
+    var backButton:UIBarButtonItem = UIBarButtonItem(title: "sideBar", style: UIBarButtonItemStyle.Plain, target: self, action: "handleBackButtonAction")
     self.navigationItem.setLeftBarButtonItem(backButton, animated: true)
     
+    addTaskButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleRightNaviButtonAction")
+    self.navigationItem.setRightBarButtonItem(addTaskButton, animated: true)
   }
-  
+
   func handleBackButtonAction(){
     self.navigationController?.popViewControllerAnimated(true)
   }
   
+  func handleRightNaviButtonAction(){
+    var vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddTaskView") as AddTaskViewController
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
+
+    override func viewWillAppear(animated: Bool) {
+        appDelegateObj.isTogglrSideBar = false
+    }
+
+    @IBAction func sideBarBtnTapped (sender:UIButton){
+        if (appDelegateObj.isTogglrSideBar == true) {
+            appDelegateObj.isTogglrSideBar = false
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        } else {
+            appDelegateObj.isTogglrSideBar = true
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        }
+    }
+    
   
   @IBAction func handleAddButtonAction(sender:UIBarButtonItem){
     

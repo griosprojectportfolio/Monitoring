@@ -84,11 +84,11 @@
     [_contentView setBackgroundColor:[UIColor whiteColor]];
     [_contentView setAutoresizesSubviews:YES];
     
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onContentViewPanned:)];
-	panGestureRecognizer.delegate = self;
-    [_contentView addGestureRecognizer:panGestureRecognizer];
-   [panGestureRecognizer setDelegate:self];
-    
+//    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onContentViewPanned:)];
+//	panGestureRecognizer.delegate = self;
+//    [_contentView addGestureRecognizer:panGestureRecognizer];
+//   [panGestureRecognizer setDelegate:self];
+
     _state = PaperFoldStateDefault;
     _lastState = _state;
     _enableRightFoldDragging = NO;
@@ -137,23 +137,63 @@
     self.enableLeftFoldDragging = YES;
 }
 
-- (void)sideBarbtntapped1 {
-    // cancel gesture if another animation has not finished yet
-    if ([self.animationTimer isValid]) return;
-		[self setShowDividerLines:YES animated:YES];
-    [self onContentViewPannedHorizontally:nil];
-        
-			// hide the divider line
-			//[self setShowDividerLines:NO animated:YES];
-}
+
+ - (void)sideBarbtntapped1:(BOOL)isToggle {
+ // cancel gesture if another animation has not finished yet
+     if ([self.animationTimer isValid]) return;
+
+     if (isToggle == YES) {
+
+             //_state = PaperFoldStateLeftUnfolded;
+         [self setShowDividerLines:YES animated:YES];
+         [self onContentViewPannedHorizontally1:CGPointMake(70, 50)];
+     } else {
+        // hide the divider line
+         _state = PaperFoldStateDefault;
+         [self onContentViewPannedHorizontally1:CGPointMake(0, 0)];
+         [self setShowDividerLines:NO animated:YES];
+    }
+ }
+
+ - (void)onContentViewPannedHorizontally1:(CGPoint)point
+ {
+ [self.leftFoldView setHidden:NO];
+
+ if (_state==PaperFoldStateDefault) {
+ // animate folding when panned
+ [self animateWithContentOffset:point panned:YES];
+ } else if (_state==PaperFoldStateLeftUnfolded) {
+
+ CGPoint adjustedPoint = CGPointMake(point.x + self.leftFoldView.frame.size.width, point.y);
+ [self animateWithContentOffset:adjustedPoint panned:YES];
+ }
+ float x = point.x;
+ if (x>=0.0) {// offset to the right
+ if ( (x>=kLeftViewUnfoldThreshold*self.leftFoldView.frame.size.width && _state==PaperFoldStateDefault) || [self.contentView frame].origin.x==self.leftFoldView.frame.size.width) {
+
+ if (self.enableLeftFoldDragging) {
+
+ // if offset more than threshold, open fully
+ self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(unfoldLeftView:) userInfo:nil repeats:YES];
+ return;
+ }
+ }
+
+ // after panning completes
+ // if offset does not exceed threshold
+ // use NSTimer to create manual animation to restore view
+ self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(restoreView:) userInfo:nil repeats:YES];
+ }
+ }
 
 
- 
+
+
  - (void)onContentViewPanned:(UIPanGestureRecognizer*)gesture
  {
  // cancel gesture if another animation has not finished yet
  if ([self.animationTimer isValid]) return;
- 
+
  if ([gesture state]==UIGestureRecognizerStateBegan)
  {
  // show the divider while dragging
@@ -172,46 +212,46 @@
  }
  
 
-- (void)onContentViewPannedHorizontally:(UIPanGestureRecognizer*)gesture
-{
-    [self.leftFoldView setHidden:NO];
-
-    CGPoint point = [gesture translationInView:self];
-    if ([gesture state]==UIGestureRecognizerStateChanged)
-    {
-        if (_state==PaperFoldStateDefault)
-        {
-            // animate folding when panned
-            [self animateWithContentOffset:point panned:YES];
-        }
-        else if (_state==PaperFoldStateLeftUnfolded)
-        {
-            CGPoint adjustedPoint = CGPointMake(point.x + self.leftFoldView.frame.size.width, point.y);
-            [self animateWithContentOffset:adjustedPoint panned:YES];
-        }
-    }
-    else if ([gesture state]==UIGestureRecognizerStateEnded || [gesture state]==UIGestureRecognizerStateCancelled)
-    {
-        float x = point.x;
-        if (x>=0.0) // offset to the right
-        {
-            if ( (x>=kLeftViewUnfoldThreshold*self.leftFoldView.frame.size.width && _state==PaperFoldStateDefault) || [self.contentView frame].origin.x==self.leftFoldView.frame.size.width)
-            {
-                if (self.enableLeftFoldDragging)
-                {
-                    // if offset more than threshold, open fully
-                    self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(unfoldLeftView:) userInfo:nil repeats:YES];
-                    return;
-                }
-            }
-        }
-        
-        // after panning completes
-        // if offset does not exceed threshold
-        // use NSTimer to create manual animation to restore view
-        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(restoreView:) userInfo:nil repeats:YES];
-    }
-}
+//- (void)onContentViewPannedHorizontally:(UIPanGestureRecognizer*)gesture
+//{
+//    [self.leftFoldView setHidden:NO];
+//
+//    CGPoint point = [gesture translationInView:self];
+//    if ([gesture state]==UIGestureRecognizerStateChanged)
+//    {
+//        if (_state==PaperFoldStateDefault)
+//        {
+//            // animate folding when panned
+//            [self animateWithContentOffset:point panned:YES];
+//        }
+//        else if (_state==PaperFoldStateLeftUnfolded)
+//        {
+//            CGPoint adjustedPoint = CGPointMake(point.x + self.leftFoldView.frame.size.width, point.y);
+//            [self animateWithContentOffset:adjustedPoint panned:YES];
+//        }
+//    }
+//    else if ([gesture state]==UIGestureRecognizerStateEnded || [gesture state]==UIGestureRecognizerStateCancelled)
+//    {
+//        float x = point.x;
+//        if (x>=0.0) // offset to the right
+//        {
+//            if ( (x>=kLeftViewUnfoldThreshold*self.leftFoldView.frame.size.width && _state==PaperFoldStateDefault) || [self.contentView frame].origin.x==self.leftFoldView.frame.size.width)
+//            {
+//                if (self.enableLeftFoldDragging)
+//                {
+//                    // if offset more than threshold, open fully
+//                    self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(unfoldLeftView:) userInfo:nil repeats:YES];
+//                    return;
+//                }
+//            }
+//        }
+//        
+//        // after panning completes
+//        // if offset does not exceed threshold
+//        // use NSTimer to create manual animation to restore view
+//        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(restoreView:) userInfo:nil repeats:YES];
+//    }
+//}
 
 - (void)animateWithContentOffset:(CGPoint)point panned:(BOOL)panned
 {

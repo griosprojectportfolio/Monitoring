@@ -57,8 +57,8 @@
         UIViewController *viewController = self.viewControllers[indexPath.row];
         [cell.textLabel setText:viewController.title];
         
-        if (indexPath.row == self.selectedIndex)
-        {
+        if (indexPath.row == self.selectedIndex) {
+
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
         

@@ -13,8 +13,6 @@ class ViewController: PaperFoldMenuController {
     override func viewDidLoad() {
         super.viewDidLoad()
   
-      self.sideBarbtntapped()
-
     }
 
     override func didReceiveMemoryWarning() {

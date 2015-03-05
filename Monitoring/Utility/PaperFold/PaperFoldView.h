@@ -99,6 +99,5 @@ typedef void (^CompletionBlock)();
 // deprecate methods
 // use setPaperFoldState: instead
 - (void)unfoldLeftView __attribute__((deprecated));
-- (void)sideBarbtntapped1;
-
+- (void)sideBarbtntapped1:(BOOL)isToggle;
 @end

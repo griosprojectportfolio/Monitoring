@@ -7,10 +7,9 @@
 //
 
 import Foundation
-
 import UIKit
 
-class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomProjectCellDelegate {
+@objc class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomProjectCellDelegate {
 
     var cellobj:CustomTableViewCell!
     @IBOutlet var vwOverTable:UIView!
@@ -18,13 +17,13 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     var isRightSwipe : Bool = false
     var arryOfDeleteSelectedCell:NSMutableArray = []
     var arryProject:[Project]!
+    var objPaperFoldVC:PaperFoldMenuController!
+    var btnBarButtonItemRightNavi:UIBarButtonItem!
+    var appDelegateObj:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
-  @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
-  
-  override func viewDidLoad() {
+    override func viewDidLoad() {
     super.viewDidLoad()
-   // self.backgroundColorOfImageView()
-    
+
     self.view.backgroundColor = UIColor.whiteColor()
     self.title = "Project List"
     self.navigationController?.navigationBar.hidden = false
@@ -38,16 +37,42 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     let project = [Project (projectName: "Kindergarton1", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
         ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton7", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton8", projectDueDate: "15/02/2015")]
 
-    arryProject = project
-    println(arryProject)
-    self.tableView.editing = false
+        arryProject = project
+        println(arryProject)
+        self.tableView.editing = false
+      
+      self.addNavigationRightButton()
   }
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     self.vwOverTable.hidden = true
     self.tableView.hidden = false
+    appDelegateObj.isTogglrSideBar = false
   }
+  
+  //Mark:Add NavigationRightButton
+  func addNavigationRightButton(){
+    btnBarButtonItemRightNavi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleNaviRightButtonAction")
+    //btnBarButtonItemRightNavi.tintColor = UIColor.whiteColor()
+    self.navigationItem.setRightBarButtonItem(btnBarButtonItemRightNavi, animated: true)
+  }
+  
+  func handleNaviRightButtonAction(){
+  var vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProject") as AddProjectViewController
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
+
+    @IBAction func sideBarBtnTapped (sender:UIButton){
+
+        if (appDelegateObj.isTogglrSideBar == true) {
+            appDelegateObj.isTogglrSideBar = false
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        } else {
+           appDelegateObj.isTogglrSideBar = true
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        }
+    }
 
  @IBAction func addProjectBtnTapped (sender:UIButton){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)

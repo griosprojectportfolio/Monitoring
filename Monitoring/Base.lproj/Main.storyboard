@@ -129,7 +129,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2cv-OX-bGE"/>
+                    <navigationItem key="navigationItem" id="2cv-OX-bGE">
+                        <barButtonItem key="leftBarButtonItem" title="SideBtn" id="RMT-5q-WXL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="sideBarBtnTapped:" destination="JXt-Pq-94K" id="0bu-7k-dgK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="DJD-4j-DxY" id="ciy-Cj-mS4"/>
@@ -291,18 +298,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZDr-fa-0gC"/>
                     <connections>
                         <outlet property="tbleVwTask" destination="oTP-q7-R4f" id="hQe-bv-BHp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrt-Sy-e9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="419"/>
+            <point key="canvasLocation" x="1955" y="419"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="HrK-rP-pK1">
             <objects>
-                <viewController id="W4g-ec-Kna" customClass="AddTaskViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTaskView" id="W4g-ec-Kna" customClass="AddTaskViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nDX-aQ-nQj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,12 +320,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2E-gk-G0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="309"/>
+            <point key="canvasLocation" x="2390" y="419"/>
         </scene>
         <!--Add Project View Controller-->
         <scene sceneID="pNv-hb-peT">
             <objects>
-                <viewController storyboardIdentifier="PaperFoldMenuController-2" id="tdk-vX-MJw" customClass="AddProjectViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddProject" id="tdk-vX-MJw" customClass="AddProjectViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aUk-bl-hob">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,6 +362,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="xK3-VE-hoY" kind="relationship" relationship="rootViewController" id="x8m-mW-sD8"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDm-hu-vMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -402,6 +413,24 @@
             </objects>
             <point key="canvasLocation" x="338" y="784"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0vI-Hf-3Qv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C82-Lj-zGR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YZc-Dm-aU2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NHK-aw-H4f" kind="relationship" relationship="rootViewController" id="5Jp-gm-0gM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sef-8F-HL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="419"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Icon1" width="256" height="256"/>
@@ -412,4 +441,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="x8m-mW-sD8"/>
+    </inferredMetricsTieBreakers>
 </document>
