@@ -46,7 +46,7 @@ class CustomTaskViewCell: UITableViewCell {
 
         vwDescription.layer.cornerRadius = 1
         vwDescription.layer.borderWidth = 0.5
-        vwDescription.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor
+        vwDescription.layer.borderColor = UIColor.lightGrayColor().CGColor
         vwDescription.layer.masksToBounds = true
 
         self.imgVwBackground.layer.cornerRadius = 5.0

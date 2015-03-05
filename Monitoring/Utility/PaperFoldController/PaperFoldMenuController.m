@@ -37,6 +37,8 @@
 @interface PaperFoldMenuController () {
   
   PaperFoldView *paperFoldView;
+    UIImageView *imgVwBackground;
+    UIImageView *imgVwProfilePic;
 }
 
 @property (nonatomic, assign) float menuWidth;
@@ -214,9 +216,13 @@
     [self.paperFoldView setCenterContentView:contentView];
     self.contentView = contentView;
 
-    UIImageView *imgVwProfilePic = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
-    imgVwProfilePic.frame = CGRectMake(40, 50, 120, 120);
-    [self.view addSubview:imgVwProfilePic];
+    imgVwBackground = [[UIImageView alloc]init];
+    imgVwBackground.frame = CGRectMake(0, 0, self.menuWidth, 200);
+    [self addGradientLayer];
+
+    imgVwProfilePic = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ProfileImage"]];
+    imgVwProfilePic.frame = CGRectMake(100, 100,20, 20);
+    imgVwProfilePic.backgroundColor = [UIColor clearColor];
 
     UITableView *menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, self.menuWidth, [self.view bounds].size.height)];
     [self.paperFoldView setLeftFoldContentView:menuTableView foldCount:1 pullFactor:0.9];
@@ -227,11 +233,21 @@
     
     ShadowView *menuTableViewSideShadowView = [[ShadowView alloc] initWithFrame:CGRectMake(_menuTableView.frame.size.width-2,0,2,[self.view bounds].size.height)];
     [menuTableViewSideShadowView setColorArrays:@[[UIColor clearColor],[UIColor colorWithWhite:0 alpha:0.2]]];
+
     /**
      * added to the leftFoldView instead of leftFoldView.contentView bec
      * so that the shadow does not appear while folding
      */
+
+    ShadowView *menuTableViewSideShadowView1 = [[ShadowView alloc] initWithFrame:CGRectMake(0,0,imgVwProfilePic.frame.size.width,200)];
+    [menuTableViewSideShadowView1 setColorArrays:@[[UIColor clearColor],[UIColor colorWithWhite:0 alpha:0.2]]];
+
     [self.paperFoldView.leftFoldView addSubview:menuTableViewSideShadowView];
+    [self.paperFoldView.leftFoldView addSubview:imgVwBackground];
+    [self.paperFoldView.leftFoldView addSubview:imgVwProfilePic];
+
+
+
     self.menuTableViewSideShadowView = menuTableViewSideShadowView;
     
     for (void (^theBlock)(void) in self.viewDidLoadBlocks)
@@ -243,7 +259,11 @@
 }
 
 - (void)sideBarbtntapped:(BOOL)isToggle {
-  
+
+    [UIView animateWithDuration:0.5 animations:^{
+
+        imgVwProfilePic.frame = CGRectMake(40, 40,120, 120);
+    }];
     [paperFoldView sideBarbtntapped1:isToggle];
 }
 
@@ -360,8 +380,8 @@
 
     CAGradientLayer *gradientLayer = [[CAGradientLayer alloc]init];
     gradientLayer.colors = @[(id)[UIColor colorWithRed:65.0/255.0 green:104.0/255.0 blue:183.0/255.0 alpha:1.0].CGColor,(id)[UIColor colorWithRed:68.0/255.0 green:136.0/255.0 blue:224.0/255.0 alpha:1.0].CGColor,(id)[UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1.0].CGColor];
-    [self.view.layer insertSublayer:gradientLayer atIndex:0];
-    gradientLayer.frame = self.view.frame;
+    [imgVwBackground.layer insertSublayer:gradientLayer atIndex:0];
+    gradientLayer.frame = imgVwBackground.frame;
 }
 
 @end

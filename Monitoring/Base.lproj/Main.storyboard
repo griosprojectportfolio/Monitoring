@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -136,6 +136,12 @@
                                 <action selector="sideBarBtnTapped:" destination="JXt-Pq-94K" id="0bu-7k-dgK"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gvz-0A-Cy6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addProjectBtnTapped:" destination="JXt-Pq-94K" id="uj7-j8-8wz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -156,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="84" sectionHeaderHeight="22" sectionFooterHeight="22" id="oTP-q7-R4f">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="1" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -171,8 +177,8 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" id="WS1-Am-qDG">
-                                                            <rect key="frame" x="4" y="0.0" width="310" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <rect key="frame" x="5" y="0.0" width="310" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Sx-cm-I1Z">
                                                                     <rect key="frame" x="88" y="1" width="200" height="21"/>
@@ -236,7 +242,7 @@
                                                                 </view>
                                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="1SO-qs-kvx">
                                                                     <rect key="frame" x="155" y="67" width="100" height="2"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 </progressView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jason" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8BE-c4-GIh">
                                                                     <rect key="frame" x="180" y="29" width="105" height="20"/>
@@ -310,7 +316,7 @@
         <!--Add Task View Controller-->
         <scene sceneID="HrK-rP-pK1">
             <objects>
-                <viewController storyboardIdentifier="AddTaskView" id="W4g-ec-Kna" customClass="AddTaskViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W4g-ec-Kna" customClass="AddTaskViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nDX-aQ-nQj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,12 +326,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2E-gk-G0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2390" y="419"/>
+            <point key="canvasLocation" x="2512" y="309"/>
         </scene>
         <!--Add Project View Controller-->
         <scene sceneID="pNv-hb-peT">
             <objects>
-                <viewController storyboardIdentifier="AddProject" id="tdk-vX-MJw" customClass="AddProjectViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddProjectStoryBoardID" id="tdk-vX-MJw" customClass="AddProjectViewController" customModule="Monitoring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aUk-bl-hob">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -434,7 +440,7 @@
     </scenes>
     <resources>
         <image name="Icon1" width="256" height="256"/>
-        <image name="checkList" width="25" height="25"/>
+        <image name="checkList" width="24" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

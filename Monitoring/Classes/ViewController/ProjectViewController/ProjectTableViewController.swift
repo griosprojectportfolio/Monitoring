@@ -40,8 +40,8 @@ import UIKit
         arryProject = project
         println(arryProject)
         self.tableView.editing = false
-      
       self.addNavigationRightButton()
+
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -62,6 +62,17 @@ import UIKit
   var vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProject") as AddProjectViewController
     self.navigationController?.pushViewController(vc, animated: true)
   }
+
+    @IBAction func sideBarBtnTapped (sender:UIButton){
+
+        if (appDelegateObj.isTogglrSideBar == true) {
+            appDelegateObj.isTogglrSideBar = false
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        } else {
+           appDelegateObj.isTogglrSideBar = true
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        }
+    }
 
     @IBAction func sideBarBtnTapped (sender:UIButton){
 
@@ -96,7 +107,7 @@ import UIKit
 
                 for var iLoop:Int = 0 ; iLoop<self.arryOfDeleteSelectedCell.count; iLoop++ {
                 if (self.arryOfDeleteSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
-                    cell.vwBackgroundVw.frame = CGRectMake(0 ,cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
+                    cell.vwBackgroundVw.frame = CGRectMake(0 ,cell.vwBackgroundVw.frame.origin.y, frame.size.width, cell.vwBackgroundVw.frame.size.height)
                     self.arryOfDeleteSelectedCell.removeObjectAtIndex(iLoop)
                     self.isRightSwipe = true
                     return
@@ -128,12 +139,10 @@ import UIKit
       //Update the cell or model
       
       let row = indexPath?.row
-      let yAxis:CGFloat = CGFloat(row!*90)
-      
-      UIView .animateWithDuration(0.5, animations: { () -> Void in
+      UIView.animateWithDuration(0.5, animations: { () -> Void in
         
         var frame = self.tableView.frame
-        cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-260),cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
+        cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-250),cell.vwBackgroundVw.frame.origin.y, frame.size.width, cell.vwBackgroundVw.frame.size.height)
         }, completion: { (Bool) -> Void in
             self.arryOfDeleteSelectedCell.addObject(row!)
       })

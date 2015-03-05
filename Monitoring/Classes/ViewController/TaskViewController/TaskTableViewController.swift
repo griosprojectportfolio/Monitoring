@@ -28,11 +28,13 @@ class TaskTableViewController: UIViewController , UITableViewDataSource, UITable
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
     UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
-    var backButton:UIBarButtonItem = UIBarButtonItem(title: "sideBar", style: UIBarButtonItemStyle.Plain, target: self, action: "handleBackButtonAction")
+//    var backButton:UIBarButtonItem = UIBarButtonItem(title: "sideBar", style: UIBarButtonItemStyle.Plain, target: self, action: "handleBackButtonAction")
+//    self.navigationItem.setLeftBarButtonItem(backButton, animated: true)
+//    
+//    addTaskButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleRightNaviButtonAction")
+//    self.navigationItem.setRightBarButtonItem(addTaskButton, animated: true)
+    var backButton:UIBarButtonItem = UIBarButtonItem(title: "sideBar", style: UIBarButtonItemStyle.Plain, target: self, action: "sideBarBtnTapped:")
     self.navigationItem.setLeftBarButtonItem(backButton, animated: true)
-    
-    addTaskButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleRightNaviButtonAction")
-    self.navigationItem.setRightBarButtonItem(addTaskButton, animated: true)
   }
 
   func handleBackButtonAction(){
@@ -79,6 +81,6 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
   }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90
+        return 86
     }
 }
