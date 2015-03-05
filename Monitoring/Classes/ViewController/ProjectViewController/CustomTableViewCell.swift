@@ -83,21 +83,22 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
 
         btnDelete = UIButton(frame: CGRect(x:-65, y:0 ,width:60 , height:84))
         btnDelete.backgroundColor = UIColor.redColor()
-        btnDelete .setTitle("Delete", forState:UIControlState.Normal)
+        btnDelete.showsTouchWhenHighlighted = true
+        btnDelete.setTitle("Delete", forState:UIControlState.Normal)
         btnDelete.addTarget(self, action: "qwertty", forControlEvents: UIControlEvents.TouchUpInside)
         self.vwBackgroundVw.addSubview(btnDelete)
       
-        btnCellUp = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:0 ,width:60 , height:42))
+        btnCellUp = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-56, y:0 ,width:55 , height:42))
         btnCellUp.backgroundColor = UIColor.redColor()
         btnCellUp.tag = row
-        //btnCellUp .setTitle("Up", forState:UIControlState.Normal)
+        btnCellUp.showsTouchWhenHighlighted = true
         btnCellUp.setImage(UIImage(named: "up.png"), forState: UIControlState.Normal)
         btnCellUp.userInteractionEnabled = true
         self.vwBackgroundVw.addSubview(btnCellUp)
           
-        btnCellDown = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-61, y:btnCellUp.frame.size.height+1,width:60 , height:42))
+        btnCellDown = UIButton(frame: CGRect(x:btnDelete.frame.origin.x-56, y:btnCellUp.frame.size.height+1,width:55 , height:42))
         btnCellDown.backgroundColor = UIColor.redColor()
-        //btnCellDown .setTitle("Down", forState:UIControlState.Normal)
+        btnCellDown.showsTouchWhenHighlighted = true
         btnCellDown.setImage(UIImage(named: "down.png"), forState: UIControlState.Normal)
         self.vwBackgroundVw.addSubview(btnCellDown)
 

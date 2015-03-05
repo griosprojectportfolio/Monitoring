@@ -498,6 +498,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -517,7 +519,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Downloads/Monitoring/Monitoring/Utility/Bridge-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -541,6 +543,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -553,7 +557,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Downloads/Monitoring/Monitoring/Utility/Bridge-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -566,7 +570,7 @@
 				INFOPLIST_FILE = Monitoring/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Downloads/Monitoring/Monitoring/Utility/Bridge-Header.h";
 			};
 			name = Debug;
 		};
@@ -578,7 +582,7 @@
 				INFOPLIST_FILE = Monitoring/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Desktop/Monitoring/Monitoring/Utility/Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/grepruby/Downloads/Monitoring/Monitoring/Utility/Bridge-Header.h";
 			};
 			name = Release;
 		};

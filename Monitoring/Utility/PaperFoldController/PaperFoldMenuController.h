@@ -35,6 +35,8 @@
 #import "PaperFoldView.h"
 #import "PaperFoldMenuControllerDelegate.h"
 #import "ShadowView.h"
+//"ProjectTableViewController-Swift.h"
+
 
 @interface PaperFoldMenuController : UIViewController <PaperFoldViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) PaperFoldView *paperFoldView;
@@ -65,7 +67,7 @@
  * @param animated A boolean value to indicate if the folding/unfolding should be animated
  */
 - (void)showMenu:(BOOL)show animated:(BOOL)animated;
-- (void)sideBarbtntapped;
+- (void)sideBarbtntapped:(BOOL)isToggle;
 - (void)reloadMenu;
 
 @end

@@ -7,10 +7,9 @@
 //
 
 import Foundation
-
 import UIKit
 
-class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomProjectCellDelegate {
+@objc class ProjectTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CustomProjectCellDelegate {
 
     var cellobj:CustomTableViewCell!
     @IBOutlet var vwOverTable:UIView!
@@ -18,13 +17,13 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     var isRightSwipe : Bool = false
     var arryOfDeleteSelectedCell:NSMutableArray = []
     var arryProject:[Project]!
+    var objPaperFoldVC:PaperFoldMenuController!
+    @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
+    var appDelegateObj:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
-  @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
-  
-  override func viewDidLoad() {
+    override func viewDidLoad() {
     super.viewDidLoad()
-   // self.backgroundColorOfImageView()
-    
+
     self.view.backgroundColor = UIColor.whiteColor()
     self.title = "Project List"
     self.navigationController?.navigationBar.hidden = false
@@ -38,16 +37,28 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     let project = [Project (projectName: "Kindergarton1", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
         ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton7", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton8", projectDueDate: "15/02/2015")]
 
-    arryProject = project
-    println(arryProject)
-    self.tableView.editing = false
+        arryProject = project
+        println(arryProject)
+        self.tableView.editing = false
   }
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     self.vwOverTable.hidden = true
     self.tableView.hidden = false
+    appDelegateObj.isTogglrSideBar = false
   }
+
+    @IBAction func sideBarBtnTapped (sender:UIButton){
+
+        if (appDelegateObj.isTogglrSideBar == true) {
+            appDelegateObj.isTogglrSideBar = false
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        } else {
+           appDelegateObj.isTogglrSideBar = true
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        }
+    }
 
  @IBAction func addProjectBtnTapped (sender:UIButton){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -71,7 +82,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
                 for var iLoop:Int = 0 ; iLoop<self.arryOfDeleteSelectedCell.count; iLoop++ {
                 if (self.arryOfDeleteSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
-                    cell.vwBackgroundVw.frame = CGRectMake(0 ,cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
+                    cell.vwBackgroundVw.frame = CGRectMake(0 ,cell.vwBackgroundVw.frame.origin.y, frame.size.width, cell.vwBackgroundVw.frame.size.height)
                     self.arryOfDeleteSelectedCell.removeObjectAtIndex(iLoop)
                     self.isRightSwipe = true
                     return
@@ -103,12 +114,10 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
       //Update the cell or model
       
       let row = indexPath?.row
-      let yAxis:CGFloat = CGFloat(row!*90)
-      
-      UIView .animateWithDuration(0.5, animations: { () -> Void in
+      UIView.animateWithDuration(0.5, animations: { () -> Void in
         
         var frame = self.tableView.frame
-        cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-260),cell.vwBackgroundVw.frame.origin.y, frame.size.width, 90)
+        cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-250),cell.vwBackgroundVw.frame.origin.y, frame.size.width, cell.vwBackgroundVw.frame.size.height)
         }, completion: { (Bool) -> Void in
             self.arryOfDeleteSelectedCell.addObject(row!)
       })
