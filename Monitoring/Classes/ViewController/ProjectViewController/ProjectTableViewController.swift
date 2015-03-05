@@ -41,7 +41,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     arryProject = project
     println(arryProject)
     self.tableView.editing = false
-    self.addNavigationBarButtons()
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -50,25 +49,12 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     self.tableView.hidden = false
   }
 
-// Mark:Adding The NAvigation Bar Button
-  
-  func addNavigationBarButtons(){
-    var btnSetting:UIButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
-    btnSetting.setImage(UIImage(named: "sideBar.png"), forState:UIControlState.Normal)
-    btnSetting.addTarget(self, action: "handleRightNaviButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    var btnNaviLeftBarButton:UIBarButtonItem = UIBarButtonItem(customView: btnSetting)
-    self.navigationItem.setLeftBarButtonItem(btnNaviLeftBarButton, animated: true)
-    
-    var btnNaviRightBarButton:UIBarButtonItem = UIBarButtonItem()
-  
-  }
-  
-  @IBAction func handleRightNaviButtonAction(sender:UIButton){
-        
+ @IBAction func addProjectBtnTapped (sender:UIButton){
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    var vwController:AddProjectViewController = storyboard.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID") as AddProjectViewController
+    self.navigationController?.pushViewController(vwController, animated:true)
   }
         
-  
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer) { //animation to go to next view
         var location = gestureRecognizer.locationInView(self.tableView)
         var indexPath = self.tableView.indexPathForRowAtPoint(location)
@@ -101,7 +87,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
             }
             self.vwOverTable.hidden = false
             self.view.bringSubviewToFront(self.vwOverTable)
-
             var vc = self.storyboard?.instantiateViewControllerWithIdentifier("taskStorayBoardID") as TaskTableViewController
             self.navigationController?.pushViewController(vc, animated: true)
           })
@@ -136,20 +121,11 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         print("tag\(btnTag)")
         var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
         self.arryProject.removeAtIndex(btnTag)
-        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
 
-        for (var value:AnyObject) in (self.arryOfDeleteSelectedCell) {
-            var index:Int = value as Int
-            var indexPath = NSIndexPath (forRow:index, inSection:0)
-            var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
-            cell.vwBackgroundVw.removeFromSuperview()
-            cell.btnCellDown.removeFromSuperview()
-            cell.btnCellUp.removeFromSuperview()
-            cell.btnDelete.removeFromSuperview()
-        }
-
-        println(self.arryProject)
+        // self.tableView.beginUpdates()
+        self.arryOfDeleteSelectedCell.removeAllObjects()
         self.tableView.reloadData()
+        //  self.tableView.endUpdates()
     }
 
     func handleDownButtonEvent(btnTag:Int)  {
@@ -159,6 +135,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         var indexPathDest = NSIndexPath (forRow:btnTag+1, inSection:0)
 
         self.tableView.moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+
         var projectObj:Project = self.arryProject[btnTag]
         println("\n\(self.arryProject.count)")
         self.arryProject.removeAtIndex(btnTag)
@@ -174,6 +151,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
         var indexPathDest = NSIndexPath (forRow:btnTag-1, inSection:0)
 
         self.tableView .moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+
         var projectObj:Project = self.arryProject[btnTag]
         self.arryProject.removeAtIndex(btnTag)
         self.arryProject.insert(projectObj, atIndex: btnTag-1)
@@ -198,7 +176,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
     println("*********\(indexPath.row)" )
-    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame)
+    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame, selectedIndexList: self.arryOfDeleteSelectedCell)
     cell.delegate = self
     cell.imageView.image = UIImage(named: "projectlogo.png")
     return cell
@@ -206,11 +184,6 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource, UITab
 
    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 90
-  }
-  
-  @IBAction func raightNAvigationBarButtonAction(sender:UIBarButtonItem){
-    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProjectStoryBoardID")as AddProjectViewController
-    self.navigationController?.pushViewController(vc, animated: true)
   }
   
   //Function to set backgroundColor
