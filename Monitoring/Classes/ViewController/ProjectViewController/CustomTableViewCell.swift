@@ -13,8 +13,8 @@ import UIKit
     func handleDeleteCell(btnTag:Int)
     func handleSwipeLeft(gestureRecognizer:UISwipeGestureRecognizer)
     func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer)
-    func handleUpButtonEvent(btnTag:Int)
-    func handleDownButtonEvent(btnTag:Int)
+    func handleUpButtonEvent(btnTag:Int, isSwipe:Bool)
+    func handleDownButtonEvent(btnTag:Int, isSwipe:Bool)
 }
 
 class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
@@ -28,6 +28,8 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     var btnCellUp:UIButton!
     var btnCellDown:UIButton!
     var currentrow:NSInteger!
+    var listCount:Int!
+    var isSwipe:Bool!
 
     var heightOfVw:CGFloat = 80
     override func awakeFromNib() {
@@ -40,15 +42,17 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         // Configure the view for the selected stat
     }
 
-    func setValueOfProjectList (project:Project,row:Int, frame:CGRect,selectedIndexList:NSMutableArray) {
-
+    func setValueOfProjectList (project:Project,row:Int, frame:CGRect,selectedIndexList:NSMutableArray, listCount:Int) {
+        self.listCount = listCount
+        isSwipe = false
         for (var index:AnyObject) in (selectedIndexList) {
-
             var index1:Int = index as Int
             if (index1 == row) {
+                isSwipe = true
                 return
             }
         }
+
         let leftSwipe = UISwipeGestureRecognizer(target: self, action:"handleSwipeLeft:")
         leftSwipe.direction=UISwipeGestureRecognizerDirection.Left
         self.addGestureRecognizer(leftSwipe)
@@ -151,15 +155,20 @@ class CustomTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     func handleTapGesture (tapgesture:UITapGestureRecognizer) {
 
         // println(self.tag)
-         var point:CGPoint = tapgesture.locationInView(self)
+        var point:CGPoint = tapgesture.locationInView(self)
         if (CGRectIntersectsRect(CGRectMake(60, 0, 60, 70),CGRectMake(point.x, point.y, 10, 10))) {
             delegate?.handleDeleteCell(self.tag)
         } else if (CGRectIntersectsRect(CGRectMake(0, 0, 60, 42),CGRectMake(point.x, point.y, 10, 10))) {
-            delegate?.handleUpButtonEvent(self.tag)
-            self.tag = self.tag-1//update cell index
+            if (self.tag > 0) {
+                delegate?.handleUpButtonEvent(self.tag, isSwipe:isSwipe)
+                self.tag = self.tag-1//update cell index
+            }
         } else if (CGRectIntersectsRect(CGRectMake(0, 42, 60, 42),CGRectMake(point.x, point.y, 10, 10))) {
-            delegate?.handleDownButtonEvent(self.tag)
-            self.tag = self.tag+1//update cell index
+            println(self.tag)
+            if (self.tag != self.listCount-1) {
+                delegate?.handleDownButtonEvent(self.tag, isSwipe: isSwipe)
+                self.tag = self.tag+1//update cell index
+            }
         }
     }
 

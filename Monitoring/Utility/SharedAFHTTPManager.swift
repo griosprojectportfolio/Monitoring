@@ -25,7 +25,6 @@ class SharedAFHTTPManager {
         return sharedManager
     }
 
-
     //POST calling method
     func postCallRequest(path: String, param:Dictionary<String,String>?, ownerClassRef:AnyObject ,success:(Selector) , failure:(Selector)) {
         self.postCall(path, param: param, ownerClassRef: ownerClassRef, success: success, failure: failure)
@@ -41,14 +40,17 @@ class SharedAFHTTPManager {
         self.manager.POST(""+path , parameters: param, success: {
             (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
              println("JSON: " + responseObject.description)
+
+            var response:NSDictionary = ["response":responseObject, "method":path]
             if (ownerClassRef.respondsToSelector(success)) {
-                NSTimer.scheduledTimerWithTimeInterval(0.1, target: ownerClassRef, selector: success, userInfo: responseObject, repeats:false)
+                NSTimer.scheduledTimerWithTimeInterval(0.1, target: ownerClassRef, selector: success, userInfo: response, repeats:false)
             }
         }, failure: {
                 (operation: AFHTTPRequestOperation!,error: NSError!) in
                 println("Error: " + error.localizedDescription)
+                var response:NSDictionary = ["error":error, "method":path]
                 if (ownerClassRef.respondsToSelector(success)) {
-                    NSTimer.scheduledTimerWithTimeInterval(0.1, target: ownerClassRef, selector: failure, userInfo:nil, repeats:false)
+                    NSTimer.scheduledTimerWithTimeInterval(0.1, target: ownerClassRef, selector: failure, userInfo:response, repeats:false)
                 }
         })
     }

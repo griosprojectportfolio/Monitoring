@@ -15,7 +15,7 @@ import UIKit
     @IBOutlet var vwOverTable:UIView!
     @IBOutlet var tableView:UITableView!
     var isRightSwipe : Bool = false
-    var arryOfDeleteSelectedCell:NSMutableArray = []
+    var arryOfSelectedCell:NSMutableArray = []
     var arryProject:[Project]!
     var objPaperFoldVC:PaperFoldMenuController!
     var btnBarButtonItemRightNavi:UIBarButtonItem!
@@ -60,10 +60,11 @@ import UIKit
         SharedAFHTTPManager.sharedAFHTTPManager().getCallRequest("_FetchProjectList", param:params, ownerClassRef: self, success: "successInResult", failure:"failureInResult")
     }
     func successInResult(timer: NSTimer) {
-        if let dictResponce = timer.userInfo as Dictionary<String, AnyObject>? {
-            for (key, value) in dictResponce {
-                var key:String = key
-                let project = Project(projectName: dictResponce[key] as String, projectDueDate: dictResponce[key] as String)
+
+        if let dictResponseWithMethod =  timer.userInfo as? NSDictionary{
+            var method:NSString = dictResponseWithMethod.valueForKey("method") as NSString
+            if let dictResponse = dictResponseWithMethod.valueForKey("response") as? NSDictionary {
+                let project = Project(projectName: dictResponse[""] as String, projectDueDate: dictResponse[""] as String)
                 arryProject.append(project)
             }
         }
@@ -82,7 +83,6 @@ import UIKit
   }
 
     @IBAction func sideBarBtnTapped (sender:UIButton){
-
         if (appDelegateObj.isTogglrSideBar == true) {
             appDelegateObj.isTogglrSideBar = false
             self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
@@ -104,18 +104,19 @@ import UIKit
 
         if((indexPath) != nil) {
             var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
+            cell.isSwipe = false
             //Update the cell or model
     
             let row = indexPath?.row
             let yAxis:CGFloat = CGFloat(row!*90)
     
-            UIView .animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
                 var frame = self.tableView.frame
 
-                for var iLoop:Int = 0 ; iLoop<self.arryOfDeleteSelectedCell.count; iLoop++ {
-                if (self.arryOfDeleteSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
+                for var iLoop:Int = 0 ; iLoop<self.arryOfSelectedCell.count; iLoop++ {
+                if (self.arryOfSelectedCell.objectAtIndex(iLoop).integerValue == row ) {
                     cell.vwBackgroundVw.frame = CGRectMake(0 ,cell.vwBackgroundVw.frame.origin.y, frame.size.width, cell.vwBackgroundVw.frame.size.height)
-                    self.arryOfDeleteSelectedCell.removeObjectAtIndex(iLoop)
+                    self.arryOfSelectedCell.removeObjectAtIndex(iLoop)
                     self.isRightSwipe = true
                     return
                     }
@@ -142,15 +143,15 @@ import UIKit
     
     if((indexPath) != nil) {
         var cell:CustomTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath!) as CustomTableViewCell
-      //Update the cell or model
-      
-      let row = indexPath?.row
-      UIView.animateWithDuration(0.5, animations: { () -> Void in
+        cell.isSwipe = true
+
+        let row = indexPath?.row
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
         
         var frame = self.tableView.frame
         cell.vwBackgroundVw.frame = CGRectMake((frame.size.width-250),cell.vwBackgroundVw.frame.origin.y, frame.size.width, cell.vwBackgroundVw.frame.size.height)
         }, completion: { (Bool) -> Void in
-            self.arryOfDeleteSelectedCell.addObject(row!)
+            self.arryOfSelectedCell.addObject(row!)
       })
     }
   }
@@ -158,40 +159,54 @@ import UIKit
     //MARK - UICustomTableViewCell Delegates to delete, up and down cell
 
     func handleDeleteCell(btnTag:Int) {
-        print("tag\(btnTag)")
-        var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
-        self.arryProject.removeAtIndex(btnTag)
-        self.arryOfDeleteSelectedCell.removeAllObjects()
-        self.tableView.reloadData()
+
+        for (var index:AnyObject) in (self.arryOfSelectedCell) {
+            var index1:Int = index as Int
+            if (index1 == btnTag) {
+                var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
+                self.arryProject.removeAtIndex(btnTag)
+                self.arryOfSelectedCell.removeAllObjects()
+                self.tableView.reloadData()
+                break
+            }
+        }
     }
 
-    func handleDownButtonEvent(btnTag:Int)  {
+    func handleDownButtonEvent(btnTag:Int,  isSwipe:Bool)  {
+        if (btnTag == self.arryProject.count) {
+            return
+        }
 
-        print(btnTag)
-        var indexPathCurrent = NSIndexPath (forRow:btnTag, inSection:0)
-        var indexPathDest = NSIndexPath (forRow:btnTag+1, inSection:0)
+        println("***** \(isSwipe)")
+        if (isSwipe == true) {
+            var indexPathCurrent = NSIndexPath (forRow:btnTag, inSection:0)
+            var indexPathDest = NSIndexPath (forRow:btnTag+1, inSection:0)
+            self.tableView.moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
 
-        self.tableView.moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
-
-        var projectObj:Project = self.arryProject[btnTag]
-        println("\n\(self.arryProject.count)")
-        self.arryProject.removeAtIndex(btnTag)
-        self.arryProject.insert(projectObj, atIndex: btnTag+1)
+            var projectObj:Project = self.arryProject[btnTag]
+            println("\n\(self.arryProject.count)")
+            self.arryProject.removeAtIndex(btnTag)
+            self.arryProject.insert(projectObj, atIndex: btnTag+1)
+        }
 //        for (var project:Project) in (self.arryProject) {
 //            println("After\n\(project.projectName)")
 //        }
     }
 
-    func handleUpButtonEvent(btnTag:Int) {
-        print(btnTag)
-        var indexPathCurrent = NSIndexPath (forRow:btnTag, inSection:0)
-        var indexPathDest = NSIndexPath (forRow:btnTag-1, inSection:0)
+    func handleUpButtonEvent(btnTag:Int,  isSwipe:Bool) {
+        if (btnTag == 0) {
+            return
+        }
 
-        self.tableView .moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
+        if (isSwipe == true)  {
+            var indexPathCurrent = NSIndexPath (forRow:btnTag, inSection:0)
+            var indexPathDest = NSIndexPath (forRow:btnTag-1, inSection:0)
+            self.tableView .moveRowAtIndexPath(indexPathCurrent, toIndexPath: indexPathDest)
 
-        var projectObj:Project = self.arryProject[btnTag]
-        self.arryProject.removeAtIndex(btnTag)
-        self.arryProject.insert(projectObj, atIndex: btnTag-1)
+            var projectObj:Project = self.arryProject[btnTag]
+            self.arryProject.removeAtIndex(btnTag)
+            self.arryProject.insert(projectObj, atIndex: btnTag-1)
+        }
     }
 
   override func didReceiveMemoryWarning() {
@@ -213,7 +228,7 @@ import UIKit
     let cell = tableView.dequeueReusableCellWithIdentifier("projectCell") as CustomTableViewCell
     let project = arryProject[indexPath.row] as Project
     println("*********\(indexPath.row)" )
-    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame, selectedIndexList: self.arryOfDeleteSelectedCell)
+    cell.setValueOfProjectList(project,row: indexPath.row,frame: self.tableView.frame, selectedIndexList: self.arryOfSelectedCell,listCount: self.arryProject.count)
     cell.delegate = self
     cell.imageView.image = UIImage(named: "projectlogo.png")
     return cell
@@ -233,13 +248,13 @@ import UIKit
     gl.frame = self.tableView.frame;
   }
   
-  func handleCellUpButtonAction(sender:UIButton){
+  /*func handleCellUpButtonAction(sender:UIButton){
     
     var btn:UIButton = sender as UIButton
     
     var indexCurrent:NSIndexPath = NSIndexPath(index: btn.tag)
     var indexDesin:NSIndexPath = NSIndexPath(index: btn.tag + 1)
     tableView.moveRowAtIndexPath(indexCurrent, toIndexPath:indexDesin)
-  }
+  } */
 }
 
