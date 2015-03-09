@@ -51,7 +51,7 @@ class AddTaskViewController: UIViewController,UITextFieldDelegate,UITextViewDele
     var blur1:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
     visualEffectVwTaskName = UIVisualEffectView (effect: blur1)
     visualEffectVwTaskName.frame = taskNameTextFeild.frame
-    
+
     self.view.addSubview(visualEffectVwTaskName)
      self.view.addSubview(taskNameTextFeild)
     
@@ -62,6 +62,8 @@ class AddTaskViewController: UIViewController,UITextFieldDelegate,UITextViewDele
     visualEffectVwDescription = UIVisualEffectView (effect: blur2)
     visualEffectVwDescription.frame = descriptionTextView.frame
     
+    self.view.addSubview(visualEffectVwDescription)
+
     self.view.addSubview(visualEffectVwDescription)
     self.view.addSubview(descriptionTextView)
 

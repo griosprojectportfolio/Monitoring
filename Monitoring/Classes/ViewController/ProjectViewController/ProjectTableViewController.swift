@@ -59,7 +59,6 @@ import UIKit
         var params:Dictionary<String, String> = ["AuthenticationId":""]
         SharedAFHTTPManager.sharedAFHTTPManager().getCallRequest("_FetchProjectList", param:params, ownerClassRef: self, success: "successInResult", failure:"failureInResult")
     }
-
     func successInResult(timer: NSTimer) {
         if let dictResponce = timer.userInfo as Dictionary<String, AnyObject>? {
             for (key, value) in dictResponce {
@@ -69,7 +68,7 @@ import UIKit
             }
         }
     }
-
+  
   //Mark:Add NavigationRightButton
   func addNavigationRightButton(){
     btnBarButtonItemRightNavi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleNaviRightButtonAction")
