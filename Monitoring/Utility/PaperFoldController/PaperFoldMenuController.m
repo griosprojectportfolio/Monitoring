@@ -255,7 +255,7 @@
         theBlock();
     }
     self.viewDidLoadBlocks = nil;
-    self.view.backgroundColor = [UIColor redColor];
+    [self addGradientLayer];
 }
 
 - (void)sideBarbtntapped:(BOOL)isToggle {

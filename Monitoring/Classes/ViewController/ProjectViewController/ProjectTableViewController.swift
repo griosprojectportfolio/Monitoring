@@ -18,7 +18,7 @@ import UIKit
     var arryOfDeleteSelectedCell:NSMutableArray = []
     var arryProject:[Project]!
     var objPaperFoldVC:PaperFoldMenuController!
-    @IBOutlet weak var rightNavigationBarButton:UIBarButtonItem!
+    var btnBarButtonItemRightNavi:UIBarButtonItem!
     var appDelegateObj:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
     override func viewDidLoad() {
@@ -40,6 +40,8 @@ import UIKit
         arryProject = project
         println(arryProject)
         self.tableView.editing = false
+      self.addNavigationRightButton()
+
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -48,6 +50,29 @@ import UIKit
     self.tableView.hidden = false
     appDelegateObj.isTogglrSideBar = false
   }
+  
+  //Mark:Add NavigationRightButton
+  func addNavigationRightButton(){
+    btnBarButtonItemRightNavi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleNaviRightButtonAction")
+    //btnBarButtonItemRightNavi.tintColor = UIColor.whiteColor()
+    self.navigationItem.setRightBarButtonItem(btnBarButtonItemRightNavi, animated: true)
+  }
+  
+  func handleNaviRightButtonAction(){
+  var vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProject") as AddProjectViewController
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
+
+    @IBAction func sideBarBtnTapped (sender:UIButton){
+
+        if (appDelegateObj.isTogglrSideBar == true) {
+            appDelegateObj.isTogglrSideBar = false
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        } else {
+           appDelegateObj.isTogglrSideBar = true
+            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
+        }
+    }
 
     @IBAction func sideBarBtnTapped (sender:UIButton){
 
