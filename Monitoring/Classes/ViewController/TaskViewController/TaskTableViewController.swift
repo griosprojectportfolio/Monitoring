@@ -49,8 +49,7 @@ class TaskTableViewController: UIViewController , UITableViewDataSource, UITable
             self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
         }
     }
-    
-  
+
   @IBAction func handleAddButtonAction(sender:UIBarButtonItem){
     
   }
