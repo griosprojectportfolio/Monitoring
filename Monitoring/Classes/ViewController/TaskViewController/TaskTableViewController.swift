@@ -49,11 +49,23 @@ class TaskTableViewController: UIViewController , UITableViewDataSource, UITable
     }
 
     func successInResult(timer: NSTimer) {
-        if let dictResponce = timer.userInfo as Dictionary<String, AnyObject>? {
-            for (key, value) in dictResponce {
-                var key:String = key
-                let task = Task(taskName: dictResponce[key]  as String, taskDueDate: dictResponce[key] as String, taskAssignTo: dictResponce[key] as String)
-                arryTaskList.append(task)
+
+
+        func successInResult(timer: NSTimer) {
+
+            if let dictResponseWithMethod =  timer.userInfo as? NSDictionary{
+                var method:NSString = dictResponseWithMethod.valueForKey("method") as NSString
+                if let dictResponse = dictResponseWithMethod.valueForKey("response") as? NSDictionary {
+                    let arryData = dictResponse.valueForKey("data") as? NSArray
+
+                    var iLoopCount:Int
+                    for (iLoopCount=0; iLoopCount<arryData?.count; iLoopCount++) {
+
+                        let dictData:NSDictionary = arryData?.objectAtIndex(iLoopCount) as NSDictionary
+                        let task = Task(taskName: dictData.valueForKey("")  as String, taskDueDate: dictData.valueForKey("") as String, taskAssignTo: dictData.valueForKey("") as String)
+                        arryTaskList.append(task)
+                    }
+                }
             }
         }
     }

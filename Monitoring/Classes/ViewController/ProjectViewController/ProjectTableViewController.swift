@@ -54,6 +54,13 @@ import UIKit
         appDelegateObj.isTogglrSideBar = false
     }
 
+    /* 
+    
+    
+    
+    
+    */
+
     //MARk - Send request to get project list
     func getProjectInformation () {
         var params:Dictionary<String, String> = ["AuthenticationId":""]
@@ -64,8 +71,15 @@ import UIKit
         if let dictResponseWithMethod =  timer.userInfo as? NSDictionary{
             var method:NSString = dictResponseWithMethod.valueForKey("method") as NSString
             if let dictResponse = dictResponseWithMethod.valueForKey("response") as? NSDictionary {
-                let project = Project(projectName: dictResponse[""] as String, projectDueDate: dictResponse[""] as String)
-                arryProject.append(project)
+                let arryData = dictResponse.valueForKey("data") as? NSArray
+
+                var iLoopCount:Int
+                for (iLoopCount=0; iLoopCount<arryData?.count; iLoopCount++) {
+
+                    let dictData:NSDictionary = arryData?.objectAtIndex(iLoopCount) as NSDictionary
+                    let project = Project(projectName: dictData.valueForKey("") as String, projectDueDate: dictData.valueForKey("") as String)
+                    arryProject.append(project)
+                }
             }
         }
     }
