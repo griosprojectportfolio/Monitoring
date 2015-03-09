@@ -32,7 +32,6 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
     var textFldEmail:CustomTextFieldBlurView!
     var textFldPassword:CustomTextFieldBlurView!
 
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -110,55 +109,50 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
         return true
     }
 
-  //MARK:SignUp Button Pressed
-  
+    //MARK:SignUp Button Pressed
     func signUpButtonPressed(){
         self.performSegueWithIdentifier("idFirstSegue", sender: self)
     }
 
-    func loginButtonPressed(){
-      //  let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("tableviewid") as ProjectTableViewController
-       // self.navigationController?.pushViewController(secondViewController, animated: true)
-      
-      let vwController1 = self.storyboard?.instantiateViewControllerWithIdentifier("MenuList") as ViewController
+    func loginButtonPressed() {
+        let vwController1 = self.storyboard?.instantiateViewControllerWithIdentifier("MenuList") as ViewController
         self.navigationController?.pushViewController(vwController1, animated: true)
+    }
 
-  }
-
-  
     //Function to set backgroundColor
     func backgroundColorOfImageView() {
-
         let gl:CAGradientLayer = CAGradientLayer ()
-      
-       gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
-      
+        gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
         // gl.colors = [(UIColor(red: 58/255.0, green: 127/255.0, blue: 199/255.0, alpha: 1.0).CGColor), (UIColor(red: 94.0/255.0, green: 219.0/255.0, blue: 223.0/255.0, alpha: 1.0).CGColor),  (UIColor(red: 169.0/255.0, green: 225.0/255.0, blue: 212.0/255.0, alpha: 1.0).CGColor)]
-
         // gl.colors = [ (UIColor(red: 35.0/255.0, green: 85.0/255.0, blue: 120.0/255.0, alpha: 1.0).CGColor),  (UIColor(red: 53.0/255.0, green: 121.0/255.0, blue: 166.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 200/255.0, green: 212/255.0, blue: 223/255.0, alpha: 1.0).CGColor)]
-
-        // gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
         self.imgVwBackground.layer.insertSublayer(gl, atIndex: 0)
         gl.frame = self.imgVwBackground.frame;
     }
 
     func addblurViewOnLoginButton () {
-
         var blur:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
         var effectView:UIVisualEffectView = UIVisualEffectView (effect: blur)
         effectView.frame = CGRect(x: 0, y: 0, width: btnLogin.frame.size.width, height: btnLogin.frame.size.height)
         effectView.layer.cornerRadius = 5.0
     }
-  
-  func btnTapped(tag:Int) {
-        
-    if(tag == 1){
-     
-      self.performSegueWithIdentifier("MenuList", sender: self)
-     
-    }
-    
+
+    //MARk - Custom button tapped to send request to get login
+    func btnTapped(tag:Int) {
+        if(tag == 1){
+            //method to send request for login
+            var params:Dictionary<String, String> = ["userId":"", "userPassword":""]
+            SharedAFHTTPManager.sharedAFHTTPManager().postCallRequest("_UserLogin", param:params, ownerClassRef: self, success: "successInResult", failure: "failureInResult")
+            self.performSegueWithIdentifier("MenuList", sender: self)
+        }
   }
+
+    func successInResult (var result:AnyObject) {
+
+    }
+
+    func failureInResult () {
+
+    }
 
   override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
     

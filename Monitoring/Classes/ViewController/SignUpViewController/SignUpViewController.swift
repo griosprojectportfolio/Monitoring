@@ -140,50 +140,40 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, CustomButtonD
 
         var signInButton = UIButton(frame: CGRectMake(self.view.frame.size.width-100,self.view.frame.size.height-40,100,40))
         signInButton.setTitle("SignIn", forState: UIControlState.Normal)
-      
         signInButton.addTarget(self, action: "showFirstViewController", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signInButton)
     }
 
   
     //Mark: SignIn Buttton Pressed
-  
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "idFirstSegueUnwind" {
       let firstViewController = segue.destinationViewController as LoginViewController
       //firstViewController.lblMessage.text = "You just came back from the 2nd VC"
+        }
     }
-  }
-  
 
+    @IBAction func showFirstViewController() {
+        self.performSegueWithIdentifier("idFirstSegueUnwind", sender: self)
+    }
   
-  @IBAction func showFirstViewController() {
-    self.performSegueWithIdentifier("idFirstSegueUnwind", sender: self)
-  }
-
-
-  
-  func backgroundColorOfImageView() {
+    func backgroundColorOfImageView() {
+        let gl:CAGradientLayer = CAGradientLayer ()
+        gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
     
-    let gl:CAGradientLayer = CAGradientLayer ()
-    gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
-    
-    gl.locations = [ 0.0, 1.0]
-    self.imgVwBackground.layer.insertSublayer(gl, atIndex: 0)
-    gl.frame = self.imgVwBackground.frame;
-  }
+        gl.locations = [ 0.0, 1.0]
+        self.imgVwBackground.layer.insertSublayer(gl, atIndex: 0)
+        gl.frame = self.imgVwBackground.frame;
+    }
   
- //Mark:Custom Button Pressed
-  
-  func btnTapped(tag: Int) {
-    self.performSegueWithIdentifier("sinuptonavigationRootID", sender: self )
-  }
+    //Mark:Custom Button Pressed to send request to sign up
+    func btnTapped(tag: Int) {
+        var params:Dictionary<String, String> = ["userFName":"", "userLName":"", "userEmail":"", "userPassword":"", "userDOB":""]
+        SharedAFHTTPManager.sharedAFHTTPManager().postCallRequest("_CreateUser", param:params, ownerClassRef: self, success: "successInResult", failure:"failureInResult")
+        self.performSegueWithIdentifier("sinuptonavigationRootID", sender: self )
+    }
 
     func animationOfTextField () {
-
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.textFldFName.frame = CGRect(x: 0, y: self.textFldFName.frame.origin.y, width:self.textFldFName.frame.size.width , height: 44)
             self.visualEffectVwFirstName.frame = CGRect(x: 0, y: self.visualEffectVwFirstName.frame.origin.y, width:self.textFldFName.frame.size.width , height: 44)

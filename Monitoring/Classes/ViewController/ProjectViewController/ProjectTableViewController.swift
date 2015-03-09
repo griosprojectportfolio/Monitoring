@@ -22,35 +22,54 @@ import UIKit
     var appDelegateObj:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
     override func viewDidLoad() {
-    super.viewDidLoad()
+        super.viewDidLoad()
 
-    self.view.backgroundColor = UIColor.whiteColor()
-    self.title = "Project List"
-    self.navigationController?.navigationBar.hidden = false
-    self.tableView.separatorColor = UIColor.clearColor()
-    self.navigationController?.navigationBar.barTintColor = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.title = "Project List"
+        self.navigationController?.navigationBar.hidden = false
+        self.tableView.separatorColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
-    self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.translucent = false
 
-    let project = [Project (projectName: "Kindergarton1", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
+        let project = [Project (projectName: "Kindergarton1", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
         ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton7", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton8", projectDueDate: "15/02/2015")]
 
-        arryProject = project
+         arryProject = project
         println(arryProject)
         self.tableView.editing = false
-      self.addNavigationRightButton()
+        self.addNavigationRightButton()
+    }
 
-  }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
 
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    self.vwOverTable.hidden = true
-    self.tableView.hidden = false
-    appDelegateObj.isTogglrSideBar = false
-  }
-  
+        //arryProject.removeAll(keepCapacity: true)
+        //println(arryProject)
+        //self.getProjectInformation()
+        self.vwOverTable.hidden = true
+        self.tableView.hidden = false
+        appDelegateObj.isTogglrSideBar = false
+    }
+
+    //MARk - Send request to get project list
+    func getProjectInformation () {
+        var params:Dictionary<String, String> = ["AuthenticationId":""]
+        SharedAFHTTPManager.sharedAFHTTPManager().getCallRequest("_FetchProjectList", param:params, ownerClassRef: self, success: "successInResult", failure:"failureInResult")
+    }
+
+    func successInResult(timer: NSTimer) {
+        if let dictResponce = timer.userInfo as Dictionary<String, AnyObject>? {
+            for (key, value) in dictResponce {
+                var key:String = key
+                let project = Project(projectName: dictResponce[key] as String, projectDueDate: dictResponce[key] as String)
+                arryProject.append(project)
+            }
+        }
+    }
+
   //Mark:Add NavigationRightButton
   func addNavigationRightButton(){
     btnBarButtonItemRightNavi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "handleNaviRightButtonAction")
@@ -62,17 +81,6 @@ import UIKit
   var vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddProject") as AddProjectViewController
     self.navigationController?.pushViewController(vc, animated: true)
   }
-
-    @IBAction func sideBarBtnTapped (sender:UIButton){
-
-        if (appDelegateObj.isTogglrSideBar == true) {
-            appDelegateObj.isTogglrSideBar = false
-            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
-        } else {
-           appDelegateObj.isTogglrSideBar = true
-            self.objPaperFoldVC.sideBarbtntapped(appDelegateObj.isTogglrSideBar)
-        }
-    }
 
     @IBAction func sideBarBtnTapped (sender:UIButton){
 
@@ -130,7 +138,6 @@ import UIKit
   }
   
   func handleSwipeRight(gestureRecognizer:UISwipeGestureRecognizer) {
-
     var location = gestureRecognizer.locationInView(self.tableView)
     var indexPath = self.tableView.indexPathForRowAtPoint(location)
     
@@ -155,11 +162,8 @@ import UIKit
         print("tag\(btnTag)")
         var indexPath = NSIndexPath (forRow:btnTag, inSection:0)
         self.arryProject.removeAtIndex(btnTag)
-
-        // self.tableView.beginUpdates()
         self.arryOfDeleteSelectedCell.removeAllObjects()
         self.tableView.reloadData()
-        //  self.tableView.endUpdates()
     }
 
     func handleDownButtonEvent(btnTag:Int)  {

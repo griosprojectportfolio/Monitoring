@@ -34,14 +34,10 @@ class CustomTaskViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColorOfImageView()
-        self.contentsDefaultSettings(self.contentView.frame)
-      
-  }
-  func getFeeds(feeds:NSArray){
-  
+
   }
   
-    func contentsDefaultSettings(frame:CGRect){
+    func setValueOfTaskList (frame:CGRect, taskInfo:Task){
         vwBackgound.frame = CGRectMake(0, 0,frame.size.width ,100)
 
         vwDescription.layer.cornerRadius = 1

@@ -43,44 +43,59 @@ class AddProjectViewController: UIViewController,UITextFieldDelegate,CustomButto
   }
   
   func addBuleEffectImageView(){
-    var frame2:CGRect = CGRect(x:self.view.frame.size.width, y:150, width:self.view.frame.size.width , height: 44)
-    projectNameTextField = CustomTextFieldBlurView(frame:frame2, imgName:"projectName")
-    projectNameTextField.userInteractionEnabled = true
-    projectNameTextField.delegate = self;
-    projectNameTextField.attributedPlaceholder = NSAttributedString(string:"Project Name",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
+        var frame2:CGRect = CGRect(x:self.view.frame.size.width, y:150, width:self.view.frame.size.width , height: 44)
+        projectNameTextField = CustomTextFieldBlurView(frame:frame2, imgName:"projectName")
+        projectNameTextField.userInteractionEnabled = true
+        projectNameTextField.delegate = self;
+        projectNameTextField.attributedPlaceholder = NSAttributedString(string:"Project Name",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
 
-    var blur1:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
-    visualEffectVwProjectName = UIVisualEffectView (effect: blur1)
-    visualEffectVwProjectName.frame = projectNameTextField.frame
+        var blur1:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+        visualEffectVwProjectName = UIVisualEffectView (effect: blur1)
+        visualEffectVwProjectName.frame = projectNameTextField.frame
 
-    self.view.addSubview(visualEffectVwProjectName)
-    self.view.addSubview(projectNameTextField)
+        self.view.addSubview(visualEffectVwProjectName)
+        self.view.addSubview(projectNameTextField)
 
-    var frame3:CGRect = CGRect(x:frame2.size.width, y: frame2.origin.y+frame2.height+1, width:self.view.frame.size.width , height: 44)
+        var frame3:CGRect = CGRect(x:frame2.size.width, y: frame2.origin.y+frame2.height+1, width:self.view.frame.size.width , height: 44)
     
-    dueDateTextField = CustomTextFieldBlurView(frame:frame3, imgName:"duDate2")
-    dueDateTextField.userInteractionEnabled = true
-    dueDateTextField.delegate = self;
-    dueDateTextField.attributedPlaceholder = NSAttributedString(string:"Due Date",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
-    var blur2:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
-    visualEffectVwDueDate = UIVisualEffectView (effect: blur2)
-    visualEffectVwDueDate.frame = dueDateTextField.frame
+        dueDateTextField = CustomTextFieldBlurView(frame:frame3, imgName:"duDate2")
+        dueDateTextField.userInteractionEnabled = true
+        dueDateTextField.delegate = self;
+        dueDateTextField.attributedPlaceholder = NSAttributedString(string:"Due Date",attributes:[NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)])
+        var blur2:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)//ExtraLight
+        visualEffectVwDueDate = UIVisualEffectView (effect: blur2)
+        visualEffectVwDueDate.frame = dueDateTextField.frame
     
-    self.view.addSubview(visualEffectVwDueDate)
+        self.view.addSubview(visualEffectVwDueDate)
     
-    self.view.addSubview(dueDateTextField)
+        self.view.addSubview(dueDateTextField)
 
-    addProjectButton = CustomButton(frame:CGRect(x: -400, y: frame3.origin.y + 120, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Sumbit", color:.whiteColor())
-    addProjectButton.imageVwBackground.alpha = 0.5
-    addProjectButton.delegate = self
-    self.view.addSubview(addProjectButton)
-  }
-  
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  //Function to set backgroundColor
+        addProjectButton = CustomButton(frame:CGRect(x: -400, y: frame3.origin.y + 120, width : self.view.frame.size.width - 50, height:40), imageName:"icon2" ,tag:1,  title:"Sumbit", color:.whiteColor())
+        addProjectButton.imageVwBackground.alpha = 0.5
+        addProjectButton.delegate = self
+        self.view.addSubview(addProjectButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    //Mark:Custom Button Pressed to send request to add project
+
+    func btnTapped(tag: Int) {
+        var params:Dictionary<String, String> = ["projectName":"", "projectDueDate":"", "AuthenticationID":""]
+        SharedAFHTTPManager.sharedAFHTTPManager().postCallRequest("_CreateProject", param:params, ownerClassRef: self, success: "successInResult", failure:"failureInResult")
+    }
+
+    func successInResult(timer:NSTimer) {
+
+    }
+
+    func failuerInResponce () {
+
+    }
+
+    //Function to set backgroundColor
     func backgroundColorOfImageView() {
         let gl:CAGradientLayer = CAGradientLayer ()
         gl.colors = [(UIColor(red: 65.0/255.0, green: 104.0/255.0, blue: 183.0/255.0, alpha: 1.0).CGColor), (UIColor(red: 68.0/255.0, green: 136.0/255.0, blue: 224.0/255.0, alpha: 1.0).CGColor),(UIColor(red: 225/255.0, green: 225/255.0, blue: 250/255.0, alpha: 1.0).CGColor)]
