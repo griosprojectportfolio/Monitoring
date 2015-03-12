@@ -8,9 +8,10 @@
 
 #ifndef MergeCodes_Bridge_Header_h
 #define MergeCodes_Bridge_Header_h
-
+#define MR_SHORTHAND
 
 #import "PaperFoldMenuController.h"
 #import "AFNetworking.h"
+#import <CoreData+MagicalRecord.h>
 
 #endif

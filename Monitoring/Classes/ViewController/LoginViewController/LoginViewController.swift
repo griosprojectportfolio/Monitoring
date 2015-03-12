@@ -111,8 +111,51 @@ class LoginViewController:UIViewController, UITextFieldDelegate, CustomButtonDel
 
     //MARK:SignUp Button Pressed
     func signUpButtonPressed(){
-        self.performSegueWithIdentifier("idFirstSegue", sender: self)
+
+        /*var url:NSURL = NSURL(string: "http://www.google.com/images/srpr/logo11w.png")!
+        var request:NSURLRequest = NSURLRequest(URL:url)
+        let session = AFHTTPSessionManager()
+        var progress: NSProgress?
+        var downloadTask = session.downloadTaskWithRequest(request, progress: &progress, destination: {(file, responce) in  self.pathUrl},
+            completionHandler: {
+                response, localfile, error in
+                println("response \(response)")
+                if ((error) != nil) {
+                    println(error)
+                }
+        })
+        
+        downloadTask.resume() */
+
+        //self.performSegueWithIdentifier("idFirstSegue", sender: self)
     }
+
+   /* func uploadImage () {
+
+        var manager : AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        var url:NSURL = NSURL(string: "")!
+
+        manager.POST("", parameters: nil,
+            constructingBodyWithBlock: { (data: AFMultipartFormData!) in
+                var res = data.appendPartWithFileURL(url, name: "photo_data", error: nil)
+                println("was file added properly to the body? \(res)")
+            },
+            success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+                println("Yes thies was a success")
+            },
+            failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                println("We got an error here.. \(error.localizedDescription)")
+        })
+    }*/
+
+    /*var pathUrl: NSURL {
+
+            let folder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            let path = folder.stringByAppendingPathComponent("/file.png")
+            let url = NSURL(fileURLWithPath: path)
+            println(url)
+            return url!
+    }*/
 
     func loginButtonPressed() {
         let vwController1 = self.storyboard?.instantiateViewControllerWithIdentifier("MenuList") as ViewController

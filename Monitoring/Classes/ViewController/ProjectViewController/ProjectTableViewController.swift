@@ -35,12 +35,14 @@ import UIKit
         self.navigationController?.navigationBar.translucent = false
 
         let project = [Project (projectName: "Kindergarton1", projectDueDate: "15/02/2015"),  Project (projectName: "Kindergarton2", projectDueDate: "15/02/2015")
-        ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton3", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton7", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton8", projectDueDate: "15/02/2015")]
+        ,Project (projectName: "Kindergarton3", projectDueDate: "15/02/2015"),Project (projectName: "Kindergarton4", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton5", projectDueDate: "15/02/2015"), Project (projectName: "Kindergarton6", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton7", projectDueDate: "15/02/2015"), Project(projectName: "Kindergarton8", projectDueDate: "15/02/2015")]
 
          arryProject = project
         println(arryProject)
         self.tableView.editing = false
         self.addNavigationRightButton()
+        self.insertProjectListFromApi()
+
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -54,12 +56,26 @@ import UIKit
         appDelegateObj.isTogglrSideBar = false
     }
 
-    /* 
-    
-    
-    
-    
-    */
+    func insertProjectListFromApi() {
+        let projectEntity = ProjectEntity.createEntity() as ProjectEntity
+        var dictResponse:NSDictionary = self.demoData()
+        var arryData:NSArray = dictResponse.objectForKey("data") as NSArray
+        println(" **** \(arryData)")
+        ProjectEntity.importFromArray(arryData) //  importFromObject:responseObject inContext:localContext];
+    }
+
+    func demoData ()-> NSDictionary {
+
+        var data1:NSDictionary = ["id":1,"pName":"project1", "pDueDate":"23/02/2025", "pProgress":"56%"]
+        var data2:NSDictionary = ["id":2,"pName":"project1", "pDueDate":"23/02/2025", "pProgress":"56%"]
+        var data3:NSDictionary = ["id":3,"pName":"project1", "pDueDate":"23/02/2025", "pProgress":"56%"]
+        var data4:NSDictionary = ["id":4,"pName":"project1", "pDueDate":"23/02/2025", "pProgress":"56%"]
+        var data5:NSDictionary = ["id":5,"pName":"project1", "pDueDate":"23/02/2025", "pProgress":"56%"]
+
+        var arryProjectList:NSArray = [data1, data2, data3, data4, data5]
+        var responseData:NSDictionary = ["data":arryProjectList]
+        return responseData
+    }
 
     //MARk - Send request to get project list
     func getProjectInformation () {
